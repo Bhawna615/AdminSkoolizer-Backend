@@ -21,8 +21,8 @@ class Fee extends CI_Controller
             if (!(isset($_SESSION['loggedIn']))) {
                 
             // $SALT = "MWR4LBNHQ"; //prod
-            $SALT = "2KRKYIL85O"; //prod
-            // $SALT = "DAH88E3UWQ"; //test
+            // $SALT = "2KRKYIL85O"; //prod
+            $SALT = "DAH88E3UWQ"; //test
             $easebuzzObj = new Easebuzz($MERCHANT_KEY = null, $SALT, $ENV = null);
             $result = json_decode($easebuzzObj->easebuzzResponse( $_POST ));
             $data = $result->data;
