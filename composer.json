@@ -1,0 +1,8 @@
+{
+    "require": {
+        "picqer/php-barcode-generator": "^2.0",
+        "tecnickcom/tc-lib-barcode": "1.15",
+        "razorpay/razorpay": "2.*",
+        "gdbhosale/paywitheasebuzz-php": "^1.0"
+    }
+}

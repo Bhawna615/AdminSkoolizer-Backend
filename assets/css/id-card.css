@@ -1,0 +1,80 @@
+.id-card-container {
+    width: 300px !important;
+    display: inline;
+    height: 340px !important;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.school-logo {
+    width: 50px;
+    display: inline;
+}
+
+.school-name {
+    display: inline;
+}
+.school-address {
+    display: inline-block;
+}
+
+.student-image, .qrcode {
+    width: 100%;
+}
+
+.icon {
+    width: 75px;
+    display: inline;
+}
+
+.id-card-school-logo-container {
+
+}
+
+.id-card-school-logo {
+    width: 50px;
+}
+
+.id-card-school-name {
+    display: inline;
+    font-size: 12px;
+    font-family: Rubik-Regular, serif;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.id-card-school-address {
+    display: inline;
+    font-size: 8px;
+    font-family: Nunito-Semibold, serif;
+}
+
+.student-info {
+    padding: 30px;
+    font-family: Questrial-regular, serif;
+    font-size: 12px;
+}
+
+.school-info {
+    padding: 10px;
+}
+
+.student-info p {
+    margin-bottom: 5px !important;
+}
+.school-info-text{
+    padding: 0;
+}
+
+.school-info-logo {
+    padding: 0;
+    text-align: center;
+}
+
+@media print
+{
+    @page {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

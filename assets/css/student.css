@@ -1,0 +1,349 @@
+/* The sidebar menu */
+.sidebar {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #ffffff; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s; /* If you want a transition effect */
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+}
+
+
+.top-bar {
+    background: #2C56BB;
+    color: #ffffff;
+    padding: 15px;
+}
+
+.top-level-container {
+    padding: 0;
+}
+
+.nav-icon {
+    font-size: 30px;
+}
+
+.page-title {
+    font-family: Nunito-Semibold, serif;
+    font-size: 25px;
+}
+
+.info-box {
+    border: 1px solid #A1A1A1;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.top-bar-icon-container {
+    padding: 2px;
+}
+
+.schedule-subject-container {
+    background: #2C56BB;
+    color: #ffffff;
+    padding: 20px;
+    height: 150px;
+}
+
+.schedule-container {
+    padding: 0;
+    border: 1px solid #A1A1A1;
+    margin-bottom: 20px;
+    height: 150px;
+}
+
+.schedule-list-container {
+    padding: 0;
+    margin-top: 20px;
+}
+
+.student-home-heading {
+    text-transform: uppercase;
+    text-align: center;
+    font-family: Nunito_regular, serif;
+    font-size: 20px;
+}
+
+.student-home-info-title {
+    font-family: Questrial-regular, serif;
+
+}
+
+.student-home-info-value {
+    font-family: Questrial-regular, serif;
+    text-align: right;
+}
+
+.schedule-details-container {
+    font-family: Questrial-regular, serif;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.schedule-subject-container {
+    text-align: center;
+    vertical-align: center;
+}
+
+.student-home-subject-name {
+    font-family: Nunito_regular, serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding-top: 30px;
+}
+
+.sidebar-student-detail-container {
+    background: #2C56BB;
+    padding: 20px;
+}
+
+.sidebar-student-detail {
+    padding: 0;
+    margin: 0 !important;
+    font-family: Questrial-regular, serif;
+}
+
+.sidebar-student-image {
+    width: 100px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.sidebar-menu-item-icon {
+    color: #2C56BB;
+    font-size: 25px;
+    margin-right: 25px;
+    top: 5px;
+}
+
+.sidebar-menu-item {
+    font-family: Nunito_regular, serif;
+    font-size: 16px;
+}
+
+.assignment-page-date-selector {
+    border: 1px solid;
+    font-family: Questrial-regular, serif;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.assignment-page-text {
+    font-family: Rubik-Regular, serif;
+}
+
+.message-container {
+    background: #2C56BB;
+    color: #ffffff;
+    margin-top: 25px;
+    padding: 10px;
+    font-family: Questrial-regular, serif;
+    text-align: justify;
+    border-radius: 10px;
+}
+
+.student-resource-btn {
+    color: #ffffff;
+    border: 2px solid;
+    text-transform: uppercase;
+    padding: 10px 25px 10px 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: Rubik-Regular, serif;
+}
+
+.profile-page-heading {
+    font-family: Rubik-Regular, serif;
+    text-align: center;
+}
+
+.profile-input-heading {
+    font-family: Rubik-Regular, serif;
+    margin-top: 20px;
+}
+
+.profile-input {
+    border: 2px solid #2C56BB;
+    outline: none;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    font-family: Questrial-regular;
+}
+
+.error-bar
+{
+	font-family: Questrial-regular, serif;
+	text-align: center;
+	color: #f95555;
+	font-size: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #f95555;
+	padding: 5px;
+	width: 50%;
+}
+
+.invalid-bar
+{
+	font-family: Questrial-regular, serif;
+	text-align: center;
+	color: #f95555;
+	font-size: 16px;
+}
+
+.success-bar
+{
+	font-family: Questrial-regular, serif;
+	text-align: center;
+	color: #2995bf;
+	font-size: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #2995bf;
+	padding: 5px;
+	width: 50%;
+	line-height: 50px;
+}
+
+.form-btn {
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-family: Rubik-Regular, serif;
+    padding: 5px 20px 5px 20px;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#2C56BB;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+	z-index: 1;
+}
+
+.my-float{
+	margin-top:22px;
+}
+
+.float-btn {
+	font-size: 30px;
+	position: relative;
+	top: 5px;
+	border: none;
+}
+
+.form-btn-2 {
+    border: none;
+    background-color: #2C56BB;
+    padding: 10px 25px 10px 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: Rubik-Regular, serif;
+    color: #ffffff;
+}
+
+.no-classes {
+    font-family: Rubik-Regular, serif;
+    text-align: center;
+}
+
+.no-classes-container {
+    padding: 25px;
+}
+
+.unread-badge {
+    background: #2C56BB;
+    border: none;
+    border-radius: 50%;
+    width: fit-content;
+    color: #fff;
+    font-size: 14px;
+}
+
+.card {
+    background-color: #2C56BB;
+    margin-top: 100px;
+    margin: 100px 20px 0 20px;
+    padding: 25px;
+}
+
+.card-title{
+    color: #fff;
+   font-family: Rubik-Regular, serif;
+   text-align: center;
+   margin-bottom: 30px;
+}
+
+.form-input {
+    width: 100%;
+    border: 1px solid #000000;
+    padding: 10px;
+    outline: none;
+    margin-top: 20px;
+    fill: none;
+}
+
+::placeholder {
+    font-family: Questrial-regular, serif;
+}

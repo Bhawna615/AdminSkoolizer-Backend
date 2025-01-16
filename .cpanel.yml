@@ -1,0 +1,13 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home4/skoolfdp/public_html/mps/applications/
+    - /bin/cp -R applications/student $DEPLOYPATH
+#    - /bin/cp -R assets $DEPLOYPATH
+#    - /bin/cp -R system $DEPLOYPATH
+#    - /bin/cp -R tests $DEPLOYPATH
+#    - /bin/cp -R api.php $DEPLOYPATH
+#    - /bin/cp -R index.php $DEPLOYPATH
+#    - /bin/cp -R student.php $DEPLOYPATH
+
+

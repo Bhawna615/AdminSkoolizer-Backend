@@ -1,0 +1,43 @@
+[23-Apr-2023 23:57:44 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home4/skoolfdp/public_html/spipschool/applications/school/controllers/Student.php on line 308
+[19-Jul-2023 16:55:51 UTC] PHP Fatal error:  Cannot redeclare Exam::select() in /home4/skoolfdp/public_html/spipschool/applications/school/controllers/Exam.php on line 188
+[19-Jul-2023 16:56:46 UTC] PHP Fatal error:  Cannot redeclare Exam::select() in /home4/skoolfdp/public_html/spipschool/applications/school/controllers/Exam.php on line 188
+[03-Aug-2023 04:44:59 Asia/Kolkata] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 400572416 bytes) in /home4/skoolfdp/public_html/spipschool/applications/school/views/exams/class_wise_report/generate.php on line 45
+[03-Aug-2023 04:57:08 Asia/Kolkata] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 400572416 bytes) in /home4/skoolfdp/public_html/spipschool/applications/school/views/exams/class_wise_report/generate.php on line 47
+[03-Aug-2023 04:59:23 Asia/Kolkata] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 400572416 bytes) in /home4/skoolfdp/public_html/spipschool/applications/school/views/exams/class_wise_report/generate.php on line 52
+[03-Aug-2023 00:04:54 UTC] PHP Fatal error:  Cannot use [] for reading in /home4/skoolfdp/public_html/spipschool/applications/school/controllers/Exam.php on line 320
+[18-Aug-2023 11:06:24 Asia/Kolkata] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 261739672 bytes) in /home4/skoolfdp/public_html/spipschool/system/core/Loader.php on line 996
+[22-Aug-2023 06:48:38 Asia/Kolkata] PHP Deprecated:  The behavior of unparenthesized expressions containing both '.' and '+'/'-' will change in PHP 8: '+'/'-' will take a higher precedence in /home4/skoolfdp/public_html/spipschool/applications/school/views/exams/class_wise_report/generate.php on line 132
+[01-Sep-2023 09:48:57 Asia/Kolkata] PHP Deprecated:  The behavior of unparenthesized expressions containing both '.' and '+'/'-' will change in PHP 8: '+'/'-' will take a higher precedence in /home4/skoolfdp/public_html/spipschool/applications/school/views/students/tcdetails.php on line 171
+[01-Sep-2023 10:14:24 Asia/Kolkata] PHP Deprecated:  The behavior of unparenthesized expressions containing both '.' and '+'/'-' will change in PHP 8: '+'/'-' will take a higher precedence in /home4/skoolfdp/public_html/spipschool/applications/school/views/students/tcdetails.php on line 171
+[16-Sep-2023 04:13:38 UTC] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home4/skoolfdp/public_html/spipschool/system/libraries/Session/drivers/Session_files_driver.php on line 212
+[05-Mar-2024 21:30:36 Asia/Kolkata] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home4/skoolfdp/public_html/kkblossom/applications/student/views/student/layouts/header.php on line 69
+[05-Mar-2024 21:32:37 Asia/Kolkata] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home4/skoolfdp/public_html/kkblossom/applications/student/views/student/layouts/header.php on line 69
+[05-Mar-2024 21:32:39 Asia/Kolkata] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home4/skoolfdp/public_html/kkblossom/applications/student/views/student/layouts/header.php on line 69
+[15-Mar-2024 05:56:36 UTC] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home4/skoolfdp/public_html/kkblossom/system/libraries/Session/drivers/Session_files_driver.php on line 212
+[16-Mar-2024 03:56:56 UTC] PHP Fatal error:  Uncaught ArgumentCountError: ini_set() expects exactly 2 arguments, 1 given in /home4/skoolfdp/public_html/kkblossom/index.php:75
+Stack trace:
+#0 /home4/skoolfdp/public_html/kkblossom/index.php(75): ini_set('display_errors')
+#1 {main}
+  thrown in /home4/skoolfdp/public_html/kkblossom/index.php on line 75
+[16-Mar-2024 03:57:04 UTC] PHP Fatal error:  Uncaught ArgumentCountError: ini_set() expects exactly 2 arguments, 1 given in /home4/skoolfdp/public_html/kkblossom/index.php:75
+Stack trace:
+#0 /home4/skoolfdp/public_html/kkblossom/index.php(75): ini_set('display_errors')
+#1 {main}
+  thrown in /home4/skoolfdp/public_html/kkblossom/index.php on line 75
+[16-Mar-2024 03:57:16 UTC] PHP Fatal error:  Uncaught ArgumentCountError: ini_set() expects exactly 2 arguments, 1 given in /home4/skoolfdp/public_html/kkblossom/index.php:75
+Stack trace:
+#0 /home4/skoolfdp/public_html/kkblossom/index.php(75): ini_set('display_errors')
+#1 {main}
+  thrown in /home4/skoolfdp/public_html/kkblossom/index.php on line 75
+[19-Mar-2024 01:21:55 UTC] PHP Fatal error:  Cannot redeclare Fee::pending() in /home4/skoolfdp/public_html/kkblossom/applications/school/controllers/Fee.php on line 334
+[24-Mar-2024 15:39:56 Asia/Kolkata] PHP Fatal error:  Cannot redeclare StudentModel::updateNotificationCheckTime() in /home4/skoolfdp/public_html/kkblossom/applications/student/models/StudentModel.php on line 86
+[24-Mar-2024 15:39:56 Asia/Kolkata] PHP Fatal error:  Cannot redeclare StudentModel::updateNotificationCheckTime() in /home4/skoolfdp/public_html/kkblossom/applications/student/models/StudentModel.php on line 86
+[24-Mar-2024 15:39:57 Asia/Kolkata] PHP Fatal error:  Cannot redeclare StudentModel::updateNotificationCheckTime() in /home4/skoolfdp/public_html/kkblossom/applications/student/models/StudentModel.php on line 86
+[24-Mar-2024 15:39:58 Asia/Kolkata] PHP Fatal error:  Cannot redeclare StudentModel::updateNotificationCheckTime() in /home4/skoolfdp/public_html/kkblossom/applications/student/models/StudentModel.php on line 86
+[24-Mar-2024 15:39:58 Asia/Kolkata] PHP Fatal error:  Cannot redeclare StudentModel::updateNotificationCheckTime() in /home4/skoolfdp/public_html/kkblossom/applications/student/models/StudentModel.php on line 86
+[24-Mar-2024 15:39:59 Asia/Kolkata] PHP Fatal error:  Cannot redeclare StudentModel::updateNotificationCheckTime() in /home4/skoolfdp/public_html/kkblossom/applications/student/models/StudentModel.php on line 86
+[24-Mar-2024 15:39:59 Asia/Kolkata] PHP Fatal error:  Cannot redeclare StudentModel::updateNotificationCheckTime() in /home4/skoolfdp/public_html/kkblossom/applications/student/models/StudentModel.php on line 86
+[24-Mar-2024 15:40:19 Asia/Kolkata] PHP Fatal error:  Cannot redeclare StudentModel::updateNotificationCheckTime() in /home4/skoolfdp/public_html/kkblossom/applications/student/models/StudentModel.php on line 86
+[24-Mar-2024 15:40:40 Asia/Kolkata] PHP Fatal error:  Cannot redeclare StudentModel::updateNotificationCheckTime() in /home4/skoolfdp/public_html/kkblossom/applications/student/models/StudentModel.php on line 86
+[24-Mar-2024 15:40:44 Asia/Kolkata] PHP Fatal error:  Cannot redeclare StudentModel::updateNotificationCheckTime() in /home4/skoolfdp/public_html/kkblossom/applications/student/models/StudentModel.php on line 86
+[24-Mar-2024 15:40:58 Asia/Kolkata] PHP Fatal error:  Cannot redeclare StudentModel::updateNotificationCheckTime() in /home4/skoolfdp/public_html/kkblossom/applications/student/models/StudentModel.php on line 86

@@ -1,0 +1,436 @@
+ul#nav {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 10px 0;
+}
+
+ul#nav li{
+	display: inline;
+	margin-right: 10px;
+}
+
+.cardview {
+	border: 2px solid #797979;
+}
+
+.innerview {
+	padding: 20px !important;
+	font-family: Nunito_regular;
+}
+
+.dataTableHead {
+	font-family: Nunito_regular, sans-serif;
+	background: #2C56BB;
+	color: #ffffff;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+.dataTableBody {
+	font-family: Questrial-regular, sans-serif;
+	color: #000;
+}
+
+.dt-action-btn {
+	color: #000000 !important;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+}
+
+.side-bar-btn {
+	border: none;margin-top: 20px;
+	outline: none;
+	font-family: Questrial-Regular;
+	font-size: 20px;
+	background: transparent;
+	color: #ffffff;
+}
+
+.dt-action-form {
+	width: fit-content;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#2C56BB;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+	z-index: 1;
+}
+
+.my-float{
+	margin-top:22px;
+}
+
+.float-btn {
+	font-size: 30px;
+	position: relative;
+	top: 5px;
+	border: none;
+}
+
+.btn-icon {
+	position: relative;
+	top: 6px;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+.side-btn {
+	background: #2C56BB;
+	border: none;
+	color: #ffffff;
+	padding: 5px 20px 5px 20px;
+	border-radius: 5px;
+}
+
+.side-btn-bar {
+	padding: 0;
+	margin-bottom: 10px;
+}
+
+.headings {
+	font-family: Nunito_regular;
+	font-size: 20px;
+	margin-bottom: 33px;
+}
+
+.square-input
+{
+	border: 1px solid black;
+	margin-bottom: 20px;
+	font-family: Questrial-Regular;
+	font-size: 16px;
+	height: 25px;
+}
+
+.profile-heading {
+	font-family: Rubik-Regular, serif;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.profile-info {
+	font-family: Questrial-regular, serif;
+	font-size: 15px;
+}
+
+.profile-holder {
+	border: 5px solid #000000;
+}
+
+.btn-classic {
+	background: transparent;
+	border: 2px solid ;
+	font-family: Rubik-Regular, serif;
+	font-size: 20px;
+	text-transform: uppercase;
+	margin-top: 20px;
+	width: 25%;
+	height: 50px;
+}
+
+.icon {
+	width: 80%;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.form-input {
+	border: 1px solid;
+	border-color: #A1A1A1;
+	font-family: Questrial-Regular;
+	outline: none;
+	width: 90%;
+	margin-bottom: 10px;
+	height: 30px;
+}
+
+.form-submit {
+	background: transparent;;
+	border: 1px solid;
+	border-color: #fff;
+	font-family: Nunito_regular;
+	width: 30%;
+	background: #2C56BB;
+	color: white;
+	font-size: 20px;
+	padding: 5px 0 5px 0;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+
+.details
+{
+	font-family: Rubik-Regular;
+	font-size: 15px;
+	margin-bottom: 5px;
+	color: black;
+}
+
+.error-bar
+{
+	font-family: Questrial-regular, serif;
+	text-align: center;
+	color: #2C56BB;
+	font-size: 25px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #2C56BB;
+	padding: 5px;
+	width: 50%;
+}
+
+.invalid-bar
+{
+	font-family: Questrial-regular, serif;
+	text-align: center;
+	color: #2C56BB;
+	font-size: 16px;
+}
+
+.success-bar
+{
+	font-family: Questrial-regular, serif;
+	text-align: center;
+	color: #2995bf;
+	font-size: 25px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #2995bf;
+	padding: 5px;
+	width: 50%;
+	line-height: 50px;
+}
+
+.form-box {
+	border: 1px solid;
+	border-color: #EBEBEC;
+	margin-top: 20px;
+	padding: 0 0 20px 0;
+
+}
+
+.title-bar {
+	background: #EBEBEC;
+	font-family: Nunito-Semibold;
+	font-size: 20px;
+	padding: 0;
+	color: black;
+}
+
+.brand-logo-container {
+	padding: 10px 20px 10px 20px;
+	background: #FFAE10 !important;
+	text-align: center;
+}
+
+.brand-logo {
+	cursor: pointer;
+	width: 60%;
+}
+
+.school-name-container {
+	background: #2C56BB;
+	color: white;
+	font-family: Nunito-Light, serif;
+	padding: 18px 0 18px 20px;
+	font-size: 30px;
+	text-align: center;
+
+}
+
+.school-name {
+	text-transform: uppercase;
+	font-family: Rubik-Regular, serif;
+	margin: 0 !important;
+	display: inline;
+}
+
+.icon-btn {
+	background: none;
+	color: #ffffff;
+	border: none;
+	display: inline;
+	position: absolute;
+	right: 10px;
+}
+.single-select {
+	width: 300px;
+	height: 40px;
+	padding: 0 20px 0 20px;
+	margin-bottom: 30px;
+}
+
+.form-ta {
+	border: 1px solid #A1A1A1;
+	width: 90%;
+}
+
+.form-select {
+	width: 90%;
+	height: 30px;
+	margin-bottom: 10px;
+	font-family: Questrial-regular, serif;
+	outline: none;
+}
+
+.filter-bar {
+	margin-bottom: 30px;
+	border: 2px dashed #000000;
+	padding: 20px;
+}
+
+.filter-title {
+	text-transform: uppercase;
+	font-family: Rubik-Regular, serif;
+}
+
+.filter-bar select {
+	width: 100%;
+	border: 2px solid #000000;
+	padding: 7px;
+	font-family: Questrial-regular, serif;
+}
+
+.filter-enable {
+	font-family: Rubik-Regular, serif;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+.custom-checkbox {
+	width: 20px;
+	height: 20px;
+	position: relative;
+	top: 2px;
+}
+
+.loader {
+	position: fixed;
+	z-index: 99;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #2C56BB;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loader > img {
+	width: 75px;
+}
+
+.loader-message {
+	font-family: Questrial-regular, serif;
+	font-size: 36px;
+	color: #ffffff;
+}
+
+.loader.hidden {
+	animation: fadeOut 1s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+	100% {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+.logo-thumbnail {
+	width: 100%;
+}
+
+.school-logo {
+	width: 50px;
+	display: inline;
+}
+
+.school-logo-container {
+	width: max-content;
+	display: inline-block;
+}
+.top-level-container {
+	padding: 0;
+}
+
+.message-input-box {
+	width: 100%;
+	height: 150px;
+	outline: none;
+	border: 1px solid #000000;
+	font-family: Questrial-regular, serif;
+	padding: 15px;
+}
+
+.qrcode-input {
+	width: 400px;
+	height: 400px;
+	border: none !important;
+	color: transparent;
+	outline: none;
+	cursor: pointer;
+}
+
+#scan-status {
+	font-family: Rubik-Regular, serif;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.scan-status-true{
+	color: #00CC00;
+}
+
+.scan-status-false{
+	color: #E83C2A;
+}
+
+.scan-result {
+	z-index: 99;
+	position: relative;
+	bottom: 250px;
+	left: 100px;
+}
+
+.theme-color {
+    background-color: #2C56BB;
+}
+
+@media only screen and (max-width: 600px) {
+  .hide-in-sm{
+    display: none;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .hide-in-lg{
+        display:none;
+    }
+
+}
+
+.card {
+	background: #2C56BB;
+	color: #FFF;
+	padding: 25px;
+	display: block;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	
+}
+
+.card a{
+	color: #FFF !important;
+	font-size: 16px;
+}

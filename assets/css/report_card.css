@@ -1,0 +1,251 @@
+.logo{
+	width: 100px;
+	float: right;
+}
+
+.page-title {
+	text-transform: uppercase;
+	font-family: Nunito-Semibold, serif;
+	text-align: center;
+	align-content: center;
+	font-size: 15px;
+	font-weight: 900;
+	margin: 0;
+}
+
+.info-container {
+	padding: 5px;
+}
+
+.info {
+	font-weight: 900;
+	font-family: Rubik-Regular, serif;
+	text-transform: uppercase;
+	line-height: 2px;
+}
+.language {
+	font-family: Questrial-regular, serif;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.student-img{
+	width: 175px;
+}
+
+.report-card-table-head{
+	border: 1px solid #000000;
+	font-family: Rubik-Regular, serif;
+	text-transform: uppercase;
+}
+
+.report-card-table-head th{
+	border: 1px solid #000000 !important;
+	font-size: 10px;
+}
+
+.report-card-table-body {
+	border: 1px solid #000000;
+	font-family: Questrial-regular, serif;
+}
+
+.report-card-table-body td {
+	border: 1px solid #000000;
+	font-size: 10px;
+}
+
+.signature-container {
+	padding: 100px;
+}
+
+.signature-container-names {
+	font-family: Nunito-Semibold, serif;
+	font-size: 14px;
+	color: #000000;
+}
+
+@media print
+{
+	@page {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	body  {
+		padding-top: 72px;
+		padding-bottom: 72px ;
+	}
+}
+
+.question {
+	line-height: 30px;
+	text-align: justify;
+	white-space: pre-wrap;
+}
+
+
+.school-logo {
+	width: 60px;
+	display: inline-block;
+}
+
+.school-logo-container {
+	width: max-content;
+	display: inline-block;
+}
+
+.school-name-container {
+	text-align: center;
+	height: 75px;
+	padding-top: 5px;
+}
+
+.school-name {
+	font-family: Rubik-Regular, serif;
+	font-size: 20px;
+	text-transform: uppercase;
+	margin: 0!important;
+	width: max-content;
+	display: inline-block;
+	position: relative;
+	bottom: 20px;
+}
+
+.school-address {
+	font-family: Questrial-regular, serif;
+	font-size: 14px;
+	display: block;
+	position: relative;
+	bottom: 40px;
+	left: 45px;
+}
+
+.exam-name, .exam-class, .exam-subject {
+	font-family: Questrial-regular, serif;
+	text-align: center;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.exam-duration {
+	display: inline;
+	float: left;
+	font-family: Rubik-Regular, serif;
+	font-size: 16px;
+	font-weight: 900;
+}
+
+.exam-max-marks {
+	display: inline;
+	float: right;
+	font-family: Rubik-Regular, serif;
+	font-size: 16px;
+	font-weight: 900;
+}
+
+.exam-instructions {
+	font-family: Nunito-Semibold, serif;
+	font-size: 16px;
+}
+
+.exam-paper {
+	text-align: justify;
+	font-family: Montserrat-Medium, serif;
+}
+
+.exam-section-container {
+	text-align: center;
+	text-transform: uppercase;
+	font-family: Rubik-Regular, serif;
+	font-size: 20px;
+}
+
+.document-title-container {
+	font-family: Nunito-Semibold, serif;
+	font-size: 20px;
+	text-align: center;
+	margin-top: 5px;
+	font-weight: 900;
+}
+
+.document-body-container {
+	align-content: center;
+	font-family: Questrial-regular, serif;
+	padding: 50px;
+}
+
+.document-signature-container {
+	font-family: Questrial-regular, serif;
+	padding: 50px;
+	text-align: center;
+}
+
+.signature-title-one {
+	display: inline;
+	width: max-content;
+	float: left;
+}
+
+.signature-title-two {
+	display: inline;
+	width: auto;
+	text-align: center;
+}
+
+.signature-title-three {
+	display: inline;
+	width: max-content;
+	float: right;
+}
+
+.document-counter {
+
+}
+
+.page-body {
+	padding: 30px;
+	margin-top: 25px;
+}
+
+.details {
+	font-family: Questrial-regular, serif;
+	font-size: 16px;
+}
+
+.tbl th {
+	font-family: Rubik-Regular, serif;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.tbl td {
+	font-family: Questrial-regular, serif;
+	font-size: 15px;
+}
+
+.tc-style {
+    border: 1px solid;
+}
+
+.document-attribute-title{
+    font-size: 10px;
+}
+
+.tc-top-bar {
+    padding: 20px;
+}
+
+.tc-float-left {
+    display: inline;
+	float: left;
+	font-family: Rubik-Regular, serif;
+	font-size: 12px;
+	font-weight: 900;
+}
+
+.tc-float-right {
+ 	display: inline;
+	float: right;
+	font-family: Rubik-Regular, serif;
+	font-size: 12px;
+	font-weight: 900;
+}

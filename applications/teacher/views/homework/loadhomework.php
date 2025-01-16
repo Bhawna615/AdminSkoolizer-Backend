@@ -1,0 +1,22 @@
+<?php $this->view('header'); ?>
+<div class="col-md-12 innerview">
+	<div class="col-md-12">
+		<form method="POST" action="<?php echo site_url('homework/assign') ?>">
+	<div class="col-md-4">
+			<p class="headings">Class</p>
+			<select name="class" class="form-select">
+				<?php if (isset($classes)) { ?>
+					<?php foreach ($classes as $row) { ?>
+						<option value="<?php echo $row->Class; ?>"><?php echo "Class " . $row->Class; ?></option>
+					<?php } ?>
+				<?php } ?>
+			</select>
+		</div>
+		<div class="col-md-12">
+			<input type="submit" name="" value="Go" class="form-submit">
+		</div>
+		</form>
+	</div>
+</div>
+
+<?php $this->view('footer'); ?>

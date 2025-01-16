@@ -1,0 +1,109 @@
+.top-menu-bar {
+	background: #000000;
+	padding: 20px 0 20px 0 ;
+}
+
+.logo-img {
+	width: 100%;
+}
+
+.transparent-btn {
+	color: #ffffff;
+	background: transparent;
+	border: 2px solid #ffffff;
+	border-radius: 5px;
+	font-family: Rubik-Regular, serif;
+	font-size: 20px;
+	padding: 5px 30px 5px 30px;
+	position: absolute;
+	right: 10px;
+	top: 30px;
+}
+
+@media screen and (max-width: 500px) {
+	.transparent-btn {
+		display: none;
+	}
+}
+
+
+.feature-icon {
+	color: #ffffff;
+	width: 100%;
+	font-size: 250px;
+	text-align: center;
+}
+
+.feature-title {
+	color: #ffffff;
+	font-family: Nunito-Semibold, serif;
+	font-size: 28px;
+	text-align: center;
+	font-weight: 700;
+}
+
+.feature-box {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.footer-container {
+	background: #000000;
+	font-family: Questrial-regular, serif;
+	padding: 30px;
+	color: #ffffff;
+}
+
+.footer-text {
+	line-height: 25px;
+}
+
+.copyright-text-container {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.top-menu-bar-item-container {
+	padding: 50px 25px 50px 25px;
+}
+
+.top-menu-bar-item, .top-menu-bar-item:focus, .top-menu-bar-item:hover {
+	color: #ffffff !important;
+	text-decoration: none;
+	font-family: Rubik-Regular, serif;
+	font-size: 20px;
+}
+
+.content-container {
+	min-height: 700px;
+	padding: 100px;
+}
+
+.owner-message {
+	font-family: Questrial-regular, serif;
+	font-size: 16px;
+	color: #ffffff;
+	line-height: 30px;
+	text-align: justify;
+}
+
+.owner-info{
+	color: #ffffff;
+	font-family: Questrial-regular, serif;
+	font-size: 16px;
+	line-height: 30px;
+	text-align: center;
+
+}
+
+.owner-message-title {
+	font-family: Nunito-Semibold, serif;
+	font-size: 20px;
+	color: #ffffff;
+	text-transform: uppercase;
+	margin-bottom: 50px;
+}
+
+.owner-img {
+	width: 50%;
+}
