@@ -69,13 +69,13 @@ class Fee extends CI_Controller
     
      public function pay()
     {
-        // $MERCHANT_KEY = "2PBP7IABZ2";
-        // $SALT = "DAH88E3UWQ";
-        // $ENV = "test";    // setup test enviroment (testpay.easebuzz.in).
+        $MERCHANT_KEY = "2PBP7IABZ2";
+        $SALT = "DAH88E3UWQ";
+        $ENV = "test";    // setup test enviroment (testpay.easebuzz.in).
         
-        $MERCHANT_KEY = "5DDN04R1M7";
-        $SALT = "2KRKYIL85O";
-        $ENV = "prod";    // setup test enviroment (testpay.easebuzz.in).
+        // $MERCHANT_KEY = "5DDN04R1M7";
+        // $SALT = "2KRKYIL85O";
+        // $ENV = "prod";    // setup test enviroment (testpay.easebuzz.in).
         
         // $MERCHANT_KEY = "UXOKAPYCV";
         // $SALT = "MWR4LBNHQ";
