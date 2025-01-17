@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,224 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ef89611-71e7-460a-9bb3-ffbbc33a85ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/skoolizer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/applications/school/views/sms/schedule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mps.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/api/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/api/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/api/config/development/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/api/config/development/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/config/development/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/config/development/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/config/development/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/config/development/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/config/testing/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/config/testing/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/config/validation_rules.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/config/validation_rules.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/controllers/Attendance.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/controllers/Attendance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/controllers/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/controllers/Auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/controllers/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/controllers/Exam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/controllers/Fee.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/controllers/Fee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/controllers/Metrics.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/controllers/Metrics.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/controllers/Passenger.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/controllers/Passenger.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/controllers/Route.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/controllers/Route.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/controllers/Sms.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/controllers/Sms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/controllers/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/controllers/Student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/models/AttendanceModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/models/AttendanceModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/models/AuthModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/models/AuthModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/models/ExamModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/models/ExamModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/models/FeeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/models/FeeModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/models/IdCardModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/models/IdCardModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/models/MessageModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/models/MessageModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/models/MetricsModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/models/MetricsModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/models/SmsModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/models/SmsModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/models/StudentModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/models/StudentModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/admission/newadmission.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/admission/newadmission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/assignments/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/assignments/create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/assignments/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/assignments/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/attendance/rollcall.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/attendance/rollcall.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/attendance/showbymonth.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/attendance/showbymonth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/attendance/table.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/attendance/table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/attendance/viewattendance.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/attendance/viewattendance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/auth/signin.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/auth/signin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/employees/employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/employees/employees.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/employees/viewattendance.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/employees/viewattendance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/examdetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/examdetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/question_papers/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/question_papers/create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/question_papers/questions/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/question_papers/questions/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/question_papers/table.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/question_papers/table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/question_papers/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/question_papers/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/quizzes/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/quizzes/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/quizzes/questions/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/quizzes/questions/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/quizzes/questions/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/quizzes/questions/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/quizzes/questions/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/quizzes/questions/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/quizzes/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/quizzes/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/report_card/generate.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/report_card/generate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/report_card/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/report_card/select.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/table.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/uploadresult.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/uploadresult.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/viewexams.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/viewexams.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/exams/viewresult.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/exams/viewresult.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/fee/feestructuredetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/fee/feestructuredetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/fee/new_payment_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/fee/new_payment_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/fee/newpayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/fee/newpayment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/fee/structure.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/fee/structure.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/fee/viewpayments.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/fee/viewpayments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/home/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/home/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/homework/viewhomework.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/homework/viewhomework.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/idcards/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/idcards/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/messages/inboxmessages.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/messages/inboxmessages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/messages/messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/messages/messages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/messages/newmessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/messages/newmessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/movements/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/movements/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/posts/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/posts/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/smstemplates/absent.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/smstemplates/absent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/smstemplates/birthdays.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/smstemplates/birthdays.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/smstemplates/feereminder.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/smstemplates/feereminder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/smstemplates/holiday.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/smstemplates/holiday.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/smstemplates/scheduled.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/smstemplates/scheduled.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/smstemplates/schoolclosed.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/smstemplates/schoolclosed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/sports/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/sports/create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/sports/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/sports/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/sports/participants/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/sports/participants/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/sports/participants/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/sports/participants/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/sports/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/sports/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/students/editstudentinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/students/editstudentinfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/students/examreport.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/students/examreport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/students/metrics/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/students/metrics/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/students/metrics/students.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/students/metrics/students.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/students/metrics/table.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/students/metrics/table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/students/metrics/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/students/metrics/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/students/promote.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/students/promote.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/students/studentprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/students/studentprofile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/students/table.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/students/table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/students/tc.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/students/tc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/students/viewstudents.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/students/viewstudents.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/teachers/addteacher.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/teachers/addteacher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/teachers/editteacher.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/teachers/editteacher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/teachers/viewteachers.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/teachers/viewteachers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/timetable/classes.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/timetable/classes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/timetable/events/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/timetable/events/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/timetable/events/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/timetable/events/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/timetable/events/participants/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/timetable/events/participants/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/timetable/events/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/timetable/events/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/timetable/newperiod.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/timetable/newperiod.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/timetable/timetable.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/timetable/timetable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/transport/addsubroute.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/transport/addsubroute.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/school/views/transport/routedetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/school/views/transport/routedetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/config/database.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/config/development/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/config/development/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/controllers/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/controllers/Auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/controllers/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/controllers/Exam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/controllers/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/controllers/Student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/controllers/Teacher.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/controllers/Teacher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/models/ExamModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/models/ExamModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/models/StudentModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/models/StudentModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/models/Teach.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/models/Teach.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/alerts/attendancetaken.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/alerts/attendancetaken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/content/classlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/content/classlist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/content/conductForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/content/conductForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/student/assignments/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/student/assignments/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/student/assignments/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/student/assignments/select.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/student/exams/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/student/exams/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/student/fee/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/student/fee/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/student/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/student/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/student/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/student/layouts/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/student/posts/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/student/posts/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/student/results.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/student/results.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/student/transport.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/student/transport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/assign.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/assign.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/changepassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/changepassword.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/conducted.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/conducted.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/exams.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/exams.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/homework.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/homework.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/remark.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/remark.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/review.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/rollcall.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/rollcall.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/settings/changeimage.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/settings/changeimage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/showexams.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/showexams.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/showresults.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/showresults.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/submitting.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/submitting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/student/views/teacher/viewattendance.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/student/views/teacher/viewattendance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/transport/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/transport/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/transport/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/transport/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/transport/controllers/Transport.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/transport/controllers/Transport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/transport/models/Travel.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/transport/models/Travel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/transport/views/transport/busdetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/transport/views/transport/busdetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/transport/views/transport/chooseroute.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/transport/views/transport/chooseroute.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/transport/views/transport/choosetiming.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/transport/views/transport/choosetiming.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/transport/views/transport/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/applications/transport/views/transport/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/id-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/id-card.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/printable.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/printable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/student.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/student.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/logo/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/logo/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/MO.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/android_(1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/android_(1)1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/qrcode/Gg59TekaXYUPFN78.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/qrcode/NYLHitf2JpF9S8ge.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/qrcode/NdVZkFxuJODrog6b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/qrcode/a5qrtXSHA9WznmIh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/qrcode/eBJAzymC8pcNYW0S.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/qrcode/iwZza8UtqRkO1JTQ.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/qrcode/wDUgxFeb6HktW9jv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/qrcode/wogKTO2mPB9QdkAh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/qrcode/yKLBYZQJHtvjPxe0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/qrcode/z4loRQtpiFGEHXnc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/student.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/student1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/student2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studenta.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studenta.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studenta1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studenta11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studenta2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studenta21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studenta3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studenta4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studenta5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studenta6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studentb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studentc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studentc1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studentc11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studentc12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studentc2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/studentc3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/web_hi_res_512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/web_hi_res_5121.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/students/web_hi_res_5122.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/android_(1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/m.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/qrcode/MGY345QmurZP62hJ.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/qrcode/iEo7SM2KxHFO3Lgl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/student.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/student1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/student11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/student12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/student13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/student131.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/student1311.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/student13111.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/student2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/student21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/teachera.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/teachera1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/teachera2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/teachera3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/teacherb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/teacherb1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/teacherb2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/teacherc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/teacherc1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/teachers/web_hi_res_512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student.php" beforeDir="false" afterPath="$PROJECT_DIR$/student.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,6 +37,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Mercer47"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Mercer47/kkblossom.git",
+    "accountId": "471aefe8-19ac-4ecc-b902-431f5faaca90"
+  }
+}]]></component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
@@ -259,18 +57,36 @@
       <path value="$PROJECT_DIR$/vendor/picqer/php-barcode-generator" />
     </include_path>
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
   <component name="ProjectId" id="2VuecwLGb9KqlzFQaPeGD2qaFgL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/wamp64/www/kkblossom",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+      </set>
+    </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -286,11 +102,12 @@
       <workItem from="1698120930195" duration="658000" />
       <workItem from="1698383463147" duration="586000" />
       <workItem from="1698389141348" duration="72000" />
+      <workItem from="1737077463180" duration="1149000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -302,6 +119,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
