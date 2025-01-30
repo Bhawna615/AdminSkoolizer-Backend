@@ -8,6 +8,7 @@ class WebHook extends CI_Controller
         date_default_timezone_set("Asia/Kolkata");
         $this->load->helper('url');
         $this->load->model('PaymentModel');
+        
     }
     
     public function index()

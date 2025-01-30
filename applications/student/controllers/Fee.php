@@ -134,8 +134,8 @@ class Fee extends CI_Controller
     public function response()
     {
         //   $SALT = "MWR4LBNHQ"; //prod
-          $SALT = "2KRKYIL85O"; //prod
-        //   $SALT = "DAH88E3UWQ"; //test
+        //   $SALT = "2KRKYIL85O"; //prod
+          $SALT = "DAH88E3UWQ"; //test
           $easebuzzObj = new Easebuzz($MERCHANT_KEY = null, $SALT, $ENV = null);
           $result = $easebuzzObj->easebuzzResponse( $_POST );
           if($this->PaymentModel->updateTransaction(json_decode($result))) {

@@ -1,142 +1,303 @@
 <!DOCTYPE html>
+
 <head>
-    <title><?php if (isset($title)) echo $title ?></title>
+    <title><?php if (isset($title))
+        echo $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/styles.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/student.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/DataTables/datatables.css'); ?>">
     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/DataTables/datatables.js'); ?>"></script>
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" href="<?php echo base_url('assets/favicon/favicon.ico') ?>" type="image/ico"/>
-    <style type="text/css">
-        @font-face {
-            font-family: Nunito_regular;
-            src: url(<?php echo base_url("assets/fonts/Nunito_regular.ttf"); ?>);
-        }
+    <link rel="icon" href="<?php echo base_url('assets/favicon/favicon.ico') ?>" type="image/ico" />
 
-        @font-face {
-            font-family: Nunito-Light;
-            src: url(<?php echo base_url("assets/fonts/Nunito-Light.ttf"); ?>);
-        }
 
-        @font-face {
-            font-family: Nunito-Semibold;
-            src: url(<?php echo base_url("assets/fonts/Nunito-Light.ttf"); ?>);
-        }
-
-        @font-face {
-            font-family: Questrial-Regular;
-            src: url(<?php echo base_url("assets/fonts/Questrial-Regular.ttf"); ?>);
-        }
-
-        @font-face {
-            font-family: RedhatR;
-            src: url(<?php echo base_url("assets/fonts/RedhatR.ttf"); ?>);
-        }
-
-        @font-face {
-            font-family: Rubik-Medium;
-            src: url(<?php echo base_url("assets/fonts/Rubik-Medium.ttf"); ?>);
-        }
-
-        @font-face {
-            font-family: Montserrat-Medium;
-            src: url(<?php echo base_url("assets/fonts/Montserrat-Medium.ttf"); ?>);
-        }
-
-        @font-face {
-            font-family: Rubik-Regular;
-            src: url(<?php echo base_url("assets/fonts/Rubik-Regular.ttf"); ?>);
-        }
-    </style>
 </head>
+
+<style type="text/css">
+    @font-face {
+        font-family: Nunito_regular;
+        src: url(<?php echo base_url("assets/fonts/Nunito_regular.ttf"); ?>);
+    }
+
+    @font-face {
+        font-family: Nunito-Light;
+        src: url(<?php echo base_url("assets/fonts/Nunito-Light.ttf"); ?>);
+    }
+
+    @font-face {
+        font-family: Nunito-Semibold;
+        src: url(<?php echo base_url("assets/fonts/Nunito-Light.ttf"); ?>);
+    }
+
+    @font-face {
+        font-family: Questrial-Regular;
+        src: url(<?php echo base_url("assets/fonts/Questrial-Regular.ttf"); ?>);
+    }
+
+    @font-face {
+        font-family: RedhatR;
+        src: url(<?php echo base_url("assets/fonts/RedhatR.ttf"); ?>);
+    }
+
+    @font-face {
+        font-family: Rubik-Medium;
+        src: url(<?php echo base_url("assets/fonts/Rubik-Medium.ttf"); ?>);
+    }
+
+    @font-face {
+        font-family: Montserrat-Medium;
+        src: url(<?php echo base_url("assets/fonts/Montserrat-Medium.ttf"); ?>);
+    }
+
+    @font-face {
+        font-family: Rubik-Regular;
+        src: url(<?php echo base_url("assets/fonts/Rubik-Regular.ttf"); ?>);
+    }
+</style>
+
+<style>
+    body {
+        background-color: #EDE8F5;
+    }
+
+    /* Navbar styling */
+    .navbar {
+
+        background-color: #124E66;
+        /* Deep Orange */
+        color: #FFFFFF;
+        /* White text for contrast */
+        padding: 10px 20px;
+        height: 70px;
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Navbar center: page title */
+    .navbar-center {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+    }
+    .school-name{
+        font-size: 2.5rem;
+        
+    }
+
+    .school-logo{
+        cursor: pointer;
+    }
+
+    /* navbar styling */
+
+
+
+
+
+
+
+    /* Icon links container styling */
+    .icon-links-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 columns */
+        gap: 20px;
+        /* Space between items */
+        justify-items: center;
+        /* Center the icons horizontally */
+        align-items: center;
+        /* Center the icons vertically */
+
+    }
+
+    .sidebar-menu-item {
+        padding-top: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 400px;
+        /* Fixed size for icons */
+        height: 400px;
+        background-color: #f5f5f5;
+        /* Light grey background */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        /* Subtle shadow */
+        transition: transform 0.3s, box-shadow 0.3s;
+        /* Smooth hover effect */
+    }
+
+    .sidebar-menu-item img {
+        width: 80%;
+        height: 60%;
+    }
+
+    .sidebar-menu-item:hover {
+        transform: scale(1.1);
+        /* Slight zoom-in effect */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        /* Enhanced shadow */
+    }
+
+
+   
+
+    .icon-btn1 {
+        all: unset;
+        /* Yeh sari default styling ko reset kar dega */
+        display: inline-block;
+        /* Image ko inline rakhne ke liye */
+        cursor: pointer;
+        /* Pointer banane ke liye, agar click hona chahiye */
+    }
+
+    .icon-btn1 img {
+        display: block;
+        /* Image ke around extra space hata dega */
+       
+        height: 45px;
+        width: 55px;
+    }
+
+    .sidebar-menu-item a {
+        text-decoration: none;
+        color: #202124;
+        /* Dark grey color */
+
+    }
+
+    .sidebar-menu-item a p {
+        margin-top: 10px;
+    }
+
+    .sidebar-menu-item a:hover {
+        text-decoration: underline;
+        /* Underline on hover */
+    }
+
+    .las {
+        font-size: 4.5rem;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @media (max-width: 768px) {
+
+        /* Adjust navbar layout for smaller screens */
+        .container-fluid {
+            display: flex;
+        }
+
+        .sidebar-student-detail-container {
+            height: 90px;
+            width: 70px;
+        }
+
+        .icon {
+            width: 100%;
+            /* Take the full width of the box */
+            height: 100%;
+            /* Take the full height of the box */
+            object-fit: cover;
+        }
+
+        .sidebar-student-info {
+            height: 90px;
+            width: 90px;
+            font-size: 12px;
+        }
+
+        .navbar-center p {
+            font-size: 1.8rem;
+        }
+
+        .icon-links-container {
+
+            grid-template-columns: repeat(2, 1fr);
+            /* 3 columns */
+        }
+
+        .sidebar-menu-item {
+            width: 180px;
+            /* Fixed size for icons */
+            height: 180px;
+            padding-top: 60px;
+        }
+
+        .icon-links-container {
+            gap: 10px;
+        }
+
+        .school-name{
+        font-size: 2rem;
+        
+    }
+    .icon-btn1 img {
+     
+       
+        height: 40px;
+        width: 50px;
+    }
+
+
+    }
+</style>
+
 <body>
-<div class="col-xs-12 col-sm-12 top-level-container">
-    <div class="col-xs-12 col-sm-12 top-bar">
-        <div class="col-xs-2 top-bar-icon-container">
-            <i class="las la-bars nav-icon" onclick="openNav()"></i>
-        </div>
-        <div class="col-xs-8">
-            <p class="page-title"><?php if (isset($page)) echo $page ?></p>
-        </div>
-        <div class="col-xs-2 top-bar-icon-container">
-            <i class="las la-door-open nav-icon" onclick="location.href='<?php echo site_url('auth/logout')?>'"></i>
-        </div>
-        <div id="mySidebar" class="sidebar">
-            <div class="col-md-12 sidebar-student-detail-container">
-                <?php if (!empty($this->session->userdata('image'))) { ?>
-				      <img src="<?php echo base_url('assets/images/students/').$this->session->userdata('image') ?>" class="sidebar-student-image" />
-				<?php } else { ?>
-					<img src="<?php echo base_url('assets/icons/user-black.png'); ?>" class="icon">
-				<?php } ?>
-          
-                <p class="sidebar-student-detail"><?php echo $this->session->userdata('name') ?></p>
-                <p class="sidebar-student-detail">Class - <?php echo $this->session->userdata('class') ?></p>
-                <p class="sidebar-student-detail">Roll No - <?php echo $this->session->userdata('rollNo') ?></p>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+        <!-- Navbar Center: Page Title -->
+        <div class="navbar-center text-center flex-grow-1">
+            <div class="school-logo-container">
+                <img src="<?php echo base_url('assets/images/logo/' . $this->config->item('schoolLogo')) ?>"
+                    class="school-logo" alt="School Logo"  onclick="location.href='<?php echo site_url('student') ?>'"/>
+            </div>
+            <div class="school-name">
+                <?php echo $this->config->item('schoolName') ?>
+            </div>
+            <div class="btn_log">
+                <button class="icon-btn1" onclick="location.href='<?php echo site_url('auth/logout'); ?>'"
+                    title="Log Out">
+                    <img src="<?php echo base_url('assets/icons/logout.png'); ?>" alt="Assignment Icon">
+                </button>
             </div>
 
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="<?php echo site_url('student')?>" class="sidebar-menu-item"><i class="las la-home sidebar-menu-item-icon"></i> Home</a>
-            <a href="<?php echo site_url('assignment') ?>" class="sidebar-menu-item"><i class="las la-list-alt sidebar-menu-item-icon"></i> Assignments
-             <?php if(isset($recentAssignments)){ if($recentAssignments != 0) { ?>
-                        <button class="unread-badge">
-                            <?php  echo $recentAssignments; ?> 
-                        </button>
-                    <?php } }  ?>
-            </a>
-            <a href="<?php echo site_url('exam') ?>" class="sidebar-menu-item"><i class="las la-flag-checkered sidebar-menu-item-icon"></i> Exams
-            <?php if(isset($recentExams)){ if($recentExams != 0) { ?>
-                        <button class="unread-badge">
-                            <?php  echo $recentExams; ?> 
-                        </button>
-                    <?php } }  ?>
-            </a>
-            <a href="<?php echo site_url('post/mySchool') ?>" class="sidebar-menu-item"><i class="las la-school sidebar-menu-item-icon"></i> My School
-               <?php if(isset($recentSchoolPosts)){ if($recentSchoolPosts != 0) { ?>
-                        <button class="unread-badge">
-                            <?php  echo $recentSchoolPosts; ?> 
-                        </button>
-                    <?php } }  ?>
-            </a>
-            <a href="<?php echo site_url('post/myClass') ?>" class="sidebar-menu-item"><i class="las la-users sidebar-menu-item-icon"></i> My Class
-                    <?php if(isset($recentClassPosts)){ if($recentClassPosts != 0) { ?>
-                        <button class="unread-badge">
-                            <?php  echo $recentClassPosts; ?> 
-                        </button>
-                    <?php } }  ?>
-            </a>
-            <a href="<?php echo site_url('exam/results') ?>" class="sidebar-menu-item"><i class="las la-chart-pie sidebar-menu-item-icon"></i> Results</a>
-            <a href="<?php echo site_url('event') ?>" class="sidebar-menu-item"><i class="las la-calendar-check sidebar-menu-item-icon"></i> Events
-                    <?php if(isset($recentEvents)){ if($recentEvents != 0) { ?>
-                        <button class="unread-badge">
-                            <?php  echo $recentEvents; ?> 
-                        </button>
-                    <?php } }  ?>
-            </a>
-            <a href="<?php echo site_url('student/profile') ?>" class="sidebar-menu-item"><i class="las la-address-card sidebar-menu-item-icon"></i> Portfolio</a>
-            <a href="<?php echo site_url('fee') ?>" class="sidebar-menu-item"><i class="las la-rupee-sign sidebar-menu-item-icon"></i> Fee
-                    <?php if(isset($recentPayments)){ if($recentPayments != 0) { ?>
-                        <button class="unread-badge">
-                            <?php  echo $recentPayments; ?> 
-                        </button>
-                    <?php } }  ?>
-            </a>
-            <a href="<?php echo site_url('message') ?>" class="sidebar-menu-item">
-                <i class="las la-envelope sidebar-menu-item-icon"></i> Messages 
-                
-                    <?php if(isset($recentMessages)){ if($recentMessages != 0) { ?>
-                        <button class="unread-badge">
-                            <?php  echo $recentMessages; ?> 
-                        </button>
-                    <?php } }  ?>
-            </a>
-            <a href="<?php echo site_url('LeaveRequest'); ?>" class="sidebar-menu-item"><i class="las la-pause-circle sidebar-menu-item-icon"></i> Leave Requests</a>
-            <a href="<?php echo site_url('student/accounts'); ?>" class="sidebar-menu-item"><i class="las la-user-circle sidebar-menu-item-icon"></i> My Accounts</a>
-            <!--<a href="<?php echo site_url('transport'); ?>" class="sidebar-menu-item"><i class="las la-bus sidebar-menu-item-icon"></i> My Transport</a>-->
         </div>
-    </div>
 
 
+
+        <!-- Navbar Right: Logout Button -->
+        <!-- <div class="navbar-right">
+                    <i class="las la-door-open nav-icon"
+                        onclick="location.href='<?php echo site_url('auth/logout') ?>'"></i>
+                </div> -->
+
+    </nav>
+
+
+</body>
