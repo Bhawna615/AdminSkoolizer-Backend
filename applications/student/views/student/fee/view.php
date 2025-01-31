@@ -115,6 +115,13 @@
         color: black;
     }
 
+
+    .alert {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
     /* Animations */
     @keyframes fadeIn {
         from {
