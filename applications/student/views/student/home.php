@@ -1,24 +1,53 @@
 <?php $this->view('student/layouts/header') ?>
 
 <style>
-    .sidebar-menu-item.notification-pending {
-        background-color: lightcoral; /* Light red background for unread notification */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Box shadow to highlight */
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-        border-radius: 8px; /* Slightly rounded corners for better look */
-    }
-    .notification-count {
-        position: absolute;
-        top: 5px;
-        right: 10px;
-        background-color: red;
-        color: white;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 2px 6px;
-        border-radius: 50%;
-    }
+/* Blink Background & Scale Effect */
+@keyframes blinkScale {
+    0% { background-color: #add8e6; transform: scale(1); } /* Light Blue */
+    50% { background-color: #87cefa; transform: scale(1.1); } /* Sky Blue */
+    100% { background-color: #add8e6; transform: scale(1); }
+}
+
+.sidebar-menu-item.notification-pending {
+    animation: blinkScale 1s infinite alternate ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    color: white; /* Change icon text to white when notification is active */
+}
+
+.sidebar-menu-item.notification-pending a {
+    color: white; /* Make sure the link text is white */
+}
+
+/* Light Blue Notification Count */
+.notification-count {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background-color: white; /* White background for notification count circle */
+    color: #1e90ff; /* Dodger Blue color for the number inside the circle */
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+/* When notification is seen, reset colors */
+.sidebar-menu-item.seen {
+    color: inherit; /* Reset icon text color */
+}
+
+.sidebar-menu-item.seen .notification-count {
+    background-color: #1e90ff; /* Dodger Blue for the background of the count circle */
+    color: white; /* White text for the number inside the circle */
+}
+
+
+
+
+
 </style>
 <div class="col-xs-12 col-sm-12 page-content">
     <!-- Icon links below the navbar (3 columns, 4 rows) -->
@@ -113,25 +142,30 @@
 
 
 <script>
-    document.querySelectorAll('.sidebar-menu-item').forEach(item => {
-        item.addEventListener('click', function() {
-            if (this.classList.contains('notification-pending')) {
-                this.classList.remove('notification-pending');
-                let countBadge = this.querySelector('.notification-count');
-                if (countBadge) countBadge.remove();
-                
-                let notificationType = this.querySelector('p').innerText;
-                markNotificationAsRead(notificationType);
-            }
-        });
+   document.querySelectorAll('.sidebar-menu-item').forEach(item => {
+    item.addEventListener('click', function() {
+        if (this.classList.contains('notification-pending')) {
+            this.classList.remove('notification-pending');
+            this.classList.add('seen'); // Add the seen class to revert the notification appearance
+            let countBadge = this.querySelector('.notification-count');
+            if (countBadge) countBadge.remove();
+            
+            let notificationType = this.querySelector('p').innerText;
+            markNotificationAsRead(notificationType);
+        }
     });
+});
 
-    function markNotificationAsRead(notificationType) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "<?php echo site_url('student/markNotification'); ?>", true);
-        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhttp.send("notificationType=" + notificationType);
-    }
+function markNotificationAsRead(notificationType) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "<?php echo site_url('student/markNotification'); ?>", true);
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp.send("notificationType=" + notificationType);
+}
+
+
+
+    
 </script>
 
 
