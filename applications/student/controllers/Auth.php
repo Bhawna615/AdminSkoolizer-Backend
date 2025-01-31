@@ -6,6 +6,8 @@
         $this->load->model('AuthModel');
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->config('settings');
+        
     }
 
     public function verify($qrCode)
@@ -47,7 +49,7 @@
     }
 
     public function logout()
-    {
+    { 
         session_destroy();
         redirect(site_url('home'));
     }

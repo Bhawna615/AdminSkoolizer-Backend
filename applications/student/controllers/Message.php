@@ -9,6 +9,7 @@ class Message extends CI_Controller
         date_default_timezone_set("Asia/Kolkata");
         $this->load->library('session');
         $this->load->helper('url');
+        $this->load->config('settings');
         $this->load->model('StudentModel');
         $this->load->model('MessageModel');
         if (!($_SESSION['loggedIn'])) {

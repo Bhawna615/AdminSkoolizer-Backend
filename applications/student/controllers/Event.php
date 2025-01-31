@@ -8,6 +8,7 @@ class Event extends CI_Controller
         parent::__construct();
         date_default_timezone_set("Asia/Kolkata");
         $this->load->library('session');
+        $this->load->config('settings');
         $this->load->helper('url');
         $this->load->model('EventModel');
         $this->load->model('TimetableModel');

@@ -12,6 +12,7 @@ class Principal extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('session');
+        $this->load->config('settings');
         if (!isset($_SESSION['ID'])) {
             redirect(site_url('Home'));
         }
