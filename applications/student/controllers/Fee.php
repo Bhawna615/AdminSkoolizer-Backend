@@ -104,9 +104,6 @@ class Fee extends CI_Controller
             "udf1" => $studentId,
             "udf2" => $lateFee,
         );
-
-        print_r($postData);
-        die();
         
         $result = $easebuzzObj->initiatePaymentAPI($postData);  
         
