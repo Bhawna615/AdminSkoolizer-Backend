@@ -139,7 +139,7 @@ class AttendanceModel extends CI_Model
 		$query = $this->db->query($sql, array($year, $month, $class));
 		return $query->result();
 	}
-
+	
 	public function getAbsentees($class, $date)
 	{
 		$this->db->where('Class', $class);

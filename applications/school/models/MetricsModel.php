@@ -68,35 +68,50 @@ class MetricsModel extends CI_Model
 			false;
 	}
 
-	public function save($combined_array, $studentId)
-	{
-	    $sql = 'SELECT * FROM student_metric WHERE student_id = ?';
-	    $query = $this->db->query($sql, $studentId);
-	    $num_rows = $query->num_rows();
-	    
-	    if($num_rows < 1) {
-	        foreach($combined_array as $key => $value) {
-	          $studentMetric = array(
-	                'student_id' => $studentId,
-	                'metric_id' => $key,
-	                'mark' => $value
-	            );
-	            
-	            $this->db->insert('student_metric', $studentMetric);
-	        }
-	    } else {
-	        $studentMetric = $query->result();
-	        foreach($studentMetric as $metric) {
-	            foreach($combined_array as $key => $value) {
-	                if($metric->metric_id == $key) {
-	                    $sql2 = 'UPDATE student_metric SET mark = ? WHERE student_id = ? AND metric_id = ?';
-	                    $query2 = $this->db->query($sql2, array($value, $studentId, $key));
-	                }
-	            }
-	        }
-	    }
-	      
-	}
+    public function save($combined_array, $studentId)
+    {
+        // Get all existing student metrics for this student
+        $sql = 'SELECT * FROM student_metric WHERE student_id = ?';
+        $query = $this->db->query($sql, array($studentId));
+        
+        $existingMetrics = array(); // To store existing metric IDs
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $existingMetrics[$row->metric_id] = $row->mark;
+            }
+        }
+        
+        // Start a transaction for atomic operations
+        $this->db->trans_start();
+        
+        foreach ($combined_array as $metric_id => $mark) {
+            if (array_key_exists($metric_id, $existingMetrics)) {
+                // Update existing record
+                $this->db->set('mark', $mark);
+                $this->db->where('student_id', $studentId);
+                $this->db->where('metric_id', $metric_id);
+                $this->db->update('student_metric');
+            } else {
+                // Insert new record
+                $studentMetric = array(
+                    'student_id' => $studentId,
+                    'metric_id'  => $metric_id,
+                    'mark'       => $mark
+                );
+                $this->db->insert('student_metric', $studentMetric);
+            }
+        }
+        
+        // Complete the transaction
+        $this->db->trans_complete();
+    
+        // Check if transaction was successful
+        if ($this->db->trans_status() === FALSE) {
+            // Transaction failed, log error or throw exception
+            log_message('error', 'Database transaction failed while saving student metrics.');
+        }
+    }
+
 
 	public function getStudentMetric($studentId)
 	{
@@ -128,6 +143,20 @@ class MetricsModel extends CI_Model
 		$this->db->where('metric_id', $studentMetric['metric_id']);
 		$query = $this->db->get('student_metric')->num_rows();
 		return $query > 0;
+	}
+	
+	public function getMetricsName($student)
+	{
+	    $this->db->distinct();
+	    $this->db->select('metric_name');
+	    $this->db->where('metric_class', $student->Class);
+	    $metrics = $this->db->get('metrics')->result();
+	    foreach($metrics as $metric)
+	    {
+	        $metricName[] = $metric->metric_name;
+	    }
+	    
+	    return $metricName;
 	}
 
 }

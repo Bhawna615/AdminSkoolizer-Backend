@@ -23,6 +23,7 @@
 		<th>Class</th>
 		<th>Exam Type</th>
 		<th>Subject</th>
+		<th>Teacher</th>
 		<th>Syllabus</th>
 		<th>Max Marks</th>
 		<th>Date</th>
@@ -36,9 +37,18 @@
 			<td><?php echo $row->Class; ?></td>
 			<td><?php echo $row->Examtype; ?></td>
 			<td><?php echo $row->Subject; ?></td>
+			<td>
+			    <select name="teacher">
+			        <option value="<?php echo $row->teacher_id ?>" key="<?php echo $row->id ?>"><?php echo $row->Teachername ?></option>
+			          <?php foreach($teachers as $teacher) { ?>
+			        <option value="<?php echo $teacher->id ?>" key="<?php echo $row->id ?>"><?php echo $teacher->Teachername ?></option>
+			           <?php } ?>
+			    </select>
+			  
+			</td>
 			<td><?php echo $row->Examname; ?></td>
 			<td><?php echo $row->Maxmarks; ?></td>
-			<td><?php echo date('d F,Y', strtotime($row->Date)); ?></td>
+			<td><?php echo $row->Date; ?></td>
 			<td>
 				<?php if ($row->Result == false) { ?>
 					<div class="col-md-3">
@@ -105,6 +115,21 @@
 				responsive: true,
 			});
 		});
+		
+		$('select').on('change', function(){
+		    selectedOption = $(this).val();
+		    selectedExamOption = $(this).find('option:selected');
+		    var selectedExamOptionValue = selectedExamOption.attr("key"); 
+		    
+		     $.ajax({url: "<?php echo site_url('Exam/update') ?>", type: "POST", data: { "teacherId" : selectedOption, "examId" : selectedExamOptionValue}, success: function(result){
+		        var abc = JSON.parse(result);
+                if(abc.status){
+                    alert("Teacher Saved Successfully");
+                } else {
+                    alert("Failed to update Teacher");
+                }
+             }});
+		})
 	});
 </script>
 

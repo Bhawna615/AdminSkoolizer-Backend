@@ -86,7 +86,14 @@
 			        } 
 			        }
 			        ?>
-			        </span></p>
+			        </span>
+			</p>
+			<p class="profile-heading">Height</p>
+			<p class="profile-info"><?php echo $row->height; ?></span></p>
+			<p class="profile-heading">Weight</p>
+			<p class="profile-info"><?php echo $row->weight; ?></span></p>
+			<p class="profile-heading">Blood Group</p>
+			<p class="profile-info"><?php echo $row->blood_group; ?></span></p>
 		</div>
 
 		<div class="col-md-12" align="center">

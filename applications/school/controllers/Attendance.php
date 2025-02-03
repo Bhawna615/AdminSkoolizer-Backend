@@ -43,11 +43,10 @@ class Attendance extends CI_Controller
 
 	public function submit()
 	{
-		
 		$data = array();
 		$class = $_POST['class'];
 		$count = count($_POST['roll']);
-		$date = date("Y-m-d", strtotime($this->input->post('date')));
+	    $date = date("Y-m-d", strtotime($this->input->post('date')));
 		for ($i=0; $i <$count ; $i++) {
 			$data[$_POST['roll'][$i]] = $_POST['mark'][$i];
 		}
@@ -161,7 +160,7 @@ class Attendance extends CI_Controller
 		$data['attendance'] = $this->AttendanceModel->getStudentAttendance($id);
 		$this->load->view('students/attendance', $data);
 	}
-
+	
 	public function edit()
 	{
 		$date = $this->input->post('date');

@@ -141,7 +141,7 @@ class Fee extends CI_Controller
 			$this->load->view('fee/accept', $data);
 		} else {
 			$updatedPayment = array(
-				'late_fee_paid' => $this->input->post('late_fee_paid'),
+			    'late_fee_paid' => $this->input->post('late_fee_paid'),
 				'amount_paid' => $this->input->post('amount_paid'),
 				'payment_mode' => $this->input->post('payment_mode'),
 				'paidondate' => $this->input->post('payment_date'),
@@ -267,14 +267,15 @@ class Fee extends CI_Controller
             'annual_fee' => $this->input->post('annual_fee'),
             'admission_fee' => $this->input->post('admission_fee'),
             'transport_fee' => $this->input->post('transport_fee'),
-            'amount' => $this->input->post('tuition_fee') + $this->input->post('annual_fee') + $this->input->post('admission_fee') + $this->input->post('transport_fee'),
+            'amount' => $this->input->post('tuition_fee') + $this->input->post('annual_fee') + $this->input->post('admission_fee') + $this->input->post('transport_fee') + $this->input->post('late_fee'),
             'lastdate' => !(empty($this->input->post('last_date'))) ? date("Y-m-d", strtotime($this->input->post('last_date'))) : NULL,
             'period' => $this->input->post('period'),
             'status' => $this->input->post('status'),
             'payment_mode' => $this->input->post('payment_mode'),
             'amount_paid' => $this->input->post('amount_paid'),
             'paidondate' => !(empty($this->input->post('payment_date'))) ? date("Y-m-d", strtotime($this->input->post('payment_date'))) : NULL,
-            'session' => $this->input->post('session')
+            'session' => $this->input->post('session'),
+            'remarks' => $this->input->post('remarks')
             );
             
             if($this->FeeModel->insertStudentFee($fee)) {
@@ -305,14 +306,15 @@ class Fee extends CI_Controller
             'annual_fee' => $this->input->post('annual_fee'),
             'admission_fee' => $this->input->post('admission_fee'),
             'transport_fee' => $this->input->post('transport_fee'),
-            'amount' => $this->input->post('tuition_fee') + $this->input->post('annual_fee') + $this->input->post('admission_fee') + $this->input->post('transport_fee'),
-            'lastdate' => $this->input->post('last_date'),
+            'amount' => $this->input->post('tuition_fee') + $this->input->post('annual_fee') + $this->input->post('admission_fee') + $this->input->post('transport_fee') + $this->input->post('late_fee'),
+            'lastdate' => !(empty($this->input->post('last_date'))) ? date("Y-m-d", strtotime($this->input->post('last_date'))) : NULL,
             'period' => $this->input->post('period'),
             'status' => $this->input->post('status'),
             'payment_mode' => $this->input->post('payment_mode'),
             'amount_paid' => $this->input->post('amount_paid'),
-            'paidondate' => $this->input->post('payment_date'),
-            'session' => $this->input->post('session')
+            'paidondate' => !(empty($this->input->post('payment_date'))) ? date("Y-m-d", strtotime($this->input->post('payment_date'))) : NULL,
+            'session' => $this->input->post('session'),
+            'remarks' => $this->input->post('remarks')
             );
             
             if($this->FeeModel->updatePayment($feeId, $updatedFee)) {
@@ -323,8 +325,8 @@ class Fee extends CI_Controller
 				redirect(site_url('fee/viewPayments'));
             }
     }
-
-	public function selectPendingPaymentsPeriod()
+    
+    public function selectPendingPaymentsPeriod()
 	{
 		$data['periods'] = $this->FeeModel->getPeriods();
 		$this->load->view('fee/pending/select', $data);
@@ -336,8 +338,8 @@ class Fee extends CI_Controller
         $data['pendingPayments'] = $this->FeeModel->getPendingPayments($period);
         $this->load->view('fee/pending', $data);
     }
-
-	public function statistics()
+    
+    	public function statistics()
 	{
 		$data['dateWiseData'] = $this->FeeModel->getDateWiseData();
 		$data['periods'] = $this->FeeModel->getPeriods();
@@ -376,8 +378,8 @@ class Fee extends CI_Controller
 		$data['payments'] = $this->FeeModel->getPaidPaymentsByDate($date);
 		$this->load->view('fee/statistics/period/view', $data);
 	}
-
-	public function editPaidFee()
+	
+		public function editPaidFee()
     {
         $feeId = $this->input->post('id');
         $data['payment'] = $this->FeeModel->getPayment($feeId);
@@ -391,6 +393,8 @@ class Fee extends CI_Controller
             'studentname' => $this->input->post('student_name'),
             'class' => $this->input->post('student_class'), 
 			'admission_number' => $this->input->post('admission_number'), 
+			'amount_paid' => $this->input->post('amount_paid'),
+			'amount' => $this->input->post('amount')
             );
             
             if($this->FeeModel->updatePaidPayment($feeId, $updatedFee)) {
@@ -401,5 +405,4 @@ class Fee extends CI_Controller
 				redirect(site_url('fee/viewPayments'));
             }
 	}
-
 }

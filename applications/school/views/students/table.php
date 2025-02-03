@@ -43,12 +43,24 @@
                         </li>
                         <li>
                             <a>
-                                <form method="POST" action="<?php echo site_url('exam/select') ?>" target="_blank">
+                                <form method="POST" action="<?php echo site_url('exam/reportCard') ?>" target="_blank">
                                     <input type="hidden" name="id" value="<?php echo $row->id; ?>">
                                     <input type="hidden" name="roll" value="<?php echo $row->Rollno; ?>">
                                     <input type="hidden" name="class" value="<?php echo $row->Class; ?>">
 
                                     <input type="submit" title="Report Card" name="" value="Report Card"
+                                           style="background: transparent; border: none; text-align: right;">
+                                </form>
+                            </a>
+                        </li>
+                          <li>
+                            <a>
+                                <form method="POST" action="<?php echo site_url('exam/customizedReportCard') ?>" target="_blank">
+                                    <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                                    <input type="hidden" name="roll" value="<?php echo $row->Rollno; ?>">
+                                    <input type="hidden" name="class" value="<?php echo $row->Class; ?>">
+
+                                    <input type="submit" title="Customized Report Card" name="" value="Customized Report Card"
                                            style="background: transparent; border: none; text-align: right;">
                                 </form>
                             </a>
@@ -59,10 +71,8 @@
 						<li><a href="<?php echo site_url('student/transportdetails/') . $row->id; ?>">Transport</a></li>
 						<li><a href="<?php echo site_url('exam/getdetails/') . $row->id; ?>">Exams</a></li>
 						<li><a href="<?php echo site_url('fee/getDetails/') . $row->id; ?>">Fee</a></li>
-						<li><a href="<?php echo site_url('student/createCredentials/') . $row->id; ?>">Create Credentials</a></li>
 						<li><a href="<?php echo site_url('message/get/') . $row->id; ?>">Messages</a></li>
 						<li><a href="<?php echo site_url('fee/createStudentPayment/') . $row->id; ?>" target="_blank">Create Fee Payment</a></li>
-						<li><a href="<?php echo site_url('fee/getDetails/') . $row->id; ?>">Fee</a></li>
 						<li><a onclick="myFunction(<?php echo $row->id; ?>)" style="cursor: pointer;">Delete</a></li>
 					</ul>
 				</div>

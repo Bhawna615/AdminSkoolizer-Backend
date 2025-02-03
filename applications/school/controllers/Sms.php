@@ -510,8 +510,8 @@ class Sms extends CI_Controller
 		$notification = new Notification();
 		$notification->send($messageNotification);
 	}
-
-    public function createFeeMessageNotification(array $recipientIds, $message)
+	
+	public function createFeeMessageNotification(array $recipientIds, $message)
 	{
 		$recipients = $this->MessageModel->getRecipients($recipientIds);
 		$messageNotification = array(

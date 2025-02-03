@@ -123,6 +123,7 @@ class Metrics extends CI_Controller
 	    $combined_array = array_combine($metrics, $mark);
 	    $studentId = $this->input->post('studentId');
 	   // print_r($combined_array);
+	   // die();
 	    $this->MetricsModel->save($combined_array, $studentId);
 // 		$metricId = $this->input->post('metricId');
 // 		$data['studentId'] = $this->input->post('studentId');

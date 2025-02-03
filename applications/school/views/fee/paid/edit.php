@@ -38,7 +38,7 @@
 				<p class="profile-info"><?php echo $payment->late_fee_paid ?></p>
 
                 <p class="details">Amount Paid</p>
-				<p class="profile-info"><?php echo $payment->amount_paid ?></p>
+				<input type="text" name="amount_paid" value="<?php echo $payment->amount_paid ?>" />
 
                 <p class="details">Payment Date</p>
 				<p class="profile-info"><?php echo $payment->paidondate ?></p>
@@ -61,7 +61,7 @@
 				<p class="profile-info"><?php echo $payment->transport_fee ?></p>
 
                 <p class="details">Amount</p>
-				<p class="profile-info"><?php echo $payment->amount ?></p>
+				<input type="text" name="amount" value="<?php echo $payment->amount ?>" />
 
                 <p class="details">Last Date</p>
 				<p class="profile-info"><?php echo $payment->lastdate ?></p>

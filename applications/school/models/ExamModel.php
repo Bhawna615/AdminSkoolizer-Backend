@@ -41,7 +41,7 @@ class ExamModel extends CI_Model
 	public function getExams($class, $examType)
 	{
 		$year = date('Y');
-		$query = $this->db->query("SELECT * FROM conduct WHERE Class = '$class' AND Examtype = '$examType' ORDER BY Date DESC");
+		$query = $this->db->query("SELECT *,conduct.id,conduct.teacher_id FROM conduct,teachers WHERE Class = '$class' AND Examtype = '$examType' AND conduct.teacher_id = teachers.id ORDER BY Date DESC");
 		$result = $query->result();
 		return $result;
 
@@ -267,5 +267,21 @@ class ExamModel extends CI_Model
 	    $result = $query->result();
 	    return $result;
 	}
-
+	
+	public function getAllExams($class)
+	{
+	    $exams = array();
+	    $sql = 'SELECT * FROM conduct WHERE Class=?  group by Examtype order by id asc';
+	    $query = $this->db->query($sql, array($class));
+	    $result = $query->result();
+	    foreach($result as $row) {
+	        $exams[] = $row->Examtype;
+	    }
+	    return $exams;
+	}
+	
+	public function update($updatedExam, $examId) {
+	    $this->db->where('id', $examId);
+	    return $this->db->update('conduct', $updatedExam);
+	}
 }

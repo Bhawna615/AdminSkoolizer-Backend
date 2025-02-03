@@ -61,7 +61,7 @@
 			<thead class="dataTableHead">
 		
     			 <tr>
-                    <th colspan="100%" style="text-align: center">Saraswati Paradise International Public School Sanjauli Shimla</th>
+                    <th colspan="100%" style="text-align: center">KK Blossoms School, Solan</th>
                 </tr>
                 <tr>
                      <th colspan="100%" style="text-align: center">Class: <?php echo $details->Class;  ?></th>

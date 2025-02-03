@@ -113,6 +113,22 @@
 						type="file"
 						name="image"
 				/>
+				
+					<p class="details">
+						Height
+					</p>
+					<input
+							type="text"
+							name="height"
+							class="form-input"
+							value="<?php echo $row->height; ?>"
+					/>
+					<?php if (form_error('height')) { ?>
+						<?php echo form_error('height',
+								'<div class="invalid-bar"><i class="las la-exclamation-triangle"></i> ',
+								'</div>')
+						?>
+					<?php } ?>
 			</div>
 			<div class="col-md-4">
 				<p class="details">
@@ -191,13 +207,36 @@
 							'</div>')
 					?>
 				<?php } ?>
-					<!--<p class="details">-->
-					<!--    Gender-->
-					<!--</p>-->
-					<!--<select name="gender" class="form-select">-->
-					<!--    <option value="m">Male</option>-->
-					<!--    <option value="f">Female</option>-->
-					<!--</select>-->
+					<p class="details">
+					    Gender
+					</p>
+					<select name="gender" class="form-select">
+					    <?php if($row->gender == 'm'){ ?>
+					        <option value="m" selected>Male</option>
+					        <option value="f">Female</option>
+					    <?php } else if($row->gender == 'f') {?>
+					        <option value="f" selected>Female</option>
+					        <option value="m" >Male</option>
+					    <?php } else {?>
+					         <option value="m">Male</option>
+					        <option value="f">Female</option>
+					    <?php } ?>
+					</select>
+					<p class="details">
+						Weight
+					</p>
+					<input
+							type="text"
+							name="weight"
+							class="form-input"
+							value="<?php echo $row->weight; ?>"
+					/>
+					<?php if (form_error('weight')) { ?>
+						<?php echo form_error('weight',
+								'<div class="invalid-bar"><i class="las la-exclamation-triangle"></i> ',
+								'</div>')
+						?>
+					<?php } ?>	
 			</div>
 
 			<div class="col-md-4">
@@ -336,6 +375,22 @@
 							class="form-input"
 							value="<?php echo $row->transport_fee; ?>"
 					    />
+					    
+					 <p class="details">
+						Blood Group
+					</p>
+					<input
+							type="text"
+							name="blood_group"
+							class="form-input"
+							value="<?php echo $row->blood_group; ?>"
+					/>
+					<?php if (form_error('blood_group')) { ?>
+						<?php echo form_error('blood_group',
+								'<div class="invalid-bar"><i class="las la-exclamation-triangle"></i> ',
+								'</div>')
+						?>
+					<?php } ?>
 			</div>
 			<?php } ?>
 			<div class="col-md-12" align="center" style="margin-top: 20px; margin-bottom: 20px;">

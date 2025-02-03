@@ -51,6 +51,9 @@
 				
 				<p class="details">Transport Fee</p>
 				<input type="number" name="transport_fee" class="form-input" value="0"/>
+				
+				<p class="details">Any Other Fee</p>
+				<input type="number" name="late_fee" class="form-input" value="0"/>
 			
 			</div>
 			<div class="col-md-4">
@@ -86,6 +89,9 @@
 						'</div>')
 					?>
 				<?php } ?>
+				
+				<p class="details">Remarks</p>
+				<input type="text" name="remarks"  class="form-input"/>
 			</div>
 		<?php } ?>
 		<?php } ?>

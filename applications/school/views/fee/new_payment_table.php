@@ -5,7 +5,7 @@
 			<input class="square-input" type="text" name="period">
 			
 			<p class="headings">Session</p>
-			<input class="square-input" type="text" name="session" value="<?php echo date("Y") . "-" . (date("Y") + 1); ?>">
+			<input class="square-input" type="text" name="session" value="2024-2025">
 		</div>
 		<div class="col-md-6">
 			<p class="headings">Last Date</p>
@@ -28,6 +28,7 @@
 				<th>Name</th>
 				<th>Class</th>
 				<!--<th><input type="checkbox" id="selectall-sibling-discount" checked/> Sibling Discount</th>-->
+				<!--<th> Annual Fee</th>-->
 				<th> Tuition Fee</th>
 				<th> Transport Fee</th>
 				<th>Total Fee</th>
@@ -54,16 +55,19 @@
 						<td><?php echo $row->Admno; ?></td>
 						<td><?php echo $row->Name; ?></td>
 						<td><?php echo $row->Class; ?></td>
-			 
+						
+						<!--<td>-->
+						<!--    <?php //echo $row->annual_fee ?>-->
+						<!--</td>-->
 						<td>
-						    <?php echo $row->tuition_fee ?>
+						    <?php  echo $row->tuition_fee ?>
 						</td>
 						<td>
-						    <?php echo $row->transport_fee ?>
+						    <?php  echo $row->transport_fee ?>
 						</td>
-						<td>
-						    <?php echo $row->tuition_fee + $row->transport_fee; ?>
-						</td>
+    						<td>
+    						    <?php  echo $row->tuition_fee + $row->transport_fee; ?>
+    						</td>
 					
 					</tr>
 				<?php } ?>

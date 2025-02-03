@@ -6,7 +6,7 @@ $config['schoolDir'] = 'kkblossom';
 
 $config['schoolName'] = 'KK Blossoms School';
 
-$config['schoolAddress'] = 'Rabon, Solan (H.P)';
+$config['schoolAddress'] = 'Rabaun, Solan (H.P)';
 
 $config['schoolLogo'] = 'logo.png';
 

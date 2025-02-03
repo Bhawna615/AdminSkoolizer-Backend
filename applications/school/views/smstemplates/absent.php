@@ -40,7 +40,7 @@
 <div class="col-md-12" style="padding: 30px;">
   <div class="col-md-12" style="font-family: RedhatR; font-size: 16px; border: 1px solid; border-color: #f95555; border-radius: 5px; padding-top: 10px; margin-bottom: 20px;">
     <p style="color: green;">Preview</p>
-    <p>Dear Parent, You are notified that your ward  is absent from school today. Regards, SPIPS</p>
+    <p>Dear Parent, You are notified that your ward  is absent from school today. Regards, KK Blossoms</p>
   </div>
 	<form method="POST" action="<?php echo site_url('sms/sendabsentsms') ?>">
 	<table class="table table-responsive">

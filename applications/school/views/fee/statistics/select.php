@@ -81,7 +81,7 @@
 <script>
 const xValues = <?php echo json_encode(array_keys($dateWiseData)) ?>;
 const yValues = <?php echo json_encode(array_values($dateWiseData)) ?>;
-const barColors = ["green","blue","orange", "#282A35", "#059862", "#2C56BB", "#83060E"];
+const barColors = ["green","blue","orange", "#282A35", "#059862", "#2C56BB", "#FFAE10"];
 
 new Chart("myChart", {
   type: "bar",
