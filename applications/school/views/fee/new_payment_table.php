@@ -5,7 +5,7 @@
 			<input class="square-input" type="text" name="period">
 			
 			<p class="headings">Session</p>
-			<input class="square-input" type="text" name="session" value="2024-2025">
+			<input class="square-input" type="text" name="session" value="<?php echo date("Y") . "-" . (date("Y") + 1); ?>">
 		</div>
 		<div class="col-md-6">
 			<p class="headings">Last Date</p>
