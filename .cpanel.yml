@@ -1,13 +1,20 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home4/skoolfdp/public_html/mps/applications/
-    - /bin/cp -R applications/student $DEPLOYPATH
-#    - /bin/cp -R assets $DEPLOYPATH
-#    - /bin/cp -R system $DEPLOYPATH
-#    - /bin/cp -R tests $DEPLOYPATH
-#    - /bin/cp -R api.php $DEPLOYPATH
-#    - /bin/cp -R index.php $DEPLOYPATH
-#    - /bin/cp -R student.php $DEPLOYPATH
+    - export DEPLOYPATH1=/home4/skoolfdp/public_html/kkblossom/applications/student
+    - /bin/cp -R applications/student/controllers $DEPLOYPATH1
+    - /bin/cp -R applications/student/models $DEPLOYPATH1
+    - /bin/cp -R applications/student/views $DEPLOYPATH1
 
+    - export DEPLOYPATH2=/home4/skoolfdp/public_html/kkblossom/applications/school
+    - /bin/cp -R applications/school/controllers $DEPLOYPATH2
+    - /bin/cp -R applications/school/models $DEPLOYPATH2
+    - /bin/cp -R applications/school/views $DEPLOYPATH2
+
+    - export DEPLOYPATH3=/home4/skoolfdp/public_html/kkblossom/assets/
+    - /bin/cp -R assets/css $DEPLOYPATH3
+    - /bin/cp -R assets/favicon $DEPLOYPATH3
+    - /bin/cp -R assets/fonts $DEPLOYPATH3
+    - /bin/cp -R assets/icons $DEPLOYPATH3
+    - /bin/cp -R assets/js $DEPLOYPATH3
 
