@@ -253,4 +253,27 @@ class FeeModel extends CI_Model
         return $this->db->where('feeid', $feeId)->update('fee', $updatedFee);
     }
 
+
+
+
+	// session
+	public function get_sessions() {
+        // Fetch session data from your database
+        $this->db->select('session'); // Select the session column
+        $query = $this->db->get('fee'); // Replace with your actual table name
+        return $query->result_array(); // Return results as an array
+    }
+	// session
+
+
+
+	public function getPaymentsBySessionAndClass($session)
+    {
+        $this->db->where('session', $session);
+        // $this->db->where('class', $class);
+        $query = $this->db->get('fee');
+        return $query->result();
+    }
+
+
 }

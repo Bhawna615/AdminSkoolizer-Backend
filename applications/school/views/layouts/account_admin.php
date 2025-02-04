@@ -421,7 +421,7 @@
 							</button>
 							<br>
 							<button class="side-bar-btn"
-									onclick="location.href='<?php echo site_url('fee/viewpayments'); ?>'" target="_blank">
+									onclick="location.href='<?php echo site_url('fee/sessionDropdown'); ?>'" target="_blank">
 								<i class="las la-file-invoice-dollar"></i>
 								View
 								Payments

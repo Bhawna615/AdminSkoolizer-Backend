@@ -236,6 +236,7 @@
         .icon-links-container {
 
             grid-template-columns: repeat(2, 1fr);
+           
             /* 3 columns */
         }
 
