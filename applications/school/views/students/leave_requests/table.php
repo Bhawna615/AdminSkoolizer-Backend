@@ -41,7 +41,7 @@
 	$(document).ready(function () {
 		$(function () {
 			$('#table').DataTable({
-				"order": [[0, "asc"]],
+				"order": [[7, "desc"]],
 				responsive: true,
 			});
 		});

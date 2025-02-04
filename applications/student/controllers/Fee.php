@@ -21,8 +21,8 @@ class Fee extends CI_Controller
             if (!(isset($_SESSION['loggedIn']))) {
                 
             // $SALT = "MWR4LBNHQ"; //prod
-            // $SALT = "2KRKYIL85O"; //prod
-            $SALT = "DAH88E3UWQ"; //test
+            $SALT = "2KRKYIL85O"; //prod
+            // $SALT = "DAH88E3UWQ"; //test
             $easebuzzObj = new Easebuzz($MERCHANT_KEY = null, $SALT, $ENV = null);
             $result = json_decode($easebuzzObj->easebuzzResponse( $_POST ));
             $data = $result->data;
@@ -69,13 +69,13 @@ class Fee extends CI_Controller
     
      public function pay()
     {
-        $MERCHANT_KEY = "2PBP7IABZ2";
-        $SALT = "DAH88E3UWQ";
-        $ENV = "test";    // setup test enviroment (testpay.easebuzz.in).
+        // $MERCHANT_KEY = "2PBP7IABZ2";
+        // $SALT = "DAH88E3UWQ";
+        // $ENV = "test";    // setup test enviroment (testpay.easebuzz.in).
         
-        // $MERCHANT_KEY = "5DDN04R1M7";
-        // $SALT = "2KRKYIL85O";
-        // $ENV = "prod";    // setup test enviroment (testpay.easebuzz.in).
+        $MERCHANT_KEY = "5DDN04R1M7";
+        $SALT = "2KRKYIL85O";
+        $ENV = "prod";    // setup test enviroment (testpay.easebuzz.in).
         
         // $MERCHANT_KEY = "UXOKAPYCV";
         // $SALT = "MWR4LBNHQ";
@@ -104,9 +104,6 @@ class Fee extends CI_Controller
             "udf1" => $studentId,
             "udf2" => $lateFee,
         );
-
-        print_r($postData);
-        die();
         
         $result = $easebuzzObj->initiatePaymentAPI($postData);  
         
@@ -137,8 +134,8 @@ class Fee extends CI_Controller
     public function response()
     {
         //   $SALT = "MWR4LBNHQ"; //prod
-        //   $SALT = "2KRKYIL85O"; //prod
-          $SALT = "DAH88E3UWQ"; //test
+          $SALT = "2KRKYIL85O"; //prod
+        //   $SALT = "DAH88E3UWQ"; //test
           $easebuzzObj = new Easebuzz($MERCHANT_KEY = null, $SALT, $ENV = null);
           $result = $easebuzzObj->easebuzzResponse( $_POST );
           if($this->PaymentModel->updateTransaction(json_decode($result))) {

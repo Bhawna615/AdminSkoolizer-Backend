@@ -36,6 +36,9 @@
 				
 				<p class="details">Transport Fee</p>
 				<input type="number" name="transport_fee" class="form-input" value="<?php echo $payment->transport_fee ?>"/>
+				
+				<p class="details">Any Other Fee</p>
+				<input type="number" name="late_fee" class="form-input" value="0"/>
 			
 			</div>
 			<div class="col-md-4">
@@ -54,7 +57,6 @@
 				        <option value="0" selected>Unpaid</option>
 				         <option value="1" >Paid</option>
 				    <?php } ?>
-				   
 				</select>
 				
 				<p class="details">Payment Mode</p>
@@ -68,6 +70,9 @@
 				
 				<p class="details">Amount Paid</p>
 				<input type="number" name="amount_paid"  class="form-input" value="<?php echo $payment->amount_paid ?>"/>
+				
+				<p class="details">Remarks</p>
+				<input type="text" name="remarks"  class="form-input" value="<?php echo $payment->remarks ?>"/>
 				
 				
 				<p class="details">Payment Date</p>

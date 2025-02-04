@@ -20,6 +20,7 @@
 		<th>Amount Paid</th>
 		<th>Paid On</th>
 		<th>Session</th>
+		<th>Remarks</th>
 		<th>Actions</th>
 	</tr>
 	</thead>
@@ -48,12 +49,12 @@
 				</td>
 				<td><?php echo $row->payment_mode ?></td>
 				<td>
-				<?php if($row->status == 0 || $row->status == null) { ?>
+    			<?php if($row->status == 0 || $row->status == null) { ?>
                                 <p>
                                     <?php 
                                          if(date_create(date("Y-m-d")) > date_create($row->lastdate)) {
                                              $days = date_diff(date_create($row->lastdate), date_create(date("Y-m-d")));
-                                             $lateFee = $days->format("%R%a") * 10;
+                                             $lateFee = ($days->format("%R%a") - 1) * 10;
                                              echo $lateFee;
                                         } else {
                                             $lateFee = 0;
@@ -65,11 +66,11 @@
                 <?php } else { ?>
 					<?php echo $row->late_fee_paid ?>
 				<?php } ?>
-			
 				</td>
 				<td><?php echo $row->amount_paid; ?></td>
 				<td><?php echo $row->paidondate; ?></td>
 				<td><?php echo $row->session; ?></td>
+				<td><?php echo $row->remarks; ?></td>
 				<td>
 					<?php if ($row->status == true) { ?>
 						<form method="POST" action="<?php echo site_url('fee/receipt') ?>">
@@ -78,10 +79,10 @@
 								<i class="la la-receipt btn-icon" title="Receipt"></i>
 							</button>
 						</form>
-						<form method="POST" action="<?php echo site_url('fee/editPaidFee') ?>">
+							<form method="POST" action="<?php echo site_url('fee/editPaidFee') ?>">
 							<input type="hidden" name="id" value="<?php echo $row->feeid ?>">
 							<button class="dt-action-btn">
-								<i class="la la-pen btn-icon" title="Receipt"></i>
+								<i class="la la-pen btn-icon" title="Edit"></i>
 							</button>
 						</form>
 					<?php } else { ?>
@@ -91,7 +92,7 @@
 								<i class="la la-hand-holding-usd btn-icon"></i>
 							</button>
 						</form>
-								<form action="<?php echo site_url('fee/editStudentFee') ?>" method="POST" target="_blank">
+								<form action="<?php echo site_url('fee/editStudentFee') ?>" method="POST">
 							<input type="hidden" name="id" value="<?php echo $row->feeid; ?>">
 							<button class="dt-action-btn" title="Edit Payment" type="submit">
 								<i class="la la-pen btn-icon"></i>

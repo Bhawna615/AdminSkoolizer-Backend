@@ -29,7 +29,7 @@
 				<p class="profile-info"><?php echo $payment->lastdate ?></p>
 			</div>
 			<div class="col-md-4">
-			<p class="details">Late Fee Paid</p>
+			    <p class="details">Late Fee Paid</p>
 				<input
 					type="number"
 					name="late_fee_paid"

@@ -95,6 +95,22 @@
 							name="image"
 							class="form-input"
 					/>
+					
+					<p class="details">
+						Height
+					</p>
+					<input
+							type="text"
+							name="height"
+							class="form-input"
+							value="<?php echo set_value('height') ?>"
+					/>
+					<?php if (form_error('height')) { ?>
+						<?php echo form_error('height',
+								'<div class="invalid-bar"><i class="las la-exclamation-triangle"></i> ',
+								'</div>')
+						?>
+					<?php } ?>
 				</div>
 
 				<div class="col-md-4">
@@ -179,6 +195,22 @@
 					    <option value="m">Male</option>
 					    <option value="f">Female</option>
 					</select>
+					
+					<p class="details">
+						Weight
+					</p>
+					<input
+							type="text"
+							name="weight"
+							class="form-input"
+							value="<?php echo set_value('weight') ?>"
+					/>
+					<?php if (form_error('weight')) { ?>
+						<?php echo form_error('weight',
+								'<div class="invalid-bar"><i class="las la-exclamation-triangle"></i> ',
+								'</div>')
+						?>
+					<?php } ?>
 				</div>
 
 				<div class="col-md-4">
@@ -269,6 +301,22 @@
 							value="<?php echo set_value('date_of_admission') ?>"
 					
 					    />
+					    
+					<p class="details">
+						Blood Group
+					</p>
+					<input
+							type="text"
+							name="blood_group"
+							class="form-input"
+							value="<?php echo set_value('blood_group') ?>"
+					/>
+					<?php if (form_error('blood_group')) { ?>
+						<?php echo form_error('blood_group',
+								'<div class="invalid-bar"><i class="las la-exclamation-triangle"></i> ',
+								'</div>')
+						?>
+					<?php } ?>
 				</div>
 				</div>
 

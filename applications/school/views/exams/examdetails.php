@@ -18,7 +18,7 @@
 				<select name="subject" class="form-select">
 					<?php if (isset($subjects)) { ?>
 						<?php foreach ($subjects as $row) { ?>
-							<option><?php echo $row->Subjectname; ?></option>
+							<option value="<?php echo $row->timetableid ?>"><?php echo $row->Subjectname; ?></option>
 						<?php } ?>
 					<?php } ?>
 				</select>
@@ -27,6 +27,20 @@
 				<select name="type" class="form-select">
 				    <option>Daily Revision Test</option>
 				    <option>Monthly Examination</option>
+				    <option>Periodic Test 1</option>
+				    <option>NB-I</option>
+				    <option>SEA-I</option>
+				    <option>WSA-I</option>
+				    <option>CA-I</option>
+				    <option>Worksheet-I</option>
+				    <option>Project-I</option>
+				    <option>NB & SEA-I</option>
+				    <option>Class Test-I</option>
+				    <option>Worksheet-II</option>
+				    <option>Project-II</option>
+				    <option>NB & SEA-II</option>
+				    <option>Class Test-II</option>
+				    <option>Half-Yearly</option>
 					<option>Class Test</option>
 					<option>Unit-1</option>
 					<option>Term-1</option>

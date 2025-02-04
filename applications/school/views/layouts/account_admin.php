@@ -152,8 +152,7 @@
 								<i class="las la-file-alt"></i>
 								Attendance Sheet
 							</button>
-							<br>
-						</div>
+							<br></div>
 					</div>
 				</div>
 
@@ -433,7 +432,7 @@
 								Pending Payments
 							</button>
 							<br>
-							<button class="side-bar-btn"
+								<button class="side-bar-btn"
 									onclick="location.href='<?php echo site_url('fee/statistics'); ?>'">
 									<i class="las la-chart-pie"></i>
 								Statistics

@@ -16,7 +16,7 @@
             </div>
         <?php } ?>
 	</div>
-	<form method="POST" action="<?php echo site_url('exam/view') ?>" >
+	<form method="POST" action="<?php echo site_url('exam/view') ?>" target="_blank">
 		<div class="col-md-4">
 			<p class="headings">Class</p>
 			<select name="class" class="form-select">

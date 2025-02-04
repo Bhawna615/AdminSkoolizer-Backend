@@ -28,7 +28,8 @@ class TimetableModel extends CI_Model
 
 	public function getSubjects($class)
 	{
-		$sql='SELECT distinct(Subjectname) FROM timetable WHERE Class=?';
+	    $sql='SELECT * FROM timetable WHERE Class=? AND TeacherId !=0 GROUP BY Subjectname';
+// 		$sql='SELECT distinct(Subjectname) FROM timetable WHERE Class=? AND TeacherId !=0';
 		$query=$this->db->query($sql,array($class));
 		$result=$query->result();
 		return $result;
@@ -49,5 +50,10 @@ class TimetableModel extends CI_Model
 		$sql = 'SELECT distinct(Subjectname) FROM timetable WHERE Class = ?';
 		$query = $this->db->query($sql, $class);
 		return $query->result();
+	}
+	
+	public function getById($id)
+	{
+	    return $this->db->where('timetableid', $id)->get('timetable')->row();
 	}
 }

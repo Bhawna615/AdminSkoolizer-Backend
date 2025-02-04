@@ -84,6 +84,9 @@ class Student extends CI_Controller
 				'qrcode' => $qrCodeContent,
 				'admission_date' => date("Y-m-d", strtotime($this->input->post('date_of_admission'))),
 				'gender' => $this->input->post('gender'),
+				'height' => $this->input->post('height'),
+				'weight' => $this->input->post('weight'),
+				'blood_group' => $this->input->post('blood_group'),
 				'password' => password_hash($password, PASSWORD_BCRYPT),
 			);
 			$student = $this->StudentModel->enroll($data);
@@ -188,6 +191,9 @@ class Student extends CI_Controller
 					'Address' => $this->input->post('address'),
 					'admission_date' => date("Y-m-d", strtotime($this->input->post('date_of_admission'))),
 					'gender' => $this->input->post('gender'),
+					'height' => $this->input->post('height'),
+    				'weight' => $this->input->post('weight'),
+    				'blood_group' => $this->input->post('blood_group'),
 					'tuition_fee' => $this->input->post('tuition_fee'),
 					'annual_fee' => $this->input->post('annual_fee'),
 					'admission_fee' => $this->input->post('admission_fee'),
@@ -214,6 +220,9 @@ class Student extends CI_Controller
 					'Address' => $this->input->post('address'),
 					'admission_date' => date("Y-m-d", strtotime($this->input->post('date_of_admission'))),
 					'gender' => $this->input->post('gender'),
+					'height' => $this->input->post('height'),
+    				'weight' => $this->input->post('weight'),
+    				'blood_group' => $this->input->post('blood_group'),
 					'tuition_fee' => $this->input->post('tuition_fee'),
 					'annual_fee' => $this->input->post('annual_fee'),
 					'admission_fee' => $this->input->post('admission_fee'),
@@ -592,23 +601,6 @@ class Student extends CI_Controller
 	public function createCredentials($studentId)
 	{
 	    $data['studentId'] = $studentId;
-		$data['student'] = $this->StudentModel->getOne($studentId);
 	    $this->load->view('students/credentials/create', $data);
 	}
-
-    public function storeCredentials()
-    {
-        $studentId = $this->input->post('id');
-        $credentials = array(
-            'Password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT)
-            );
-            
-            if($this->StudentModel->updateCredentials($credentials, $studentId)) {
-                   $this->session->set_flashdata('success', 'Credentials generated successfully');
-					redirect(site_url('student/view/'.$studentId));
-            } else {
-                $this->session->set_flashdata('error', 'Failed to generate credentials');
-					redirect(site_url('student/view').'/'.$studentId);
-            }
-    }
 }

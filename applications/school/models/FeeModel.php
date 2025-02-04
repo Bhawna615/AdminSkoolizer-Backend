@@ -113,6 +113,32 @@ class FeeModel extends CI_Model
 		}
 		return true;
 	}
+	
+// 	public function insertPayment(array $payment)
+// 	{
+// 		for ($i = 0; $i < count($payment['ids']); $i++){
+// 			$student = $this->getFeeDetail($payment['ids'][$i]);
+			
+// 				$new = array(
+// 				    'student_id' => $student->id,
+// 					'studentname' => $student->Name,
+// 					'class' => $student->Class,
+// 					'rollno' => $student->Rollno,
+// 					'admission_number' => $student->Admno,
+// 					'admission_fee' =>  0,
+// 					'annual_fee' =>  $student->annual_fee,
+// 					'tuition_fee' =>  0,
+// 					'transport_fee' =>  0,
+// 					'amount' =>  $student->annual_fee,
+// 					'lastdate' => $payment['lastDate'],
+// 					'period' => $payment['period'],
+// 					'session' => $payment['session']
+// 				);
+				
+// 				$this->db->insert('fee', $new);
+// 		}
+// 		return true;
+// 	}
 
 	public function getFilteredData($year, $month, $class)
 	{
@@ -169,12 +195,12 @@ class FeeModel extends CI_Model
         return $this->db->where('feeid', $feeId)->update('fee', $updatedFee);
     }
     
-    public function getPendingPayments($period)
+     public function getPendingPayments($period)
     {
         return $this->db->where('status', 0)->where('period', $period)->get('fee')->result();
     }
-
-	public function getPeriods()
+    
+    public function getPeriods()
 	{
 		$sql = "SELECT DISTINCT(period) FROM fee";
 		$query = $this->db->query($sql);
@@ -247,8 +273,8 @@ class FeeModel extends CI_Model
 
 		return $totalPaidFee;
 	}
-
-    public function updatePaidPayment($feeId, $updatedFee)
+	
+	    public function updatePaidPayment($feeId, $updatedFee)
     {
         return $this->db->where('feeid', $feeId)->update('fee', $updatedFee);
     }

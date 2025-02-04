@@ -13,6 +13,7 @@ class Exam extends CI_Controller
 		$this->load->model('StudentModel');
 		$this->load->model('TimetableModel');
         $this->load->model('MetricsModel');
+         $this->load->model('TeacherModel');
 		$this->load->helper('url');
 		$this->load->library('form_validation');
 		$this->load->config('validation_rules');
@@ -47,13 +48,15 @@ class Exam extends CI_Controller
 			$data['subjects'] = $this->TimetableModel->getsubjects($this->input->post('class'));
 			$this->load->view('exams/examdetails',$data);
 		} else {
+		    $subject = $this->TimetableModel->getById($this->input->post('subject'));
 			$data = array(
 				'Examname' => $_POST['topic'],
-				'Subject' => $_POST['subject'],
+				'Subject' => $subject->Subjectname,
 				'Examtype' => $_POST['type'],
 				'Class' => $_POST['class'],
 				'Maxmarks' => $_POST['marks'],
-				'Date' => $_POST['date']
+				'Date' => $_POST['date'],
+				'teacher_id' => $subject->TeacherId
 			);
 			$response = $this->ExamModel->submit($data);
 			if ($response) {
@@ -80,6 +83,7 @@ class Exam extends CI_Controller
 	    $examType = $this->input->post('exam');
 	    $data['class'] = $class;
 	    $data['examType'] = $examType;
+	    $data['teachers'] = $this->TeacherModel->getAll();
 	    $data['exams'] = $this->ExamModel->getexams($class, $examType);
 		$this->load->view('exams/viewexams', $data);
 	}
@@ -211,22 +215,178 @@ class Exam extends CI_Controller
         $this->load->view('exams/report_card/conversion', $data);
     }
 
-        public function reportCard()
+    public function reportCard()
     {
-        $data['subjectsOrder'] = array('English', 'Hindi', 'Maths', 'Science', 'Social Science', 'Sanskrit', 'EVS', 'A.I', 'Physics', 'Chemistry', 'Biology', 'Accounts', 'Economics',
+        $data['subjectsOrder'] = array('English', 'Hindi', 'Mathematics', 'Maths', 'Science', 'Social Science', 'Sanskrit', 'EVS', 'A.I', 'Physics', 'Chemistry', 'Biology', 'Accounts', 'Economics',
 	    'Political Science', 'History', 'Geography', 'Computer', 'G.K', 'Drawing', 'I.P', 'P.Ed', 'Business Studies','Legal Studies');
-        $weight = $this->input->post('weight');
-        $exams = $this->input->post('exams');
-        $data['combinedArray'] = array_combine($exams, $weight);
-        $studentId = $this->input->post('studentId');
+        // $weight = $this->input->post('weight');
+     
+        // print_r($exams);
+        // $data['combinedArray'] = array_combine($exams, $weight);
+        $studentId = $this->input->post('id');
         $student = $this->StudentModel->getOne($studentId);
+        $exams = $this->ExamModel->getAllExams($student->Class);
         $data['student'] = $student;
         // $data['marks'] = $this->ExamModel->getMarksByStudent($student, $exams);
         $data['marks'] = $this->ExamModel->getTentativeMarksByStudent($student, $exams);
         $data['exams'] = $this->ExamModel->getTitle($exams);
-        $data['subjects'] = $this->ExamModel->getSubjectsByStudent($student, $exams);
+        $data['subjects'] = $this->ExamModel->getSubjectsByStudent($student);
+        // print_r($studentId);
+        // print_r($data['marks']);
         $data['metrics'] = $this->MetricsModel->getByStudentId($studentId);
+        $data['metricsName'] = $this->MetricsModel->getMetricsName($student);
+        // print_r($data['metricsName']);
+        $data['remarks'] = '';
+        $data['result'] = '';
+        switch($student->Class) {
+            case '1-A':
+                $data['remarks'] = 'You have a solid foundation for success. Continue to work hard and believe in yourself.';
+                $data['result'] = "Promoted to Class 2";
+                break;
+            case '1-B':
+                $data['remarks'] = 'You are braver than you believe,stronger than you seem,and smarter than you think.';
+                $data['result'] = "Promoted to Class 2";
+                break;
+            case '2-A':
+                $data['remarks'] = 'Your positive actions combined with positive thinking results in success.';
+                $data['result'] = "Promoted to Class 3";
+                break;    
+            case '3-A':
+                $data['remarks'] = 'You have great potential, work towards it.';
+                $data['result'] = "Promoted to Class 4";
+                break;
+            case '3-B':
+                $data['remarks'] = 'You have great potential, work towards it.';
+                $data['result'] = "Promoted to Class 4";
+                break;  
+            case '4-A':
+                $data['remarks'] = 'I know your future will be bright and I look forward to hear about your success. Wishing you all the best in life.';
+                $data['result'] = "Promoted to Class 5";
+                break;
+            case '4-B':
+                $data['remarks'] = 'I wish you the best for your next level of academic achievement may you find happiness in all your endeavours';
+                $data['result'] = "Promoted to Class 5";
+                break; 
+            case '5-A':
+                $data['remarks'] = 'Every day is a new opportunity. Just believe in yourself and move forward.';
+                $data['result'] = "Promoted to Class 6";
+                break;
+            case '5-B':
+                $data['remarks'] = 'Your dedication and efforts are the basis of your bright future.';
+                $data['result'] = "Promoted to Class 6";
+                break;
+            case '6-A':
+                $data['remarks'] = 'Recognize your potential and put your best efforts to flourish in life.';
+                $data['result'] = "Promoted to Class 7";
+                break;
+            case '6-B':
+                $data['remarks'] = 'Believing in yourself is the first secret of success.';
+                $data['result'] = "Promoted to Class 7";
+                break;
+            case '7-A':
+                $data['remarks'] = 'Consistent efforts and hopeful attitude paves the way for future.';
+                $data['result'] = "Promoted to Class 8";
+                break;
+            case '7-B':
+                $data['remarks'] = 'A little progress each day adds upto big results.';
+                $data['result'] = "Promoted to Class 8";
+                break;   
+            case '8-A':
+                $data['remarks'] = "Opportunities don't happen, you create them. All the Best.";
+                $data['result'] = "Promoted to Class 9";
+                break;    
+        }
+        // print_r($studen);
+        // die();
+        if($student->Class == "test"){
+           $this->load->view('exams/report_card/special', $data);
+        } else {
         $this->load->view('exams/report_card/generate', $data);
+        }
+    }
+    
+    public function customizedReportCard()
+    {
+        $data['subjectsOrder'] = array('English', 'Hindi', 'Mathematics', 'Maths', 'Science', 'Social Science', 'Sanskrit', 'EVS', 'A.I', 'Physics', 'Chemistry', 'Biology', 'Accounts', 'Economics',
+	    'Political Science', 'History', 'Geography', 'Computer', 'G.K', 'Drawing', 'I.P', 'P.Ed', 'Business Studies','Legal Studies');
+ 
+        $studentId = $this->input->post('id');
+        $student = $this->StudentModel->getOne($studentId);
+        $exams = $this->ExamModel->getAllExams($student->Class);
+        $data['student'] = $student;
+     
+     
+        $data['exams'] = $this->ExamModel->getTitle($exams);
+        $data['subjects'] = $this->ExamModel->getSubjectsByStudent($student);
+       
+        $data['metrics'] = $this->MetricsModel->getByStudentId($studentId);
+        $data['metricsName'] = $this->MetricsModel->getMetricsName($student);
+        
+        $data['remarks'] = '';
+        $data['result'] = '';
+        switch($student->Class) {
+            case '1-A':
+                $data['remarks'] = 'You have a solid foundation for success. Continue to work hard and believe in yourself.';
+                $data['result'] = "Promoted to Class 2";
+                break;
+            case '1-B':
+                $data['remarks'] = 'You are braver than you believe,stronger than you seem,and smarter than you think.';
+                $data['result'] = "Promoted to Class 2";
+                break;
+            case '2-A':
+                $data['remarks'] = 'Your positive actions combined with positive thinking results in success.';
+                $data['result'] = "Promoted to Class 3";
+                break;    
+            case '3-A':
+                $data['remarks'] = 'You have great potential, work towards.';
+                $data['result'] = "Promoted to Class 4";
+                break;
+            case '3-B':
+                $data['remarks'] = 'You have great potential, work towards.';
+                $data['result'] = "Promoted to Class 4";
+                break;  
+            case '4-A':
+                $data['remarks'] = 'I know your future will be bright and I look forward to hear about your success. Wishing you all the best in life.';
+                $data['result'] = "Promoted to Class 5";
+                break;
+            case '4-B':
+                $data['remarks'] = 'I wish you the best for your next level of academic achievement may you find happiness in all your endeavours';
+                $data['result'] = "Promoted to Class 5";
+                break; 
+            case '5-A':
+                $data['remarks'] = 'Every day is a new apportunity. Just believe in yourself and move forward.';
+                $data['result'] = "Promoted to Class 6";
+                break;
+            case '5-B':
+                $data['remarks'] = 'Your dedication and efforts are the basis of your bright future.';
+                $data['result'] = "Promoted to Class 6";
+                break;
+            case '6-A':
+                $data['remarks'] = 'YOUR DEDICATION AND EFFORTS ARE THE BASIS OF YOUR BRIGHT FUTURE';
+                $data['result'] = "Promoted to Class 7";
+
+            case '6-B':
+                $data['remarks'] = 'YOUR DEDICATION AND EFFORTS ARE THE BASIS OF YOUR BRIGHT FUTURE';
+                $data['result'] = "Promoted to Class 7";
+                break;
+            case '7-A':
+                $data['remarks'] = 'YOUR DEDICATION AND EFFORTS ARE THE BASIS OF YOUR BRIGHT FUTURE';
+                $data['result'] = "Promoted to Class 8";
+                break;
+            case '7-B':
+                $data['remarks'] = 'YOUR DEDICATION AND EFFORTS ARE THE BASIS OF YOUR BRIGHT FUTURE';
+                $data['result'] = "Promoted to Class 8";
+                break;   
+            case '8-A':
+                $data['remarks'] = "Opportunities don't happen, you create them. All the Best.";
+                $data['result'] = "Promoted to Class 9";
+                break;    
+        }
+        if($student->Class == "test"){
+           $this->load->view('exams/report_card/special', $data);
+        } else {
+        $this->load->view('exams/custom_report_card/custom', $data);
+        }
     }
     
     public function saveResult()
@@ -321,7 +481,7 @@ class Exam extends CI_Controller
 	
 	public function generateClassWiseReport()
 	{
-	    $data['subjectsOrder'] = array('English', 'Hindi', 'Maths', 'Science', 'Social Science', 'Sanskrit', 'EVS', 'A.I', 'Physics', 'Chemistry', 'Biology', 'Accounts', 'Economics',
+	    $data['subjectsOrder'] = array('English', 'Hindi', 'Mathematics', 'Science', 'Social Science', 'Sanskrit', 'EVS', 'A.I', 'Physics', 'Chemistry', 'Biology', 'Accounts', 'Economics',
 	    'Political Science', 'History', 'Geography', 'Legal Studies', 'Computer', 'G.K', 'Drawing', 'I.P', 'P.Ed', 'I.P/P.Ed');
 	    $class = $this->input->post('class');
 	    $exam = $this->input->post('exam');
@@ -370,6 +530,23 @@ class Exam extends CI_Controller
 	public function customReportCard()
 	{
 	    $this->load->view('exams/report_card/custom');
+	}
+	
+	public function update()
+	{
+	    $teacherId = $this->input->post('teacherId');
+	    $examId = $this->input->post('examId');
+	    
+	    $updatedExam = array(
+	        'teacher_id' => $teacherId
+	        );
+	    if($this->ExamModel->update($updatedExam, $examId)) {
+	        $response = array('status' => 1);
+	        print_r(json_encode($response));
+	    } else {
+	         $response = array('status' => 0);
+	        print_r(json_encode($response));
+	    }
 	}
 	
 }

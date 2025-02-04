@@ -114,7 +114,7 @@
 					<?php foreach ($absents as $row) {
 						$date = date('j', strtotime($row->Date));
 						if ($date == $i) {
-							if ($key->id == $row->student_id) {
+				            if ($key->id == $row->student_id) {
 								if ($row->onLeave == true) {
 									echo "L";
 									$mark = 1;
