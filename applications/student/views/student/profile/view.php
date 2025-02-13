@@ -163,7 +163,7 @@
     <!-- Profile Image Centered -->
     <div>
         <?php if (!empty($this->session->userdata('image'))) { ?>
-            <img src="<?php echo base_url('assets/images/students/') . $this->session->userdata('image') ?>" class="profile-image" />
+            <img src="<?php echo base_url('assets/images/students/') . $student->image ?>" class="profile-image" />
         <?php } else { ?>
             <img src="<?php echo base_url('assets/icons/user-black.png'); ?>" class="profile-image" />
         <?php } ?>

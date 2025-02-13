@@ -96,8 +96,10 @@ class Fee extends CI_Controller
 
 	public function viewPayments()
 	{
-		$data['classes'] = $this->ClassModel->getAll();
-		$this->load->view('fee/viewpayments', $data);
+		$session = $this->input->get('session');
+        $data['selectedSession'] = $session;
+        $data['classes'] = $this->ClassModel->getAll(); // Assuming you have a method to get classes
+        $this->load->view('fee/viewpayments', $data);
 	}
 
 	public function receipt()
@@ -405,4 +407,33 @@ class Fee extends CI_Controller
 				redirect(site_url('fee/viewPayments'));
             }
 	}
+
+
+
+	// session
+	public function sessionDropdown() {
+        // Get the session data from the model
+        $data['sessions'] = $this->FeeModel->get_sessions();
+        
+        // Load the view and pass the session data
+        $this->load->view('fee/session', $data);
+    }
+	// session
+
+	public function filterBySessionAndClass()
+    {
+        $session = $this->input->post('session');
+       
+        $data['payments'] = $this->FeeModel->getPaymentsBySessionAndClass($session);
+		
+        $this->load->view('fee/table', $data);
+    }
+
+	public function selectSession()
+    {
+        $this->load->view('fee/session');
+    }
+
+
+
 }

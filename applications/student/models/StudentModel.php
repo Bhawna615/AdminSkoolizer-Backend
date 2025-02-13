@@ -39,12 +39,16 @@ class StudentModel extends CI_Model
     
 
     
-    public function loadRecentMessages($studentId)
-    {
+    public function loadRecentMessages($studentId) {
         $student = $this->get($studentId);
-        $this->db->where('sent_at >', $student->notification_checked_at);
+        $checkedAt = $student->notification_checked_at ?? '2000-01-01 00:00:00'; // ✅ NULL handle
+    
+        $this->db->where('sent_at >', $checkedAt);
+        $this->db->where('student_id', $studentId);
+        
         return $this->db->get('messages')->num_rows();
     }
+    
     
     public function updateNotificationCheckTime($studentId)
     {
@@ -211,5 +215,20 @@ class StudentModel extends CI_Model
         } else {
             return false;
         }
+    }
+
+
+    public function getInfo($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('student'); // Assuming you have a 'students' table
+        return $query->row(); // Return a single row
+    }
+
+    public function getInfoById($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('student'); // Assuming you have a 'students' table
+        return $query->row(); // Return a single row
     }
 }
