@@ -157,7 +157,7 @@
         <!-- Animated Heading -->
         <div class="animated-heading">
             <i class="las la-envelope"></i> <!-- Font Awesome Icon -->
-            Posts
+            School Posts
         </div>
 
         <!-- Messages Section -->

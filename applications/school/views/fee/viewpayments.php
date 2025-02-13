@@ -54,6 +54,32 @@
 			src: url(<?php echo base_url("assets/fonts/Rubik-Regular.ttf"); ?>);
 		}
 	</style>
+
+	<style>
+		#loading-spinner {
+			text-align: center;
+			margin: 20px;
+		}
+
+		#table-view {
+			display: none;
+			/* Pehle hidden hoga */
+		}
+
+		img {
+			animation: spin 1s linear infinite;
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	</style>
 </head>
 
 <body>
@@ -134,37 +160,27 @@
 								<?php } ?>
 							</select>
 						</div>
-						<div class="col-md-4">
-							<p class="filter-title"><i class="las la-filter"></i> Session</p>
-							<select id="session" name="session" class="filter">
-								<?php foreach ($sessions as $session): ?>
-									<option value="<?php echo $session; ?>" <?php echo ($session == $selectedSession) ? 'selected' : ''; ?>>
-										<?php echo $session; ?>
-									</option>
-								<?php endforeach; ?>
-							</select>
-						</div>
-						<div class="col-md-4">
-							<button id="show-payments" class="btn btn-primary">Show</button>
-						</div>
+
+
+					</div>
+
+					<div id="loading-spinner">
+						<img src="https://cdn-icons-png.flaticon.com/128/189/189792.png" alt="Loading..." width="50"
+							height="50">
 					</div>
 					<div id="table-view">
 						<!-- The payments table will be loaded here -->
 					</div>
+
 
 					<script type="text/javascript">
 						$(document).ready(function () {
 							// Load payments for the selected session on page load
 							loadPayments();
 
-							// Handle the Show button click event
-							$('#show-payments').on('click', function () {
-								loadPayments();
-							});
-
 							// Load payments based on the selected session and class
 							function loadPayments() {
-								var session = $('#session').val();
+								var session = '<?php echo $selectedSession; ?>'; // Use the selected session from the query parameter
 								var className = $('#class').val();
 								$.ajax({
 									url: '<?php echo site_url('fee/filterBySessionAndClass'); ?>',
@@ -194,6 +210,7 @@
 							});
 						});
 					</script>
+
 
 
 					<button
@@ -251,4 +268,14 @@
 							export_table_to_csv(html, "table.csv");
 						});
 					</script>
+
+
+
+					<!-- loading -->
+					<script>setTimeout(() => {
+							document.getElementById("loading-spinner").style.display = "none"; // Hide Loader
+							document.getElementById("table-view").style.display = "block"; // Show Table
+						}, 5000); // 5 seconds ke baad table dikhayega
+					</script>
+					<!-- loading -->
 					<?php $this->view('footer'); ?>

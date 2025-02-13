@@ -40,8 +40,11 @@ class Student extends CI_Controller
         $data['recentMessages'] = $this->StudentModel->loadRecentMessages($studentId);
 	    $data['mostRecentMovement'] = $this->MovementModel->mostRecent($this->session->userdata('id'));
 	    $data['scheduleList'] = $this->TimetableModel->getByClass($this->session->userdata('class'));
+        $data['student'] = $this->StudentModel->getInfoById($studentId); // Fetch the logged-in student's info
 	    $this->load->view('student/home', $data);
 	}
+
+   
 
     public function profile()
     {

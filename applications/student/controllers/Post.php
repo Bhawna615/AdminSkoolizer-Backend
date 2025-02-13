@@ -38,7 +38,7 @@ class Post extends CI_Controller
         
         
         $data['posts'] = $this->PostModel->get('school');
-        $this->load->view('student/posts/view', $data);
+        $this->load->view('student/posts/schoolview', $data);
     }
 
     public function myClass()
@@ -60,6 +60,6 @@ class Post extends CI_Controller
         $this->StudentModel->updateClassPostNotificationCheckTime($studentId);
         
         $data['posts'] = $this->PostModel->get($this->session->userdata('class'));
-        $this->load->view('student/posts/view', $data);
+        $this->load->view('student/posts/classview', $data);
     }
 }

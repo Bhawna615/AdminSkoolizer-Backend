@@ -1,57 +1,86 @@
 <?php $this->view('student/layouts/header') ?>
 
 <style>
-/* Blink Background & Scale Effect */
-@keyframes blinkScale {
-    0% { background-color: #add8e6; transform: scale(1); } /* Light Blue */
-    50% { background-color: #87cefa; transform: scale(1.1); } /* Sky Blue */
-    100% { background-color: #add8e6; transform: scale(1); }
-}
+    /* Blink Background & Scale Effect */
+    @keyframes blinkScale {
+        0% {
+            background-color: #add8e6;
+            transform: scale(1);
+        }
 
-.sidebar-menu-item.notification-pending {
-    animation: blinkScale 1s infinite alternate ease-in-out;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    position: relative;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-    color: white; /* Change icon text to white when notification is active */
-}
+        /* Light Blue */
+        50% {
+            background-color: #87cefa;
+            transform: scale(1.1);
+        }
 
-.sidebar-menu-item.notification-pending a {
-    color: white; /* Make sure the link text is white */
-}
+        /* Sky Blue */
+        100% {
+            background-color: #add8e6;
+            transform: scale(1);
+        }
+    }
 
-/* Light Blue Notification Count */
-.notification-count {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    background-color: white; /* White background for notification count circle */
-    color: #1e90ff; /* Dodger Blue color for the number inside the circle */
-    font-size: 12px;
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 50%;
-}
+    .sidebar-menu-item.notification-pending {
+        animation: blinkScale 1s infinite alternate ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        position: relative;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        color: white;
+        /* Change icon text to white when notification is active */
+    }
 
-/* When notification is seen, reset colors */
-.sidebar-menu-item.seen {
-    color: inherit; /* Reset icon text color */
-}
+    .sidebar-menu-item.notification-pending a {
+        color: white;
+        /* Make sure the link text is white */
+    }
 
-.sidebar-menu-item.seen .notification-count {
-    background-color: #1e90ff; /* Dodger Blue for the background of the count circle */
-    color: white; /* White text for the number inside the circle */
-}
+    /* Light Blue Notification Count */
+    .notification-count {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        background-color: white;
+        /* White background for notification count circle */
+        color: #1e90ff;
+        /* Dodger Blue color for the number inside the circle */
+        font-size: 12px;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 50%;
+    }
 
+    /* When notification is seen, reset colors */
+    .sidebar-menu-item.seen {
+        color: inherit;
+        /* Reset icon text color */
+    }
 
-
-
-
+    .sidebar-menu-item.seen .notification-count {
+        background-color: #1e90ff;
+        /* Dodger Blue for the background of the count circle */
+        color: white;
+        /* White text for the number inside the circle */
+    }
 </style>
 <div class="col-xs-12 col-sm-12 page-content">
     <!-- Icon links below the navbar (3 columns, 4 rows) -->
     <div class="icon-links-container">
+
+        <div class="sidebar-menu-item orange-background">
+            <a href="<?php echo site_url('student/profile') ?>">
+                <?php if (!empty($this->session->userdata('image'))) { ?>
+                    <img src="<?php echo base_url('assets/images/students/') . $student->image ?>" class="profile-image"
+                        style="  width: 120px; height: 120px; border-radius: 50%;border: 3px solid #ffffff;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);  padding: 3px; object-fit: cover; "  />
+                <?php } else { ?>
+                    <img src="<?php echo base_url('assets/icons/user-black.png'); ?>" class="profile-image" />
+                <?php } ?>
+                <p style="margin-bottom:60px;">Portfolio</p>
+            </a>
+        </div>
+
+
         <div class="sidebar-menu-item ">
             <a href="https://kkblossomschool.org">
                 <img src="<?php echo base_url('assets/icons/website.png'); ?>" alt="Home Icon">
@@ -62,28 +91,38 @@
             <a href="<?php echo site_url('assignment') ?>">
                 <img src="<?php echo base_url('assets/icons/qa.png'); ?>" alt="Assignment Icon">
                 <p>Homework</p>
-                <?php if ($recentAssignments > 0) { echo "<span class='notification-count'>{$recentAssignments}</span>"; } ?>
+                <?php if ($recentAssignments > 0) {
+                    echo "<span class='notification-count'>{$recentAssignments}</span>";
+                } ?>
             </a>
         </div>
         <div class="sidebar-menu-item <?php echo ($recentExams > 0) ? 'notification-pending' : ''; ?>">
             <a href="<?php echo site_url('exam') ?>">
                 <img src="<?php echo base_url('assets/icons/exam.png'); ?>" alt="Exams Icon">
                 <p>Exams</p>
-                <?php if ($recentExams > 0) { echo "<span class='notification-count'>{$recentExams}</span>"; } ?>
+                <?php if ($recentExams > 0) {
+                    echo "<span class='notification-count'>{$recentExams}</span>";
+                } ?>
             </a>
         </div>
-        <div class="sidebar-menu-item orange-background <?php echo ($recentSchoolPosts > 0) ? 'notification-pending' : ''; ?>">
+        <div
+            class="sidebar-menu-item orange-background <?php echo ($recentSchoolPosts > 0) ? 'notification-pending' : ''; ?>">
             <a href="<?php echo site_url('post/mySchool') ?>">
                 <img src="<?php echo base_url('assets/icons/school.png'); ?>" alt="Exams Icon">
                 <p>My School</p>
-                <?php if ($recentSchoolPosts > 0) { echo "<span class='notification-count'>{$recentSchoolPosts}</span>"; } ?>
+                <?php if ($recentSchoolPosts > 0) {
+                    echo "<span class='notification-count'>{$recentSchoolPosts}</span>";
+                } ?>
             </a>
         </div>
-        <div class="sidebar-menu-item blue-background <?php echo ($recentClassPosts > 0) ? 'notification-pending' : ''; ?>">
+        <div
+            class="sidebar-menu-item blue-background <?php echo ($recentClassPosts > 0) ? 'notification-pending' : ''; ?>">
             <a href="<?php echo site_url('post/myClass') ?>">
                 <img src="<?php echo base_url('assets/icons/teacher.png'); ?>" alt="Exams Icon">
                 <p>My Class</p>
-                <?php if ($recentClassPosts > 0) { echo "<span class='notification-count'>{$recentClassPosts}</span>"; } ?>
+                <?php if ($recentClassPosts > 0) {
+                    echo "<span class='notification-count'>{$recentClassPosts}</span>";
+                } ?>
             </a>
         </div>
         <div class="sidebar-menu-item orange-background ">
@@ -96,27 +135,30 @@
             <a href="<?php echo site_url('event') ?>">
                 <img src="<?php echo base_url('assets/icons/banner.png'); ?>" alt="Exams Icon">
                 <p>Events</p>
-                <?php if ($recentEvents > 0) { echo "<span class='notification-count'>{$recentEvents}</span>"; } ?>
+                <?php if ($recentEvents > 0) {
+                    echo "<span class='notification-count'>{$recentEvents}</span>";
+                } ?>
             </a>
         </div>
-        <div class="sidebar-menu-item orange-background">
-            <a href="<?php echo site_url('student/profile') ?>">
-                <img src="<?php echo base_url('assets/icons/professional-portfolio.png'); ?>" alt="Exams Icon">
-                <p>Portfolio</p>
-            </a>
-        </div>
-        <div class="sidebar-menu-item blue-background <?php echo ($recentPayments > 0) ? 'notification-pending' : ''; ?>">
+
+        <div
+            class="sidebar-menu-item blue-background <?php echo ($recentPayments > 0) ? 'notification-pending' : ''; ?>">
             <a href="<?php echo site_url('fee') ?>">
                 <img src="<?php echo base_url('assets/icons/fees.png'); ?>" alt="Exams Icon">
                 <p>Fee</p>
-                <?php if ($recentPayments > 0) { echo "<span class='notification-count'>{$recentPayments}</span>"; } ?>
+                <?php if ($recentPayments > 0) {
+                    echo "<span class='notification-count'>{$recentPayments}</span>";
+                } ?>
             </a>
         </div>
-        <div class="sidebar-menu-item orange-background <?php echo ($recentMessages > 0) ? 'notification-pending' : ''; ?>">
+        <div
+            class="sidebar-menu-item orange-background <?php echo ($recentMessages > 0) ? 'notification-pending' : ''; ?>">
             <a href="<?php echo site_url('message') ?>">
                 <img src="<?php echo base_url('assets/icons/comments.png'); ?>" alt="Exams Icon">
                 <p>Messages</p>
-                <?php if ($recentMessages > 0) { echo "<span class='notification-count'>{$recentMessages}</span>"; } ?>
+                <?php if ($recentMessages > 0) {
+                    echo "<span class='notification-count'>{$recentMessages}</span>";
+                } ?>
             </a>
         </div>
         <div class="sidebar-menu-item blue-background ">
@@ -131,7 +173,29 @@
                 <p>My Accounts</p>
             </a>
         </div>
+
+        <?php if (isset($student)) { ?>
+            <div class="sidebar-menu-item orange-background">
+                <a href="<?php echo site_url('attendance/studentattendance/') . $student->id; ?>">
+                    <img src="<?php echo base_url('assets/icons/attendance.png'); ?>" alt="Exams Icon">
+                    <p>Attendance</p>
+                </a>
+            </div>
+        <?php } else { ?>
+            <p>No student found.</p>
+        <?php } ?>
+
+
+
+        <div class="sidebar-menu-item orange-background ">
+            <a href="https://play.google.com/store/apps/details?id=com.macmer.kkblossom">
+                <img src="<?php echo base_url('assets/icons/thumb-up.png'); ?>" alt="Exams Icon">
+                <p>Rate Us</p>
+            </a>
+        </div>
+
     </div>
+
 </div>
 </div>
 
@@ -142,30 +206,30 @@
 
 
 <script>
-   document.querySelectorAll('.sidebar-menu-item').forEach(item => {
-    item.addEventListener('click', function() {
-        if (this.classList.contains('notification-pending')) {
-            this.classList.remove('notification-pending');
-            this.classList.add('seen'); // Add the seen class to revert the notification appearance
-            let countBadge = this.querySelector('.notification-count');
-            if (countBadge) countBadge.remove();
-            
-            let notificationType = this.querySelector('p').innerText;
-            markNotificationAsRead(notificationType);
-        }
+    document.querySelectorAll('.sidebar-menu-item').forEach(item => {
+        item.addEventListener('click', function () {
+            if (this.classList.contains('notification-pending')) {
+                this.classList.remove('notification-pending');
+                this.classList.add('seen'); // Add the seen class to revert the notification appearance
+                let countBadge = this.querySelector('.notification-count');
+                if (countBadge) countBadge.remove();
+
+                let notificationType = this.querySelector('p').innerText;
+                markNotificationAsRead(notificationType);
+            }
+        });
     });
-});
 
-function markNotificationAsRead(notificationType) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "<?php echo site_url('student/markNotification'); ?>", true);
-    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhttp.send("notificationType=" + notificationType);
-}
-
+    function markNotificationAsRead(notificationType) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "<?php echo site_url('student/notifications'); ?>", true);
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhttp.send("notificationType=" + notificationType);
+    }
 
 
-    
+
+
 </script>
 
 

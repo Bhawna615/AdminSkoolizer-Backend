@@ -140,6 +140,7 @@
     .sidebar-menu-item img {
         width: 80%;
         height: 60%;
+        
     }
 
     .sidebar-menu-item:hover {
@@ -241,9 +242,9 @@
         }
 
         .sidebar-menu-item {
-            width: 180px;
+            width: 100%;
             /* Fixed size for icons */
-            height: 180px;
+            height: 170px;
             padding-top: 60px;
         }
 

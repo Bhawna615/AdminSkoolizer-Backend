@@ -407,7 +407,6 @@ class Fee extends CI_Controller
 				redirect(site_url('fee/viewPayments'));
             }
 	}
-<<<<<<< HEAD
 
 
 
@@ -437,6 +436,4 @@ class Fee extends CI_Controller
 
 
 
-=======
->>>>>>> 15a20ca8724d09c96d5829b9527b27f75758f70a
 }
