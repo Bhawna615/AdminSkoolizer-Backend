@@ -266,6 +266,11 @@ class StudentModel extends CI_Model
 		->where('id', $requestId)
 		->update('leave_requests');
 	 }
+
+	 public function updateCredentials($credentials, $studentId)
+	 {
+		 return $this->db->where('id', $studentId)->update('student', $credentials);
+	 }
     
     
 }
