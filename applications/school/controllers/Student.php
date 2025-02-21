@@ -601,6 +601,23 @@ class Student extends CI_Controller
 	public function createCredentials($studentId)
 	{
 	    $data['studentId'] = $studentId;
+		$data['student'] = $this->StudentModel->get($studentId);
 	    $this->load->view('students/credentials/create', $data);
 	}
+
+	public function storeCredentials()
+    {
+        $studentId = $this->input->post('id');
+        $credentials = array(
+            'Password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT)
+            );
+            
+            if($this->StudentModel->updateCredentials($credentials, $studentId)) {
+                   $this->session->set_flashdata('success', 'Credentials generated successfully');
+					redirect(site_url('student/view/'.$studentId));
+            } else {
+                $this->session->set_flashdata('error', 'Failed to generate credentials');
+					redirect(site_url('student/view'.$studentId));
+            }
+    }
 }

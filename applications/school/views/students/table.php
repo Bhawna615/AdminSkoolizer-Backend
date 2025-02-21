@@ -72,6 +72,7 @@
 						<li><a href="<?php echo site_url('exam/getdetails/') . $row->id; ?>">Exams</a></li>
 						<li><a href="<?php echo site_url('fee/getDetails/') . $row->id; ?>">Fee</a></li>
 						<li><a href="<?php echo site_url('message/get/') . $row->id; ?>">Messages</a></li>
+						<li><a href="<?php echo site_url('student/createCredentials/') . $row->id; ?>">Create Credentials</a></li>
 						<li><a href="<?php echo site_url('fee/createStudentPayment/') . $row->id; ?>" target="_blank">Create Fee Payment</a></li>
 						<li><a onclick="myFunction(<?php echo $row->id; ?>)" style="cursor: pointer;">Delete</a></li>
 					</ul>
