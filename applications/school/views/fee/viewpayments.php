@@ -58,7 +58,6 @@
 	<style>
 		#loading-spinner {
 			text-align: center;
-			margin: 20px;
 			background-color: #2C56BB;
             position: fixed;
             top: 0;
