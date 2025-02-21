@@ -98,11 +98,11 @@ $config['teacher'] = [
 		]
 	],
 	[
-		'field' => 'email',
-		'rules' => 'valid_email',
-		'errors' => [
-			'valid_email' => 'Enter a valid email'
-		]
+		// 'field' => 'email',
+		// 'rules' => 'valid_email',
+		// 'errors' => [
+		// 	'valid_email' => 'Enter a valid email'
+		// ]
 	],
 	[
 		'field' => 'post',
@@ -112,27 +112,27 @@ $config['teacher'] = [
 		]
 	],
 	[
-		'field' => 'contact',
-		'rules' => 'required|exact_length[10]|numeric',
-		'errors' => [
-			'required' => 'You must enter a phone number',
-			'exact_length' => 'Must be a 10 digit number',
-			'numeric' => 'Invalid Phone Number'
-		]
+		// 'field' => 'contact',
+		// 'rules' => 'required|exact_length[10]|numeric',
+		// 'errors' => [
+		// 	'required' => 'You must enter a phone number',
+		// 	'exact_length' => 'Must be a 10 digit number',
+		// 	'numeric' => 'Invalid Phone Number'
+		// ]
 	],
 	[
-		'field' => 'dob',
-		'rules' => 'required',
-		'errors' => [
-			'required' => 'Enter a valid Date'
-		]
+		// 'field' => 'dob',
+		// 'rules' => 'required',
+		// 'errors' => [
+		// 	'required' => 'Enter a valid Date'
+		// ]
 	],
 	[
-		'field' => 'doj',
-		'rules' => 'required',
-		'errors' => [
-			'required' => 'Enter a valid Date'
-		]
+		// 'field' => 'doj',
+		// 'rules' => 'required',
+		// 'errors' => [
+		// 	'required' => 'Enter a valid Date'
+		// ]
 	],
 ];
 
