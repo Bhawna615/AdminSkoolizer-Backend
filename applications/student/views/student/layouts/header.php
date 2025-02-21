@@ -16,6 +16,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="<?php echo base_url('assets/favicon/favicon.ico') ?>" type="image/ico" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 </head>
 
@@ -66,6 +70,66 @@
         background-color: #EDE8F5;
     }
 
+    /* sledebar */
+
+    #cross {
+        margin-right: 10px;
+        transition: .2s linear;
+
+    }
+
+    #cross.fa-x {
+        transform: rotate(180deg);
+    }
+
+    .menu-icon {
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        background-color: #124E66;
+        color: white;
+        transition: left 0.4s ease-in-out;
+        padding-top: 20px;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .sidebar a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 15px;
+        border-bottom: 1px solid rgb(44, 125, 157);
+        /* transition: background 0.3s; */
+    }
+
+    .sidebar a i {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+    .sidebar a:hover {
+        background-color: #EDE8F5;
+        color:#124E66;
+    }
+
+    .close-btn {
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 10px;
+        text-align: right;
+    }
+
+    /* sledebar */
+
     /* Navbar styling */
     .navbar {
 
@@ -88,12 +152,13 @@
         align-items: center;
         text-align: center;
     }
-    .school-name{
+
+    .school-name {
         font-size: 2.5rem;
-        
+
     }
 
-    .school-logo{
+    .school-logo {
         cursor: pointer;
     }
 
@@ -140,7 +205,7 @@
     .sidebar-menu-item img {
         width: 80%;
         height: 60%;
-        
+
     }
 
     .sidebar-menu-item:hover {
@@ -151,7 +216,7 @@
     }
 
 
-   
+
 
     .icon-btn1 {
         all: unset;
@@ -165,7 +230,7 @@
     .icon-btn1 img {
         display: block;
         /* Image ke around extra space hata dega */
-       
+
         height: 45px;
         width: 55px;
     }
@@ -237,7 +302,7 @@
         .icon-links-container {
 
             grid-template-columns: repeat(2, 1fr);
-           
+
             /* 3 columns */
         }
 
@@ -252,16 +317,17 @@
             gap: 10px;
         }
 
-        .school-name{
-        font-size: 2rem;
-        
-    }
-    .icon-btn1 img {
-     
-       
-        height: 40px;
-        width: 50px;
-    }
+        .school-name {
+            font-size: 2rem;
+
+        }
+
+        .icon-btn1 img {
+
+
+            height: 40px;
+            width: 50px;
+        }
 
 
     }
@@ -277,17 +343,12 @@
         <div class="navbar-center text-center flex-grow-1">
             <div class="school-logo-container">
                 <img src="<?php echo base_url('assets/images/logo/' . $this->config->item('schoolLogo')) ?>"
-                    class="school-logo" alt="School Logo"  onclick="location.href='<?php echo site_url('student') ?>'"/>
+                    class="school-logo" alt="School Logo" onclick="location.href='<?php echo site_url('student') ?>'" />
             </div>
             <div class="school-name">
                 <?php echo $this->config->item('schoolName') ?>
             </div>
-            <div class="btn_log">
-                <button class="icon-btn1" onclick="location.href='<?php echo site_url('auth/logout'); ?>'"
-                    title="Log Out">
-                    <img src="<?php echo base_url('assets/icons/logout.png'); ?>" alt="Assignment Icon">
-                </button>
-            </div>
+            <i class="fas fa-bars menu-icon" id='cross' onclick="toggleSidebar()"></i>
 
         </div>
 
@@ -300,6 +361,24 @@
                 </div> -->
 
     </nav>
+    <div class="sidebar" id="sidebar">
+        <div class="close-btn btn_log" onclick="toggleSidebar()">&times;</div>
+        <a href="<?php echo site_url('auth/logout'); ?>"> <i class="fas fa-sign-out-alt"></i> Logout</a>
+        <!-- <button class="icon-btn1" onclick="location.href='<?php echo site_url('auth/logout') ?>'">
+            <img src="<?php echo base_url('assets/icons/logout.png'); ?>" alt="Logout Icon">
+        </button> -->
+        <a href="https://play.google.com/store/apps/details?id=com.macmer.kkblossom"> <i class="fas fa-star"></i> Rate Us</a>
+        <a href="<?php echo site_url('student/accounts'); ?>"><i class="fas fa-user"></i> Manage Account</a>
+    </div>
+
+
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("show");
+            document.getElementById("cross").classList.toggle("fa-x");
+        }
+    </script>
 
 
 </body>

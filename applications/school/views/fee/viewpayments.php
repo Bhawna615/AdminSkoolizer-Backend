@@ -59,16 +59,36 @@
 		#loading-spinner {
 			text-align: center;
 			margin: 20px;
+			background-color: #2C56BB;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+		.spinner{
+			border: 16px solid #f3f3f3; /* Light grey */
+			border-top: 16px solid #3498db; /* Blue */
+			border-radius: 50%;
+			width: 80px;
+			height: 80px;
+			animation: spin 0.8s linear infinite;
 		}
+		
 
 		#table-view {
 			display: none;
 			/* Pehle hidden hoga */
 		}
 
-		img {
+		/* img {
 			animation: spin 1s linear infinite;
-		}
+		} */
 
 		@keyframes spin {
 			0% {
@@ -105,9 +125,6 @@
 						<?php } ?>
 					</div>
 
-
-
-
 					<?php
 					$currentYear = date('Y');
 					$currentSession = $currentYear . '-' . ($currentYear + 1);
@@ -121,6 +138,12 @@
 					// Get the session from the query parameter
 					$selectedSession = isset($_GET['session']) ? $_GET['session'] : $currentSession;
 					?>
+
+					<div id="loading-spinner">
+						<!-- <img src="https://cdn-icons-png.flaticon.com/128/189/189792.png" alt="Loading..." width="50"
+							height="50"> -->
+							<div class="spinner"></div>
+					</div>
 
 					<div class="col-md-12 filter-bar">
 						<p class="filter-enable"><input type="checkbox" class="custom-checkbox" id="filter-check">
@@ -160,21 +183,27 @@
 								<?php } ?>
 							</select>
 						</div>
-
-
 					</div>
 
-					<div id="loading-spinner">
-						<img src="https://cdn-icons-png.flaticon.com/128/189/189792.png" alt="Loading..." width="50"
-							height="50">
-					</div>
+
 					<div id="table-view">
 						<!-- The payments table will be loaded here -->
 					</div>
 
-
 					<script type="text/javascript">
 						$(document).ready(function () {
+							// Show loader on ajax start
+							$(document).ajaxStart(function () {
+								$("#loading-spinner").show();
+								$("#table-view").hide();
+							});
+
+							// Hide loader on ajax stop
+							$(document).ajaxStop(function () {
+								$("#loading-spinner").hide();
+								$("#table-view").show();
+							});
+
 							// Load payments for the selected session on page load
 							loadPayments();
 
@@ -211,13 +240,10 @@
 						});
 					</script>
 
-
-
 					<button
 						style="background: #f95555; color: white; border: none; font-family: Nunito_regular;padding: 5px 25px 5px 25px;"
 						id="export">Export to CSV
 					</button>
-
 
 					<script type="text/javascript">
 						function download_csv(csv, filename) {
@@ -269,13 +295,7 @@
 						});
 					</script>
 
-
-
-					<!-- loading -->
-					<script>setTimeout(() => {
-							document.getElementById("loading-spinner").style.display = "none"; // Hide Loader
-							document.getElementById("table-view").style.display = "block"; // Show Table
-						}, 5000); // 5 seconds ke baad table dikhayega
-					</script>
-					<!-- loading -->
 					<?php $this->view('footer'); ?>
+</body>
+
+</html>

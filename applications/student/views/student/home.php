@@ -80,13 +80,17 @@
             </a>
         </div>
 
-
-        <div class="sidebar-menu-item ">
-            <a href="https://kkblossomschool.org">
-                <img src="<?php echo base_url('assets/icons/website.png'); ?>" alt="Home Icon">
-                <p>School Website</p>
+        <div
+            class="sidebar-menu-item orange-background <?php echo ($recentMessages > 0) ? 'notification-pending' : ''; ?>">
+            <a href="<?php echo site_url('message') ?>">
+                <img src="<?php echo base_url('assets/icons/comments.png'); ?>" alt="Exams Icon">
+                <p>Messages</p>
+                <?php if ($recentMessages > 0) {
+                    echo "<span class='notification-count'>{$recentMessages}</span>";
+                } ?>
             </a>
         </div>
+
         <div class="sidebar-menu-item <?php echo ($recentAssignments > 0) ? 'notification-pending' : ''; ?>">
             <a href="<?php echo site_url('assignment') ?>">
                 <img src="<?php echo base_url('assets/icons/qa.png'); ?>" alt="Assignment Icon">
@@ -151,28 +155,26 @@
                 } ?>
             </a>
         </div>
-        <div
-            class="sidebar-menu-item orange-background <?php echo ($recentMessages > 0) ? 'notification-pending' : ''; ?>">
-            <a href="<?php echo site_url('message') ?>">
-                <img src="<?php echo base_url('assets/icons/comments.png'); ?>" alt="Exams Icon">
-                <p>Messages</p>
-                <?php if ($recentMessages > 0) {
-                    echo "<span class='notification-count'>{$recentMessages}</span>";
-                } ?>
+
+        <div class="sidebar-menu-item ">
+            <a href="https://kkblossomschool.org">
+                <img src="<?php echo base_url('assets/icons/website.png'); ?>" alt="Home Icon">
+                <p>School Website</p>
             </a>
         </div>
+        
         <div class="sidebar-menu-item blue-background ">
             <a href="<?php echo site_url('LeaveRequest'); ?>">
                 <img src="<?php echo base_url('assets/icons/leave.png'); ?>" alt="Exams Icon">
                 <p>Leave Requests</p>
             </a>
         </div>
-        <div class="sidebar-menu-item orange-background ">
+        <!-- <div class="sidebar-menu-item orange-background ">
             <a href="<?php echo site_url('student/accounts'); ?>">
                 <img src="<?php echo base_url('assets/icons/user.png'); ?>" alt="Exams Icon">
                 <p>My Accounts</p>
             </a>
-        </div>
+        </div> -->
 
         <?php if (isset($student)) { ?>
             <div class="sidebar-menu-item orange-background">
@@ -187,12 +189,12 @@
 
 
 
-        <div class="sidebar-menu-item orange-background ">
+        <!-- <div class="sidebar-menu-item orange-background ">
             <a href="https://play.google.com/store/apps/details?id=com.macmer.kkblossom">
                 <img src="<?php echo base_url('assets/icons/thumb-up.png'); ?>" alt="Exams Icon">
                 <p>Rate Us</p>
             </a>
-        </div>
+        </div> -->
 
     </div>
 
