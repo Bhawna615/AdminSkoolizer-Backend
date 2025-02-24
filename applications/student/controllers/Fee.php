@@ -62,7 +62,9 @@ class Fee extends CI_Controller
         $data['recentPayments'] = $this->StudentModel->loadRecentPayments($studentId);
         $data['recentMessages'] = $this->StudentModel->loadRecentMessages($studentId);
         $this->StudentModel->updateFeeNotificationCheckTime($studentId);
-
+        
+        $data['createaccounts'] = $this->StudentModel->getCreateAccounts($studentId);
+        $data['accounts'] = $this->FeeModel->getAccounts($studentId);
         $data['payments'] = $this->FeeModel->get($student);
         $this->load->view('student/fee/view', $data);
     }
@@ -153,4 +155,30 @@ class Fee extends CI_Controller
 		$data['reciept'] = $this->FeeModel->loadReceiptDetails($feeId);
 		$this->load->view('student/fee/receipt', $data);
 	}
+
+
+
+    // accounts
+
+
+    public function switchAccount($id)
+    {
+        $switchToStudent = $this->StudentModel->get($id);
+        session_destroy();
+        redirect(site_url('auth/verify/').$switchToStudent->qrcode);
+    }
+
+    // public function removeAccount($otherStudentId)
+    // {
+    //     $currentStudentId = $this->session->userdata('id');
+    //     if($this->StudentModel->removeStudentAccount($currentStudentId, $otherStudentId)) {
+    //         $this->session->set_flashdata('success', "Account Removed Successfully");
+    //         redirect(site_url('fee/accounts'));
+    //     } else {
+    //         $this->session->set_flashdata('error', "Failed to remove");
+    //         redirect(site_url('fee/accounts'));
+    //     }
+    // }
+
+    // accounts
 }

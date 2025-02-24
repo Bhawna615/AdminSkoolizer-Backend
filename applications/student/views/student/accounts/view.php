@@ -13,6 +13,7 @@
     /* Centering the page content */
     .page-wrapper {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: max-content;
@@ -139,11 +140,38 @@
             transform: translateY(0);
         }
     }
+    .alert {
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+    }
+   
    
 </style>
 
 <div class="page-wrapper">
+<div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <?php if ($this->session->flashdata('error')) { ?>
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <i class="las la-exclamation-triangle me-2"></i>
+                        <div><?php echo $this->session->flashdata('error'); ?></div>
+                    </div>
+                    <?php $this->session->unset_userdata('error'); ?>
+                <?php } ?>
+
+                <?php if ($this->session->flashdata('success')) { ?>
+                    <div class="alert alert-success d-flex align-items-center" role="alert">
+                        <i class="las la-check-square me-2"></i>
+                        <div><?php echo $this->session->flashdata('success'); ?></div>
+                    </div>
+                    <?php $this->session->unset_userdata('success'); ?>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
     <div class="col-xs-12 page-content">
         <!-- Page heading with animation -->
         <h2 class="page-heading">📚 Manage Accounts</h2>

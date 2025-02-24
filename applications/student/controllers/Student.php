@@ -144,21 +144,21 @@ class Student extends CI_Controller
         $currentStudentId = $this->session->userdata('id');
         $admissionNo = $this->input->post('admission_number');
         $password = $this->input->post('password');
+        
+        // ✅ Authenticate User
         $studentAccount = $this->AuthModel->userLogin($admissionNo, $password);
-        if($this->StudentModel->notAlreadyAdded($currentStudentId, $studentAccount)){
-            if($studentAccount) {
-                $this->StudentModel->insertStudentAccount($currentStudentId, $studentAccount);
-                $this->session->set_flashdata('success', "Account added Successfully");
-                redirect(site_url('student/accounts'));
-            } else {
-                $this->session->set_flashdata('error', "Invalid Credentials");
-                redirect(site_url('student/accounts'));
-            }
+    
+        if ($studentAccount && $this->StudentModel->notAlreadyAdded($currentStudentId, $studentAccount)) {
+            // ✅ Insert Only if Not Already Added
+            $this->StudentModel->insertStudentAccount($currentStudentId, $studentAccount);
+            $this->session->set_flashdata('success', "Account added Successfully");
         } else {
-            $this->session->set_flashdata('error', "Account already Added");
-            redirect(site_url('student/accounts'));
+            $this->session->set_flashdata('error', "Account already Added or Invalid Credentials");
         }
+        
+        redirect(site_url('student/accounts'));
     }
+    
 
     public function switchAccount($id)
     {
