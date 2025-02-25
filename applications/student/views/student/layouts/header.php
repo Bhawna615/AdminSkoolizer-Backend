@@ -259,7 +259,27 @@
 
 
 
+    .school-logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
 
+    .text-primary{
+        font-size: 1.3rem;
+        color: #124E66;
+        font-family: Nunito-Semibold;
+        text-transform: lowercase;
+        font-weight: bold;
+    }
+
+    .text-primary::first-letter {
+        text-transform: uppercase;
+    }
+
+    
 
 
 
@@ -362,26 +382,28 @@
                 </div> -->
 
     </nav>
-   
-        <div class="sidebar" id="sidebar">
-            <div class="close-btn btn_log" onclick="toggleSidebar()"></div>
-            <div class="school-logo-container" style="margin-left:20px;">
-                <img src="<?php echo base_url('assets/images/logo/' . $this->config->item('schoolLogo')) ?>"
-                    class="school-logo" style="width:40px;" alt="School Logo"
-                    onclick="location.href='<?php echo site_url('student') ?>'" />
-                <!-- <h2 class="text-primary font-weight-bold animated fadeInUp"><?php echo $info->Name; ?></h2>
-                <p class="text-primary">Class: <?php echo $info->Class; ?></p>
-                <p class="text-primary">Roll No: <?php echo $info->Rollno; ?></p> -->
+
+    <div class="sidebar" id="sidebar">
+        <div class="close-btn btn_log" onclick="toggleSidebar()"></div>
+        <div class="school-logo-container" style="margin:25px; background-color:  #EDE8F5; padding:10px; box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3); ">
+            <img src="<?php echo base_url('assets/images/students/') . $info->image; ?>"
+                class="school-logo" style="width:100px; height:100px; border-radius:50%;" alt="School Logo"
+                onclick="location.href='<?php echo site_url('student') ?>'" />
+            <div class="loginDetail">
+                <h2 class="text-primary" style=" color: #124E66;  font-size: 1.3rem;"><?php echo $info->Name; ?></h2>
+                <p class="text-primary" style=" color: #124E66;  font-size: 1.3rem;">Class: <?php echo $info->Class; ?></p>
+                <p class="text-primary" style=" color: #124E66; font-size: 1.3rem;">Roll No: <?php echo $info->Rollno; ?></p>
             </div>
-            <a href="<?php echo site_url('auth/logout'); ?>"> <i class="fas fa-sign-out-alt"></i> Logout</a>
-            <!-- <button class="icon-btn1" onclick="location.href='<?php echo site_url('auth/logout') ?>'">
+        </div>
+        <a href="<?php echo site_url('auth/logout'); ?>"> <i class="fas fa-sign-out-alt"></i> Logout</a>
+        <!-- <button class="icon-btn1" onclick="location.href='<?php echo site_url('auth/logout') ?>'">
             <img src="<?php echo base_url('assets/icons/logout.png'); ?>" alt="Logout Icon">
         </button> -->
-            <a href="https://play.google.com/store/apps/details?id=com.macmer.kkblossom"> <i class="fas fa-star"></i> Rate
-                Us</a>
-            <!-- <a href="<?php echo site_url('student/accounts'); ?>"><i class="fas fa-user"></i> Manage Account</a> -->
-        </div>
-  
+        <a href="https://play.google.com/store/apps/details?id=com.macmer.kkblossom"> <i class="fas fa-star"></i> Rate
+            Us</a>
+        <!-- <a href="<?php echo site_url('student/accounts'); ?>"><i class="fas fa-user"></i> Manage Account</a> -->
+    </div>
+
 
 
 

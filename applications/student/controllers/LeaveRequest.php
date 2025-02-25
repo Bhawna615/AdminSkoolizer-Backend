@@ -36,6 +36,7 @@ class LeaveRequest extends CI_Controller
         $data['recentPayments'] = $this->StudentModel->loadRecentPayments($studentId);
         $data['recentMessages'] = $this->StudentModel->loadRecentMessages($studentId);
 
+        $data['info'] = $this->StudentModel->getInfoById($studentId);
         $data['leaveRequests'] = $this->LeaveRequestModel->get($this->session->userdata('id'));
         $this->load->view('student/leave_request/view', $data);
     }
@@ -46,6 +47,8 @@ class LeaveRequest extends CI_Controller
             'title' => 'Leave Request',
             'page' => 'Leave Request'
         );
+        $studentId = $this->session->userdata('id');
+        $data['info'] = $this->StudentModel->getInfoById($studentId);
         $this->load->view('student/leave_request/add', $data);
     }
 

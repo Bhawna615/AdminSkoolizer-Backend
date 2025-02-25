@@ -35,7 +35,7 @@ class Assignment extends CI_Controller
         $data['recentPayments'] = $this->StudentModel->loadRecentPayments($studentId);
         $data['recentMessages'] = $this->StudentModel->loadRecentMessages($studentId);
         $this->StudentModel->updateAssignmentNotificationCheckTime($studentId);
-        
+        $data['info'] = $this->StudentModel->getInfoById($studentId);
         
         $this->load->view('student/assignments/select', $data);
     }

@@ -38,6 +38,7 @@ class Event extends CI_Controller
         $data['recentMessages'] = $this->StudentModel->loadRecentMessages($studentId);
         $this->StudentModel->updateEventNotificationCheckTime($studentId);
         
+        $data['info'] = $this->StudentModel->getInfoById($studentId);
         
         $data['events'] = $this->EventModel->getAll();
         $this->load->view('student/events/view', $data);

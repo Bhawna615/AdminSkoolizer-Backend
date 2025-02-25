@@ -63,6 +63,7 @@ class Fee extends CI_Controller
         $data['recentMessages'] = $this->StudentModel->loadRecentMessages($studentId);
         $this->StudentModel->updateFeeNotificationCheckTime($studentId);
         
+        $data['info'] = $this->StudentModel->getInfoById($studentId);
         $data['createaccounts'] = $this->StudentModel->getCreateAccounts($studentId);
         $data['accounts'] = $this->FeeModel->getAccounts($studentId);
         $data['payments'] = $this->FeeModel->get($student);

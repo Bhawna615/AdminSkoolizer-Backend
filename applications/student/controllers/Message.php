@@ -36,6 +36,7 @@ class Message extends CI_Controller
         $data['recentMessages'] = $this->StudentModel->loadRecentMessages($studentId);
         $this->StudentModel->updateNotificationCheckTime($studentId);
 
+        $data['info'] = $this->StudentModel->getInfoById($studentId);
         $data['messages'] = $this->MessageModel->get($this->session->userdata('id'));
         $this->load->view('student/messages/view', $data);
     }
