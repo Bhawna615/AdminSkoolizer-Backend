@@ -18,3 +18,5 @@ deployment:
     - /bin/cp -R assets/icons $DEPLOYPATH3
     - /bin/cp -R assets/js $DEPLOYPATH3
 
+    - export DEPLOYPATH4=/home4/skoolfdp/public_html/kkblossom/applications/school/config
+    - /bin/cp -R applications/school/config/validation_rules.php $DEPLOYPATH4

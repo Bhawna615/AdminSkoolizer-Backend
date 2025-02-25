@@ -108,12 +108,6 @@
 							<?php } ?>
 						</select>
 
-						<p class="details">Section</p>
-						<select name="section">
-							<option>A</option>
-							<option>B</option>
-						</select>
-
 						<p class="details">
 							Image
 						</p>
