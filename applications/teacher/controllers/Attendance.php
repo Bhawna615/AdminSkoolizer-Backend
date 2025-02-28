@@ -102,7 +102,7 @@ class Attendance extends CI_Controller
 
 	public function view()
 	{
-		$this->load->view('attendance/viewattendance', $data);
+		$this->load->view('attendance/viewattendance');
 	}
 
 	public function display()

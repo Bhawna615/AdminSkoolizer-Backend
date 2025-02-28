@@ -96,7 +96,9 @@
         background-color: #124E66;
         color: white;
         transition: left 0.4s ease-in-out;
-        padding-top: 20px;
+        padding-left: 10px; /* Left se gap */
+        padding-right: 10px; /* Right se bhi same gap */
+        box-sizing: border-box; /* Padding ko width ke andar count karega */
     }
 
     .sidebar.show {
@@ -265,7 +267,9 @@
         align-items: center;
         text-align: center;
         gap: 10px;
+	
     }
+
 
     .text-primary{
         font-size: 1.3rem;
@@ -385,14 +389,14 @@
 
     <div class="sidebar" id="sidebar">
         <div class="close-btn btn_log" onclick="toggleSidebar()"></div>
-        <div class="school-logo-container" style="margin:25px; background-color:  #EDE8F5; padding:10px; box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3); ">
+        <div class="school-logo-container" style=" width:100%; height: max-content; background-color:  #EDE8F5; padding:10px; box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3); ">
             <img src="<?php echo base_url('assets/images/students/') . $info->image; ?>"
                 class="school-logo" style="width:100px; height:100px; border-radius:50%;" alt="School Logo"
                 onclick="location.href='<?php echo site_url('student') ?>'" />
             <div class="loginDetail">
-                <h2 class="text-primary" style=" color: #124E66;  font-size: 1.3rem;"><?php echo $info->Name; ?></h2>
-                <p class="text-primary" style=" color: #124E66;  font-size: 1.3rem;">Class: <?php echo $info->Class; ?></p>
-                <p class="text-primary" style=" color: #124E66; font-size: 1.3rem;">Roll No: <?php echo $info->Rollno; ?></p>
+                <h2 class="text-primary" style=" color: #124E66;  font-size: 1.1rem;"><?php echo $info->Name; ?></h2>
+                <p class="text-primary" style=" color: #124E66;  font-size: 1.1rem;">Class: <?php echo $info->Class; ?></p>
+                <p class="text-primary" style=" color: #124E66; font-size: 1.1rem;">Roll No: <?php echo $info->Rollno; ?></p>
             </div>
         </div>
         <a href="<?php echo site_url('auth/logout'); ?>"> <i class="fas fa-sign-out-alt"></i> Logout</a>

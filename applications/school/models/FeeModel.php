@@ -24,7 +24,7 @@ class FeeModel extends CI_Model
 
 	public function getStudentFeeDetail()
 	{
-		$query=$this->db->query('SELECT * FROM student');
+		$query = $this->db->query("SELECT * FROM student WHERE class != 'passed_out'");
 		$result=$query->result();
 		return $result;
 	}

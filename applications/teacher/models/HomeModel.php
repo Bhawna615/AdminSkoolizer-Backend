@@ -113,4 +113,11 @@ class HomeModel extends CI_Model
 	    return $this->db->where('status', false)->where('student_class', $class)
 	    ->get('leave_requests')->num_rows();
 	}
+
+
+	function getteacherdetail($teacherId){
+		$this->db->where('id', $teacherId);
+        $query = $this->db->get('teachers'); // Assuming you have a 'students' table
+        return $query->row(); // Return a single row
+	}
 }

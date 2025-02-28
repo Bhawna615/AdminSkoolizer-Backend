@@ -1,4 +1,20 @@
 <?php $this->view('header') ?>
+
+<style>
+    .innerview{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        height: max-content;
+        width: 100%;
+        background-color: #fff;
+       
+
+}
+
+
+</style>
 <div class="col-md-12 innerview">
 	<div class="message">
         <?php if ($this->session->flashdata('error')) { ?>
