@@ -36,7 +36,7 @@ class Post extends CI_Controller
         $data['recentMessages'] = $this->StudentModel->loadRecentMessages($studentId);
         $this->StudentModel->updateSchoolPostNotificationCheckTime($studentId);
         
-        
+        $data['info'] = $this->StudentModel->getInfoById($studentId);
         $data['posts'] = $this->PostModel->get('school');
         $this->load->view('student/posts/schoolview', $data);
     }
@@ -59,6 +59,7 @@ class Post extends CI_Controller
         $data['recentMessages'] = $this->StudentModel->loadRecentMessages($studentId);
         $this->StudentModel->updateClassPostNotificationCheckTime($studentId);
         
+        $data['info'] = $this->StudentModel->getInfoById($studentId);
         $data['posts'] = $this->PostModel->get($this->session->userdata('class'));
         $this->load->view('student/posts/classview', $data);
     }

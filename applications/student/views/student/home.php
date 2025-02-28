@@ -169,12 +169,12 @@
                 <p>Leave Requests</p>
             </a>
         </div>
-        <!-- <div class="sidebar-menu-item orange-background ">
+        <div class="sidebar-menu-item orange-background ">
             <a href="<?php echo site_url('student/accounts'); ?>">
                 <img src="<?php echo base_url('assets/icons/user.png'); ?>" alt="Exams Icon">
                 <p>My Accounts</p>
             </a>
-        </div> -->
+        </div>
 
         <?php if (isset($student)) { ?>
             <div class="sidebar-menu-item orange-background">

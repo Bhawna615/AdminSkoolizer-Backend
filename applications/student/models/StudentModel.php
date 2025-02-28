@@ -160,48 +160,58 @@ class StudentModel extends CI_Model
         return $query->result();
     }
 
+    // ✅ Function to Check Before Inserting to Avoid Duplicates
+    private function insertIfNotExists($studentId, $otherStudentId)
+    {
+        $exists = $this->db->where('student_id', $studentId)
+                           ->where('other_student_id', $otherStudentId)
+                           ->get('student_accounts')
+                           ->row();
+
+        if (!$exists) {
+            $this->db->insert('student_accounts', [
+                'student_id' => $studentId,
+                'other_student_id' => $otherStudentId
+            ]);
+        }
+    }
+
+    // ✅ Updated Insert Function to Prevent Duplicates
     public function insertStudentAccount($currentStudentId, $studentAccount)
     {
         $accounts = $this->db->where('student_id', $currentStudentId)->get('student_accounts')->result();
 
-        foreach($accounts as $account) {
-            $newAccount = array(
-                'student_id' =>  $account->other_student_id,
-                'other_student_id' => $studentAccount->id
-            );
-            $this->db->insert('student_accounts', $newAccount);
-
-            $newAccount = array(
-                'student_id' =>  $studentAccount->id,
-                'other_student_id' => $account->other_student_id
-            );
-            $this->db->insert('student_accounts', $newAccount);
+        foreach ($accounts as $account) {
+            $this->insertIfNotExists($account->other_student_id, $studentAccount->id);
+            $this->insertIfNotExists($studentAccount->id, $account->other_student_id);
         }
 
-
-        $newAccount = array(
-            'student_id' => $currentStudentId,
-            'other_student_id' => $studentAccount->id
-        );
-        $this->db->insert('student_accounts', $newAccount);
-
-        $newAccount = array(
-            'student_id' => $studentAccount->id,
-            'other_student_id' => $currentStudentId
-        );
-        $this->db->insert('student_accounts', $newAccount);
+        $this->insertIfNotExists($currentStudentId, $studentAccount->id);
+        $this->insertIfNotExists($studentAccount->id, $currentStudentId);
     }
 
+    // ✅ Function to Check if Account is Already Added
     public function notAlreadyAdded($currentStudentId, $studentAccount)
     {
-        $this->db->where('student_id', $currentStudentId);
-        $this->db->where('other_student_id', $studentAccount->id);
-        if($this->db->get('student_accounts')->num_rows() <= 0){
-            return true;
-        } else {
-            return false;
-        }
+        $exists = $this->db->where('student_id', $currentStudentId)
+                           ->where('other_student_id', $studentAccount->id)
+                           ->get('student_accounts')
+                           ->row();
+        
+        return !$exists;
     }
+
+
+    // public function notAlreadyAdded($currentStudentId, $studentAccount)
+    // {
+    //     $this->db->where('student_id', $currentStudentId);
+    //     $this->db->where('other_student_id', $studentAccount->id);
+    //     if($this->db->get('student_accounts')->num_rows() <= 0){
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
     public function removeStudentAccount($currentStudentId, $otherStudentId)
     {
@@ -231,4 +241,11 @@ class StudentModel extends CI_Model
         $query = $this->db->get('student'); // Assuming you have a 'students' table
         return $query->row(); // Return a single row
     }
+
+    public function getCreateAccounts($studentId){
+        $this->db->where('id', $studentId);
+        $query = $this->db->get('student');
+        return $query->row();
+    }
+    
 }

@@ -120,8 +120,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
     }
+
     /* Animations */
     @keyframes fadeIn {
         from {
@@ -156,6 +157,204 @@
             transform: translateY(-5px);
         }
     }
+
+
+
+
+    /* my accounts */
+
+
+    /* Centering the page content */
+
+
+    /* Professional heading styling with animation */
+
+    .accpage-content {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        width: 90%;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        animation: fadeIn 0.8s ease;
+    }
+
+    .acccard {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: max-content;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 5px;
+    }
+
+    .page-heading {
+        font-size: 2rem;
+        font-weight: bold;
+        font-family: Nunito-Semibold;
+        color: #6C63FF;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        position: relative;
+        animation: fadeSlideIn 1s ease forwards;
+        opacity: 0;
+    }
+
+    .page-heading:after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: #6C63FF;
+        margin: 10px auto 0;
+        border-radius: 2px;
+    }
+
+    /* Buttons aligned center */
+    .card-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        /* margin-top: 15px; */
+
+    }
+
+
+    .accform-btn {
+        background-color: #6C63FF;
+        color: #fff;
+        padding: 2px;
+
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        /* font-size: 0.5rem; */
+        font-family: Nunito-Semibold;
+    }
+
+    .accform-btn:hover {
+        background-color: #403D9F;
+        text-decoration: none;
+    }
+
+    /* Bootstrap card styling */
+    .card {
+       display: flex;
+       height: max-content;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       gap: 10px;
+        padding: 20px;
+        background: none;
+        margin: 0;
+        cursor: pointer;
+      
+    }
+
+    .card a {
+        font-size: 1rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+        color: #333;
+        text-transform: capitalize;
+        font-family: Nunito-Semibold;
+    }
+
+    .profile-image {
+        width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    }
+
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* margin-bottom: 20px; */
+    }
+
+    .profile-wrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); */
+}
+
+
+    /* Floating button styling */
+    /* .float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #6C63FF;
+        color: white;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .float:hover {
+        transform: scale(1.1);
+    } */
+
+    /* Fade-in animation for content */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Fade-in and slide animation for heading */
+    @keyframes fadeSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* .active {
+
+        border: 4px solid rgb(156, 193, 247);
+        position: static;
+
+
+
+    } */
+    .active  {
+    border: 4px solid rgb(117, 166, 240);
+    padding: 2px;
+}
+
+    /* my accounts */
 </style>
 
 <div class="page-wrapper">
@@ -181,6 +380,45 @@
         </div>
     </div>
 
+
+
+
+    <div class="page-wrapper">
+
+
+        <!-- <h3>ACCOUNTS</h3> -->
+        <div class="acccard">
+            <?php if (isset($accounts) && !empty($accounts)) { ?>
+                <?php foreach ($accounts as $index => $account) { ?>
+                    <div class="card ">
+
+                        <div class="profile-wrapper <?php echo ($account->id == $this->session->userdata('id')) ? 'active' : ''; ?>"
+                        onclick="switchAccount('<?php echo $account->id; ?>')">
+                            <img src="<?php echo base_url('assets/images/students/') . $account->image; ?>"
+                                class="profile-image" alt="Profile Image">
+                        </div>
+
+                        <p class="card-title">
+                            <?php echo $account->Name ?> <br> Class: <?php echo $account->Class ?>
+                        </p>
+                    </div>
+                <?php } ?>
+            <?php } else { ?>
+                <p class="text-muted">No accounts to display. Add a new one using the button below!</p>
+            <?php } ?>
+        </div>
+
+
+        <!-- Add account button -->
+        <!-- <form method="POST" action="<?php echo site_url('student/addAccount'); ?>">
+            <button title="Add Account" class="float" style="border: none;">
+                <i class="material-icons" style="font-size: 30px; position: relative; top: 3px; color: #fff;">
+                    add
+                </i>
+            </button>
+         </form> -->
+
+    </div>
 
     <div class="col-xs-12 page-content">
         <div class="animated-heading">
@@ -216,7 +454,8 @@
 
         <!-- Display Total Pending Fee -->
         <div class="total-pending-fee">
-            <p style="font-weight: bold; text-transform: capitalize; font-size: 1.2rem; color: #124E66">Total Pending
+            <p style="font-weight: bold; text-transform: capitalize; font-size: 1.2rem; color: #124E66">Total
+                Pending
                 Fee (including late fees): <?php echo number_format($total_pending_fee, 2); ?></p>
         </div>
 
@@ -311,7 +550,8 @@
                                     <tr style="border:none;">
                                         <th style="padding: 10px; font-size:1.1rem;">Status</th>
                                         <td style="padding: 10px; font-size:1.1rem;">
-                                            <?php echo $payment->status ? "Paid" : "Unpaid"; ?></td>
+                                            <?php echo $payment->status ? "Paid" : "Unpaid"; ?>
+                                        </td>
                                     </tr>
                                 </table>
 
@@ -343,5 +583,19 @@
     </div>
 </div>
 
+<script>
+    function switchAccount(accountId) {
+        $.ajax({
+            url: '<?php echo site_url('fee/switchAccount'); ?>/' + accountId,
+            type: 'POST',
+            success: function (response) {
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                console.error('Error switching account:', error);
+            }
+        });
+    }
+</script>
 
 <?php $this->view('student/layouts/footer') ?>

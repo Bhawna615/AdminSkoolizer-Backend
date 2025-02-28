@@ -36,7 +36,7 @@ class Exam extends CI_Controller
         $data['recentPayments'] = $this->StudentModel->loadRecentPayments($studentId);
         $data['recentMessages'] = $this->StudentModel->loadRecentMessages($studentId);
         $this->StudentModel->updateExamNotificationCheckTime($studentId);
-        
+        $data['info'] = $this->StudentModel->getInfoById($studentId);
         
         $data['exams'] = $this->ExamModel->get($this->session->userdata('class'));
         $this->load->view('student/exams/view', $data);
@@ -60,6 +60,7 @@ class Exam extends CI_Controller
         $data['recentMessages'] = $this->StudentModel->loadRecentMessages($studentId);
   
 
+        $data['info'] = $this->StudentModel->getInfoById($studentId);
         $class = $this->session->userdata('class');
         $rollNo = $this->session->userdata('rollNo');
         $data['exams'] = $this->ExamModel->getDistinct($this->session->userdata('class'));

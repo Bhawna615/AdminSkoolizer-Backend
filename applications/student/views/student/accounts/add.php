@@ -7,7 +7,7 @@
         background-color: #F4F4F9;
         margin: 0;
         padding: 0;
-       
+
     }
 
     /* Centering the page content */
@@ -88,11 +88,13 @@
         background-color: #403D9F;
     }
 
+  
     /* Fade-in animation for content */
     @keyframes fadeIn {
         from {
             opacity: 0;
         }
+
         to {
             opacity: 1;
         }
@@ -104,22 +106,26 @@
             opacity: 0;
             transform: translateY(-20px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
         }
     }
+
+   
 </style>
 
 <div class="page-wrapper">
+   
     <div class="col-xs-12 page-content">
         <!-- Page heading with animation -->
         <h2 class="page-heading">📚 Add New Account</h2>
 
         <!-- Form for adding new account -->
         <form method="POST" action="<?php echo site_url('student/auth') ?>">
-            <input type="text" placeholder="Admission Number" name="admission_number" class="form-input" required/>
-            <input type="password" name="password" placeholder="Password" class="form-input" required/>
+            <input type="text" placeholder="Admission Number" name="admission_number" class="form-input" required />
+            <input type="password" name="password" placeholder="Password" class="form-input" required />
             <button class="form-btn-2" type="submit">Add Account</button>
         </form>
     </div>

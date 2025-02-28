@@ -5,6 +5,7 @@ class Home extends CI_Controller
 	 public function __construct()
     {
         parent::__construct();
+		$this->load->library('session');
         $this->load->helper('url');
         $this->load->model('HomeModel');
         $this->load->library('session');
@@ -17,6 +18,7 @@ class Home extends CI_Controller
 
 	public function index()
 	{
+		$teacherId = $this->session->userdata('id');
 		$data['studentcount'] = $this->HomeModel->getStudentCount();
 		$data['teachercount'] = $this->HomeModel->getTeacherCount();
 		$data['classescount'] = $this->HomeModel->getClassesCount();
@@ -28,6 +30,8 @@ class Home extends CI_Controller
 		$data['birthdaycount'] = $this->HomeModel->getBirthdayCount();
 		$data['feeCount'] = $this->HomeModel->getPendingFeeCount();
 		$data['leaveRequestCount'] = $this->HomeModel->getLeaveRequestCount();
+
+		$data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
 		$this->load->view('home/home', $data);
 	}
 

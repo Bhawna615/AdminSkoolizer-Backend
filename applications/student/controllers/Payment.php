@@ -37,6 +37,8 @@ class Payment extends CI_Controller
             'page' => 'Messages'
         );
 
+        $studentId = $this->session->userdata('id');
+        $data['info'] = $this->StudentModel->getInfoById($studentId);
         $data['messages'] = $this->MessageModel->get($this->session->userdata('id'));
         $this->load->view('student/messages/view', $data);
     }
