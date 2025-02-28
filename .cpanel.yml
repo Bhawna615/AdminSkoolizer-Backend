@@ -20,3 +20,8 @@ deployment:
 
     - export DEPLOYPATH4=/home4/skoolfdp/public_html/kkblossom/applications/school/config
     - /bin/cp -R applications/school/config/validation_rules.php $DEPLOYPATH4
+
+    - export DEPLOYPATH5=/home4/skoolfdp/public_html/kkblossom/applications/teacher
+    - /bin/cp -R applications/teacher/controllers $DEPLOYPATH5
+    - /bin/cp -R applications/teacher/models $DEPLOYPATH5
+    - /bin/cp -R applications/teacher/views $DEPLOYPATH5
