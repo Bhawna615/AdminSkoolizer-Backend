@@ -2,11 +2,11 @@
 	<thead class="dataTableHead">
 	<tr>
 		<th>Date</th>
-		<th>Class</th>
+		<!-- <th>Class</th>
 		<th>Absent</th>
 		<th>On Leave</th>
 		<th>Present</th>
-		<th>Strength</th>
+		<th>Strength</th> -->
 		<th>Actions</th>
 	</tr>
 	</thead>
@@ -15,11 +15,11 @@
 		<?php foreach ($attendance as $row) { ?>
 			<tr>
 				<td><?php echo $row->Date; ?></td>
-				<td><?php echo $row->Class; ?></td>
+				<!-- <td><?php echo $row->Class; ?></td>
 				<td><?php echo $row->Absent; ?></td>
 				<td><?php echo $row->onLeave; ?></td>
 				<td><?php echo $row->Present; ?></td>
-				<td><?php echo $row->Strength ?></td>
+				<td><?php echo $row->Strength ?></td> -->
 				<td>
 					<form method="POST" action="<?php echo site_url('attendance/details') ?>" target="_blank">
 						<input type="hidden" name="class" value="<?php echo $row->Class; ?>">
