@@ -98,7 +98,7 @@
                                         <?php  } ?>
                                     <?php } ?>
                                 <?php } ?>
-								<option value="" disabled selected hidden>-- Select --</option>
+								
                                 <option value="Present">Present</option>
                                 <option value="Absent">Absent</option>
                                 <option value="Leave">Leave</option>
