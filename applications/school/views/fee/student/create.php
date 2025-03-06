@@ -36,7 +36,8 @@
 				
 				<p class="details">Session</p>
 				<select name="session">
-				    <option value="2024-2025">2024-2025</option>
+					<option value="<?php echo date("Y")."-".(date("Y")+1); ?>"><?php echo date("Y")."-".(date("Y")+1); ?></option>
+				    <option value="<?php echo (date("Y")-1)."-".date("Y"); ?>"><?php echo (date("Y")-1)."-".date("Y"); ?></option>
 				</select>
 			</div>
 			<div class="col-md-4">
