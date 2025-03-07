@@ -173,18 +173,33 @@
 							<th>Mark</th>
 						</tr>
 					</thead>
-					<tbody class="dataTableBody">
-						<?php if (isset($students)) { ?>
-							<?php foreach ($students as $row) { ?>
-								<tr>
-									<td><?php echo $row->Rollno; ?></td>
-									<td><?php echo $row->Name; ?></td>
-									<td><?php echo isset($details[$row->Rollno]) ? ($details[$row->Rollno]->onLeave ? 'On Leave' : 'Absent') : 'Present'; ?>
-									</td>
-								</tr>
-							<?php } ?>
-						<?php } ?>
-					</tbody>
+						<tbody class="dataTableBody">
+			<?php if (isset($students)) { ?>
+				<?php foreach ($students as $row) { ?>
+					<tr>
+						<td><?php echo $row->Rollno; ?></td>
+						<td><?php echo $row->Name; ?></td>
+						<td><?php $mark = 'Present';
+							if (isset($details)) {
+								foreach ($details as $key) {
+									if ($key->Rollno == $row->Rollno) {
+										if ($key->onLeave == false) {
+											$mark = 'Absent';
+										} else {
+											if ($key->onLeave == true) {
+												$mark = 'On Leave';
+											}
+										}
+									}
+								}
+							}
+							echo $mark;
+							?></td>
+					</tr>
+					<?php
+				}
+			} ?>
+			</tbody>
 				</table>
 				<button class="form-submit" id="export">Export to CSV</button>
 			</div>

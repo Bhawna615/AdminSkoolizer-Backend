@@ -36,6 +36,7 @@
 			<tbody class="dataTableBody">
 			<?php if (!empty($students)) { ?>
 				<?php foreach ($students as $row) { ?>
+					<?php if (($row->tuition_fee + $row->transport_fee) > 0) { ?>  <!-- Yaha condition add ki -->
 					<tr>
 						<td>
 							<input
@@ -66,6 +67,7 @@
 						</td>
 					
 					</tr>
+					<?php } ?>  <!-- Condition yaha close ki -->
 				<?php } ?>
 			<?php } ?>
 			</tbody>
