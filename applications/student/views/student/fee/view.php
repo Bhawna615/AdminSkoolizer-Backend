@@ -245,17 +245,17 @@
 
     /* Bootstrap card styling */
     .card {
-       display: flex;
-       height: max-content;
-       flex-direction: column;
-       justify-content: center;
-       align-items: center;
-       gap: 10px;
+        display: flex;
+        height: max-content;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
         padding: 20px;
         background: none;
         margin: 0;
         cursor: pointer;
-      
+
     }
 
     .card a {
@@ -271,10 +271,10 @@
 
     .profile-image {
         width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid white;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid white;
     }
 
     .profile-container {
@@ -285,15 +285,15 @@
     }
 
     .profile-wrapper {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    padding: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); */
-}
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        padding: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); */
+    }
 
 
     /* Floating button styling */
@@ -349,10 +349,10 @@
 
 
     } */
-    .active  {
-    border: 4px solid rgb(117, 166, 240);
-    padding: 2px;
-}
+    .active {
+        border: 4px solid rgb(117, 166, 240);
+        padding: 2px;
+    }
 
     /* my accounts */
 </style>
@@ -393,7 +393,7 @@
                     <div class="card ">
 
                         <div class="profile-wrapper <?php echo ($account->id == $this->session->userdata('id')) ? 'active' : ''; ?>"
-                        onclick="switchAccount('<?php echo $account->id; ?>')">
+                            onclick="switchAccount('<?php echo $account->id; ?>')">
                             <img src="<?php echo base_url('assets/images/students/') . $account->image; ?>"
                                 class="profile-image" alt="Profile Image">
                         </div>
@@ -522,7 +522,7 @@
                                             } ?>
                                         </td>
                                     </tr>
-                                    <tr style="border:none;">
+                                    <!-- <tr style="border:none;">
                                         <th style="padding: 10px; font-size:1.1rem;">Late Fee</th>
                                         <td style="padding: 10px; font-size:1.1rem;">
                                             <?php
@@ -541,12 +541,71 @@
                                             }
                                             ?>
                                         </td>
-                                    </tr>
-                                    <tr style="border:none;">
+                                    </tr> -->
+                                    <!-- <tr style="border:none;">
                                         <th style="padding: 10px; font-size:1.1rem;">Amount</th>
                                         <td style="padding: 10px; font-size:1.1rem;"><?php $amount = intval($payment->amount) + $lateFee;
                                         echo $amount; ?></td>
+                                    </tr> -->
+
+
+                                    <tr style="border:none;">
+                                        <th style="padding: 10px; font-size:1.1rem;">Fee</th>
+                                        <td style="padding: 10px; font-size:0.9rem;">Tuition Fee:
+                                            <?php echo $payment->tuition_fee; ?><br /><br/>
+                                            Transport Fee: <?php echo $payment->transport_fee; ?><br /><br/>
+                                            Annual Fee: <?php echo $payment->annual_fee; ?><br /><br/>
+                                            Addmission Fee: <?php echo $payment->admission_fee; ?><br /><br/>
+                                            <!-- Amount: <?php echo $payment->amount; ?><br /><br/> -->
+                                            Late Fee: <?php echo $lateFee; ?><br /><br/>
+                                            <strong>Total Amount: <?php echo $payment->amount_paid; ?></strong>
+
+                                            <!-- 
+
+
+                                                <tr style="border:none;">
+                                                    <th style="padding: 10px; font-size:0.8rem;">Tuition Fee</th>
+                                                    <td style="padding: 10px; font-size:0.8rem;"><?php echo $payment->tuition_fee; ?></td>
+                                               
+                                                <tr style="border:none;">
+                                                    <th style="padding: 10px; font-size:0.8rem;">Transport Fee</th>
+                                                    <td style="padding: 10px; font-size:0.8rem;"><?php echo $payment->transport_fee; ?></td>
+                                                </tr>
+                                                <tr style="border:none;">
+                                                    <th style="padding: 10px; font-size:0.8rem;">Annual Fee</th>
+                                                    <td style="padding: 10px; font-size:0.8rem;"><?php echo $payment->annual_fee; ?></td>
+                                                </tr>
+                                                <tr style="border:none;">
+                                                    <th style="padding: 10px; font-size:0.8rem;"><strong>Addmission Fee</strong></th>
+                                                    <td style="padding: 10px; font-size:0.8rem;"><strong><?php echo $payment->admission_fee; ?></strong></td>
+                                                </tr>
+                                                <tr style="border:none;">
+                                                    <th style="padding: 10px; font-size:0.8rem;"><strong>Amount</strong></th>
+                                                    <td style="padding: 10px; font-size:0.8rem;"><strong><?php echo $payment->amount; ?></strong></td>
+                                                </tr>
+                                                <tr style="border:none;">
+                                                    <th style="padding: 10px; font-size:0.8rem;">Late Fee</th>
+                                                    <td style="padding: 10px; font-size:0.8rem;"><?php echo $payment->late_fee_paid; ?></td>
+                                                </tr>
+                                                <tr style="border:none;">
+                                                    <th style="padding: 10px; font-size:0.8rem;">Total Amount</th>
+                                                    <td style="padding: 10px; font-size:1.1rem; color:red;"><?php echo $payment->amount_paid; ?></td>
+                                                </tr> -->
+
+                                        </td>
                                     </tr>
+
+
+
+
+
+
+
+
+
+
+
+
                                     <tr style="border:none;">
                                         <th style="padding: 10px; font-size:1.1rem;">Status</th>
                                         <td style="padding: 10px; font-size:1.1rem;">

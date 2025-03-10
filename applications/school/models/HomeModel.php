@@ -11,7 +11,7 @@ class HomeModel extends CI_Model
 
 	public function getStudentCount() //get students count
 	{
-		$query=$this->db->query("SELECT id FROM student  WHERE Class != 'pass_out'");
+		$query=$this->db->query("SELECT id FROM student  WHERE Class != 'passed_out'");
 		$result=$query->num_rows();
 		return $result;
 	}
