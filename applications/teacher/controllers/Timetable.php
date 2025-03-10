@@ -22,7 +22,7 @@ class Timetable extends CI_Controller
 
 	public function view()  //view timetable
 	{
-		$this->load->view('timetable/timetable',$data);
+		$this->load->view('timetable/timetable');
 	}
 
 	public function get()  //get timetable

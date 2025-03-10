@@ -1,3 +1,14 @@
+<?php
+// filepath: c:\wamp64\www\kkblossom\applications\teacher\views\fee\new_payment_table.php
+
+// Sort the students array by class
+usort($students, function($a, $b) {
+    return strcmp($a->Class, $b->Class);
+});
+?>
+
+
+
 <form id="loading" method="POST" action="<?php echo site_url('fee/insertpayment'); ?>">
 	<div class="col-md-12" align="center">
 		<div class="col-md-6">
@@ -37,7 +48,7 @@
 			<?php if (!empty($students)) { ?>
 				<?php foreach ($students as $row) { ?>
 					<?php if (($row->tuition_fee + $row->transport_fee) > 0) { ?>  <!-- Yaha condition add ki -->
-					<tr>
+						<tr>  <!-- New condition for highlighting -->
 						<td>
 							<input
 								type="checkbox"

@@ -28,7 +28,7 @@
 		margin-bottom: 30px;
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
 		animation: fadeInUp 0.6s ease-in-out;
-	
+
 	}
 
 	.custom-card:hover {
@@ -37,7 +37,7 @@
 	}
 
 	.card-header {
-		background: #2DAA9E ;
+		background: #2DAA9E;
 		/* Purple to Blue */
 		color: white;
 		font-size: 18px;
@@ -48,12 +48,12 @@
 	}
 
 	.card-body {
-		
+
 		padding-top: 10px;
 		background: #fff;
 		border-bottom-left-radius: 12px;
 		border-bottom-right-radius: 12px;
-		
+
 	}
 
 	/* Table Styling */
@@ -69,7 +69,7 @@
 
 	.table thead {
 		background: #80CBC4;
-		color:white;
+		color: white;
 		font-size: 16px;
 		font-weight: bold;
 	}
@@ -126,12 +126,14 @@
 		} */
 
 		.card-header {
-			
+
 			padding: 4px;
 		}
-		.card-header h4{
+
+		.card-header h4 {
 			font-size: 1rem;
 		}
+
 		.card-header i {
 			font-size: 1.2rem;
 		}
@@ -141,10 +143,11 @@
 			padding: 8px;
 			font-size: 7px;
 		}
-		.form-submit{
+
+		.form-submit {
 			font-size: 10px !important;
 		}
-		
+
 	}
 </style>
 
@@ -159,92 +162,96 @@
 <div class="containers">
 
 	<!-- Student Attendance Table -->
-	
-		<div class=" custom-card">
-			<div class="card-header">
-				<h4><i class="las la-user"></i> Student Attendance</h4>
-			</div>
-			<div class="card-body">
-				<table class="table table-striped table-bordered">
-					<thead class="dataTableHead">
-						<tr>
-							<th>Roll No</th>
-							<th>Name</th>
-							<th>Mark</th>
-						</tr>
-					</thead>
-						<tbody class="dataTableBody">
-			<?php if (isset($students)) { ?>
-				<?php foreach ($students as $row) { ?>
+
+	<div class=" custom-card">
+		<div class="card-header">
+			<h4><i class="las la-user"></i> Student Attendance</h4>
+		</div>
+		<div class="card-body">
+			<table class="table table-striped table-bordered">
+				<thead class="dataTableHead">
 					<tr>
-						<td><?php echo $row->Rollno; ?></td>
-						<td><?php echo $row->Name; ?></td>
-						<td><?php $mark = 'Present';
-							if (isset($details)) {
-								foreach ($details as $key) {
-									if ($key->Rollno == $row->Rollno) {
-										if ($key->onLeave == false) {
-											$mark = 'Absent';
-										} else {
-											if ($key->onLeave == true) {
-												$mark = 'On Leave';
+						<th>Roll No</th>
+						<th>Name</th>
+						<th>Mark</th>
+					</tr>
+				</thead>
+				<tbody class="dataTableBody">
+					<?php if (isset($students)) { ?>
+						<?php foreach ($students as $row) { ?>
+							<tr>
+								<td><?php echo $row->Rollno; ?></td>
+								<td><?php echo $row->Name; ?></td>
+								<td><?php $mark = 'Present';
+								if (isset($details)) {
+									foreach ($details as $key) {
+										if ($key->Rollno == $row->Rollno) {
+											if ($key->onLeave == false) {
+												$mark = 'Absent';
+											} else {
+												if ($key->onLeave == true) {
+													$mark = 'On Leave';
+												}
 											}
 										}
 									}
 								}
-							}
-							echo $mark;
-							?></td>
-					</tr>
-					<?php
-				}
-			} ?>
-			</tbody>
-				</table>
-				<button class="form-submit" id="export">Export to CSV</button>
-			</div>
+								echo $mark;
+								?></td>
+							</tr>
+							<?php
+						}
+					} ?>
+				</tbody>
+			</table>
+			<button class="form-submit" id="export">Export to CSV</button>
 		</div>
-	
+	</div>
+
 
 	<!-- Class Attendance Summary Table -->
-	
-		<div class="custom-card">
-			<div class="card-header">
-				<h4><i class="las la-calendar"></i> <?php echo date('d F, Y'); ?></h4>
-			</div>
-			<div class="card-body">
-				<table class="table table-striped table-bordered">
-					<thead class="dataTableHead">
-						<tr>
-							<th>Class</th>
-							<th>Absent</th>
-							<th>On Leave</th>
-							<th>Present</th>
-							<th>TT</th>
-						</tr>
-					</thead>
-					<tbody class="dataTableBody">
-						<?php
-						$current_date = date('Y-m-d'); // Current Date
-						if (isset($attendance_details)) { ?>
-							<?php foreach ($attendance_details as $att) {
-								if ($att->Date == $current_date) { // Filter only today's attendance ?>
 
-									<tr>
-										<td><?php echo $att->Class; ?></td>
-										<td><?php echo $att->Absent; ?></td>
-										<td><?php echo $att->onLeave; ?></td>
-										<td><?php echo $att->Present; ?></td>
-										<td><?php echo $att->Strength; ?></td>
-									</tr>
-									<?php
-								}
-							}
-						} ?>
-					</tbody>
-				</table>
-			</div>
+	<?php
+	// Fetch date from POST request
+	$selected_date = isset($_POST['date']) ? $_POST['date'] : date('Y-m-d');
+	?>
+	<div class="custom-card">
+		<div class="card-header">
+			<h4><i class="las la-calendar"></i> Attendance for <?php echo date('d F, Y', strtotime($selected_date)); ?>
+			</h4>
 		</div>
+		<div class="card-body">
+			<table class="table table-striped table-bordered">
+				<thead class="dataTableHead">
+					<tr>
+						<th>Class</th>
+						<th>Absent</th>
+						<th>On Leave</th>
+						<th>Present</th>
+						<th>TT</th>
+					</tr>
+				</thead>
+				<tbody class="dataTableBody">
+                <?php
+                $this->db->where('Date', $selected_date);
+                $query = $this->db->get('attendence'); // Assuming 'attendance' is the table name
+                if ($query->num_rows() > 0) {
+                    foreach ($query->result() as $att) { ?>
+                        <tr>
+                            <td><?php echo $att->Class; ?></td>
+                            <td><?php echo $att->Absent; ?></td>
+                            <td><?php echo $att->onLeave; ?></td>
+                            <td><?php echo $att->Present; ?></td>
+                            <td><?php echo $att->Strength; ?></td>
+                        </tr>
+                <?php }
+                } else { ?>
+                    <tr><td colspan="5" class="text-center">No records found for this date.</td></tr>
+                <?php } ?>
+            </tbody>
+			</table>
+		</div>
+	</div>
 
 
 </div>

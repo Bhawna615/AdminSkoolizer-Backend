@@ -891,8 +891,8 @@
                 <p class="text-primary" style=" color: #124E66; font-size: 1.1rem;">Class: <?php echo $teacherdetail->Classteacher; ?></p>
             </div>
         </div>
-        <a href="<?php echo site_url('auth/logout'); ?>"> <i class="fas fa-sign-out-alt"></i> Logout</a>
-        <!-- <button class="icon-btn1" onclick="location.href='<?php echo site_url('auth/logout') ?>'">
+        <a href="<?php echo site_url('auth/signOut'); ?>"> <i class="fas fa-sign-out-alt"></i> Logout</a>
+        <!-- <button class="icon-btn1" onclick="location.href='<?php echo site_url('auth/signOut') ?>'">
             <img src="<?php echo base_url('assets/icons/logout.png'); ?>" alt="Logout Icon">
         </button> -->
         <a href="https://play.google.com/store/apps/details?id=com.macmer.kkblossom"> <i class="fas fa-star"></i> Rate
