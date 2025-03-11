@@ -125,10 +125,7 @@
 </style>
 
 <div class="timetable-container">
-	<div class="animated-heading">
-		<i class="las la-calendar-alt"></i> <!-- Icon from Font Awesome -->
-		Select a Day
-	</div>
+	
 	<div class="col-md-12">
 		<?php if ($this->session->flashdata('error')) { ?>
 			<div class="col-md-12 error-bar">
@@ -144,6 +141,10 @@
 				<?php $this->session->unset_userdata('success') ?>
 			</div>
 		<?php } ?>
+	</div>
+    <div class="animated-heading">
+		<i class="las la-calendar-alt"></i> <!-- Icon from Font Awesome -->
+		Select a Day
 	</div>
 
 	 <!-- Date Picker -->
