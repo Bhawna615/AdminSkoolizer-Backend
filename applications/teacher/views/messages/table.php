@@ -1,3 +1,5 @@
+
+
 <table class="table table-responsive table-bordered dataTableFull" id="table">
 	<thead class="dataTableHead">
 	<tr>
@@ -33,6 +35,7 @@
 	<?php } ?>
 	</tbody>
 </table>
+
 
 <script type="text/javascript">
 	$(function () {

@@ -1,4 +1,84 @@
-<?php $this->view('header'); ?>
+
+
+<style>
+    body {
+        font-family: 'Nunito', sans-serif;
+        background-color: #f5f7fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .innerview {
+        margin: 20px;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: 0.3s ease-in-out;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: max-content;
+    }
+
+    .table {
+       height: max-content;
+        padding: 20px;
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .table th {
+        background: #3498db;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+
+    .table td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+        font-size: 15px;
+        color: #333;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #f2f9ff;
+    }
+
+    .table tr:hover {
+        background: rgba(52, 152, 219, 0.2);
+        transition: 0.3s ease-in-out;
+    }
+
+    #export {
+        background: #3498db;
+        color: white;
+        font-size: 16px;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+        display: block;
+        width: 200px;
+        text-align: center;
+        margin: 20px auto;
+    }
+
+    #export:hover {
+        background: #2980b9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+</style>
 <div class="col-md-12 innerview">
       <table class="table table-responsive table-bordered">
         <thead class="dataTableHead">

@@ -231,23 +231,21 @@
 						<th>TT</th>
 					</tr>
 				</thead>
-				<tbody class="dataTableBody">
-                <?php
-                $this->db->where('Date', $selected_date);
-                $query = $this->db->get('attendence'); // Assuming 'attendance' is the table name
-                if ($query->num_rows() > 0) {
-                    foreach ($query->result() as $att) { ?>
-                        <tr>
-                            <td><?php echo $att->Class; ?></td>
-                            <td><?php echo $att->Absent; ?></td>
-                            <td><?php echo $att->onLeave; ?></td>
-                            <td><?php echo $att->Present; ?></td>
-                            <td><?php echo $att->Strength; ?></td>
-                        </tr>
+				 <tbody class="dataTableBody">
+            <?php
+            if (isset($attendance_details) && !empty($attendance_details)) {
+                foreach ($attendance_details as $att) { ?>
+                    <tr>
+                        <td><?php echo $att->Class; ?></td>
+                        <td><?php echo $att->Absent; ?></td>
+                        <td><?php echo $att->onLeave; ?></td>
+                        <td><?php echo $att->Present; ?></td>
+                        <td><?php echo $att->Strength; ?></td>
+                    </tr>
                 <?php }
-                } else { ?>
-                    <tr><td colspan="5" class="text-center">No records found for this date.</td></tr>
-                <?php } ?>
+            } else { ?>
+                <tr><td colspan="5" class="text-center">No records found for this date.</td></tr>
+            <?php } ?>
             </tbody>
 			</table>
 		</div>
