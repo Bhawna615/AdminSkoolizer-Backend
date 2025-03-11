@@ -160,4 +160,17 @@ class Attendance extends CI_Controller
 		$data['attendance'] = $this->AttendanceModel->getStudentAttendance($id);
 		$this->load->view('students/attendance', $data);
 	}
+
+	public function edit()
+	{
+		$date = $this->input->post('date');
+		$class = $this->input->post('class');
+		$this->AttendanceModel->delete($class, $date);
+		$data['date'] = $date;
+		$data['class'] = $class;
+		$class = $this->input->post('class');
+		$data['absentees'] = $this->AttendanceModel->getAbsentees($class, $date);
+		$data['students'] = $this->StudentModel->getByClass($class);
+		$this->load->view('attendance/edit', $data);
+	}
 }
