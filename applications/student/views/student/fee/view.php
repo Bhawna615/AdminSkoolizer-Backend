@@ -529,7 +529,7 @@
                                             if ($payment->status == 0 || $payment->status == null) {
                                                 if (date_create(date("Y-m-d")) > date_create($payment->lastdate)) {
                                                     $days = date_diff(date_create($payment->lastdate), date_create(date("Y-m-d")));
-                                                    $lateFee = $days->format("%R%a") * 10;
+                                                    $lateFee = ($days->format("%R%a")-1) * 10;
                                                     echo $lateFee;
                                                 } else {
                                                     $lateFee = 0;
