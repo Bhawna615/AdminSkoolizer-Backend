@@ -39,6 +39,14 @@ class AttendanceModel extends CI_Model
 		return $result;
 	}
 
+	public function getAttendanceData($class, $date)  //get attendance
+	{
+		$this->db->where('Class', $class);
+		$this->db->where('Date', $date); // 👈 Filter by selected date
+		$query = $this->db->get('attendence');
+		return $query->result();
+	}
+
 	public function getByDate($date)  //get Attendance By Date
 	{
 		$sql='SELECT * FROM attendence WHERE Date=?';

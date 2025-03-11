@@ -233,8 +233,8 @@
 				</thead>
 				 <tbody class="dataTableBody">
             <?php
-            if (isset($attendance_details) && !empty($attendance_details)) {
-                foreach ($attendance_details as $att) { ?>
+            if (isset($attendance_data) && !empty($attendance_data)) {
+                foreach ($attendance_data as $att) { ?>
                     <tr>
                         <td><?php echo $att->Class; ?></td>
                         <td><?php echo $att->Absent; ?></td>

@@ -131,6 +131,7 @@ class Attendance extends CI_Controller
 		$data['students'] = $this->StudentModel->getByClass($class);
 		$data['details'] = $this->AttendanceModel->getDetails($class, $date);
 		$data['attendance_details'] = $this->AttendanceModel->getAttendanceDetails($class);
+		$data['attendance_data'] = $this->AttendanceModel->getAttendanceData($class, $date);
 		$this->load->view('attendance/details', $data);
 	}
 
