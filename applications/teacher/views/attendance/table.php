@@ -18,6 +18,14 @@
 							<i class="las la-eye btn-icon"></i>
 						</button>
 					</form>
+					<form onsubmit="return confirm('Already marked attendance will be removed. Are you sure you want to conitnue?');" method="POST" action="<?php echo site_url('attendance/edit') ?>">
+						<input type="hidden" name="class" value="<?php echo $row->id; ?>">
+						<input type="hidden" name="class" value="<?php echo $row->Class; ?>">
+						<input type="hidden" name="date" value="<?php echo $row->Date; ?>">
+						<button class="dt-action-btn" type="submit" title="Remark">
+							<i class="las la-history btn-icon"></i>
+						</button>
+					</form>
 				</td>
 			</tr>
 		<?php } ?>

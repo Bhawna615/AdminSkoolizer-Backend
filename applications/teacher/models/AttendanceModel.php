@@ -148,4 +148,22 @@ class AttendanceModel extends CI_Model
 		return $query->result();
 	}
 
+	public function getAbsentees($class, $date)
+	{
+		$this->db->where('Class', $class);
+		$this->db->where('Date', $date);
+		return $this->db->get('absentees')->result();
+	}
+
+	public function delete($class, $date)
+	{
+		$this->db->where('Date', $date);
+		$this->db->where('Class', $class);
+		$this->db->delete('absentees');
+
+		$this->db->where('Date', $date);
+		$this->db->where('Class', $class);
+		$this->db->delete('attendence');
+	}
+
 }
