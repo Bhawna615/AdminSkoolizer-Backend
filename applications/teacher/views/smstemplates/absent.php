@@ -34,6 +34,7 @@
         border: 1px solid;
         border-color: #C5C5C5;
         font-family: Nunito;
+        font-size: 0.8rem;
     }
 </style>
  <style type="text/css">
