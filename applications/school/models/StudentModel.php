@@ -22,7 +22,7 @@ class StudentModel extends CI_Model
 
 	public function getInfoMany() //get students info
 	{
-		$query=$this->db->query('SELECT * FROM student');
+		$query=$this->db->query("SELECT * FROM student  WHERE Class != 'passed_out'");
 		$result=$query->result();
 		return $result;
 	}
