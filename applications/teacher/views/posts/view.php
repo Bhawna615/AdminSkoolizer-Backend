@@ -1,4 +1,13 @@
 <?php $this->view('header'); ?>
+<style>
+	#table-view{
+		height: max-content;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+</style>
 <div class="col-md-12 innerview">
 	<div class="message">
         <?php if ($this->session->flashdata('error')) { ?>

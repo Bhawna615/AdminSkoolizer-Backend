@@ -124,7 +124,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		min-height: 100vh;
+		height: max-content;
 	}
 
 	.exam-card {
@@ -203,7 +203,10 @@
 		animation: bounce 1.5s infinite ease-in-out;
 	} */
 </style>
-
+<div class="loader hidden">
+	<img src="<?php echo base_url('assets/gif/giphy.gif') ?>" alt="Loading..."/>
+	<span class="loader-message" id="loader-message">Loading...</span>
+</div>
 <div class="container">
 	<!-- <div class="animated-heading">
 		<i class="las la-calendar-alt"></i> 
@@ -247,5 +250,16 @@
 		</form>
 	</div>
 </div>
+
+
+<script>
+	document.getElementById('loading').onsubmit = function () {
+		const loaderMessage = document.getElementById('loader-message')
+		loaderMessage.innerText = "Creating New Exam..."
+		const loader = document.querySelector(".loader");
+		loader.className = "loader";
+		loaderMessage.innerText = "Sending Notifications..."
+	}
+</script>
 
 <?php $this->view('footer'); ?>

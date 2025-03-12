@@ -1,5 +1,23 @@
 <?php $this->view('header') ?>
 <style type="text/css">
+
+  .msg_sty{
+    height: max-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #007bff;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
 		   th
     {
         background: #EBEBEC;
@@ -7,7 +25,8 @@
         text-transform: uppercase;
         color: black;
         border-right: 1px solid;
-        border-color: #C5C5C5;
+        border-color: #fff;
+        font-size: 1rem;
   
     }
     td
@@ -25,7 +44,7 @@
   height:60px;
   bottom:40px;
   right:40px;
-  background-color:#f95555;
+  background-color: #f95555;
   color:#FFF;
   border-radius:50px;
   text-align:center;
@@ -37,8 +56,8 @@
   margin-top:22px;
 }
   </style>
-<div class="col-md-12" style="padding: 30px;">
-  <div class="col-md-12" style="font-family: RedhatR; font-size: 16px; border: 1px solid; border-color: #f95555; border-radius: 5px; padding-top: 10px; margin-bottom: 20px;">
+<div class="col-md-12 msg_sty">
+  <div class="col-md-12" style="font-family: RedhatR; font-size: 16px; border: 1px solid; border-color: #f95555; border-radius: 5px; padding-top: 10px; margin-bottom: 20px;  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);">
     <p style="color: green;">Preview</p>
     <p>Dear Parent, You are notified that your ward  is absent from school today. Regards, SPIPS</p>
   </div>

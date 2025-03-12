@@ -10,13 +10,14 @@ class HomeworkModel extends CI_Model
 	}
 
 
-	public function get() // get homework
-	{
-		$year = date('Y');
-		$query = $this->db->query("SELECT * FROM assignment WHERE YEAR(Date) = '$year' ORDER BY Date desc");
-		$result = $query->result();
-		return $result;
-	}
+	public function get($class) // get homework
+{
+    $year = date('Y');
+    $query = $this->db->query("SELECT * FROM assignment WHERE YEAR(Date) = '$year' AND Class = '$class' ORDER BY Date DESC");
+    $result = $query->result();
+    return $result;
+}
+
 
 	public function submit(array $homework)  //submit homework
 	{

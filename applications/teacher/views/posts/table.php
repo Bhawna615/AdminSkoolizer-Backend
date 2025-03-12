@@ -2,14 +2,15 @@
 	/* Styling the table container */
 
 	.innerview {
-		margin: 20px;
-		padding: 20px;
+		/* margin: 20px;
+		padding: 20px !important; */
 		background: #ffffff;
 		border-radius: 10px;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		transition: 0.3s ease-in-out;
 		width: 100%;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		height: max-content;
@@ -31,7 +32,7 @@
 		background: #87CEFA;
 		/* Light Blue */
 		color: white;
-		font-size: 1rem;
+		font-size: 0.7rem;
 		text-transform: uppercase;
 		font-weight: bold;
 	}
@@ -60,9 +61,9 @@
 	/* Table cells styling */
 	th,
 	td {
-		padding: 12px;
+		/* padding: 12px; */
 		text-align: left;
-		font-size: 0.9rem;
+		font-size: 0.6rem;
 		border-bottom: 1px solid #ddd;
 	}
 
@@ -95,7 +96,7 @@
 	}
 
 	.btn-icon {
-		font-size: 1.4rem;
+		font-size: 1.2rem;
 	}
 
 	/* Animation for fade-in effect */
