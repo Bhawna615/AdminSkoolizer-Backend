@@ -10,13 +10,41 @@ class HomeworkModel extends CI_Model
 	}
 
 
-	public function get($class) // get homework
+// 	public function get($teacherId) // get homework
+// {
+//     $year = date('Y');
+//     $query = $this->db->query("SELECT * FROM assignment WHERE YEAR(Date) = '$year' ORDER BY Date DESC");
+//     $result = $query->result();
+//     return $result;
+// }
+public function get($teacherId) // get homework
 {
     $year = date('Y');
-    $query = $this->db->query("SELECT * FROM assignment WHERE YEAR(Date) = '$year' AND Class = '$class' ORDER BY Date DESC");
-    $result = $query->result();
-    return $result;
+
+    if (!$teacherId) {
+        return []; // Agar session me teacher ID nahi hai toh empty array return hoga
+    }
+
+    $query = $this->db->query("
+        SELECT DISTINCT a.* FROM assignment a
+        INNER JOIN timetable t ON a.class = t.class
+        WHERE t.TeacherId = '$teacherId' 
+        AND YEAR(a.Date) = '$year'
+        GROUP BY a.id
+        ORDER BY a.Date DESC
+    ");
+
+    return $query->result();
 }
+
+
+// public function gets($class) // get homework
+// {
+//     $year = date('Y');
+//     $query = $this->db->query("SELECT * FROM assignment WHERE YEAR(Date) = '$year' AND Class = '$class' ORDER BY Date DESC");
+//     $result = $query->result();
+//     return $result;
+// }
 
 
 	public function submit(array $homework)  //submit homework

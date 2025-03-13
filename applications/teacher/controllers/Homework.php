@@ -38,8 +38,9 @@ class Homework extends CI_Controller
 
 	public function display()
 	{
-	    $class = $this->session->userdata('class');
-		$data['homework'] = $this->HomeworkModel->get($class);
+		$teacherId = $this->session->userdata('id');
+	    // $class = $this->session->userdata('class');
+		$data['homework'] = $this->HomeworkModel->get($teacherId);
 		$this->load->view('homework/table', $data);
 	}
 
@@ -60,11 +61,13 @@ class Homework extends CI_Controller
 
 	public function submit()
 	{
+		$teacherId = $this->session->userdata('id');
+		$class = $this->input->post('class');
 		$this->form_validation->set_rules($this->config->item('homework'));
 
 		if ($this->form_validation->run() === FALSE) {
-			$data['class'] = $this->input->post('class');
-			$data['subjects'] = $this->TimetableModel->getsubjects($this->input->post('class'));
+			$data['class'] = $class;
+			$data['subjects'] = $this->TimetableModel->getsubjects($class, $teacherId);
 			$this->load->view('homework/details', $data);
 		} else {
 			$date = date('Y-m-d');
