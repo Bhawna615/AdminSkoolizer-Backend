@@ -68,7 +68,7 @@
 		background: #0056b3;
 	}
 
-	.
+	
 	/* Animated Heading */
 	/* .animated-heading {
 		display: flex;

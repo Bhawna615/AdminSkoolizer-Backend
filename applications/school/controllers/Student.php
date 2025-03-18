@@ -392,6 +392,7 @@ class Student extends CI_Controller
             $data['field_mname'] = $this->input->post('field_mname'); 
             $data['field_contact'] = $this->input->post('field_contact'); 
             $data['field_admno'] = $this->input->post('field_admno'); 
+            $data['field_address'] = $this->input->post('field_address'); 
             $data['field_aadhar'] = $this->input->post('field_aadhar'); 
             $data['field_dob'] = $this->input->post('field_dob'); 
             $data['field_qrcode'] = $this->input->post('field_qrcode'); 
@@ -415,6 +416,7 @@ class Student extends CI_Controller
             $data['field_mname'] = $this->input->post('field_mname'); 
             $data['field_contact'] = $this->input->post('field_contact'); 
             $data['field_admno'] = $this->input->post('field_admno'); 
+			$data['field_address'] = $this->input->post('field_address'); 
             $data['field_aadhar'] = $this->input->post('field_aadhar'); 
             $data['field_dob'] = $this->input->post('field_dob'); 
             $data['field_qrcode'] = $this->input->post('field_qrcode'); 

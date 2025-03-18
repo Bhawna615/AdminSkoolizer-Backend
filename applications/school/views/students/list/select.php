@@ -23,6 +23,7 @@
         <input type="checkbox" name="field_mname" class="" value="field_mname"  /> Mother's Name
         <input type="checkbox" name="field_contact" class="" value="field_contact"  /> Contact
         <input type="checkbox" name="field_admno" class=""  value="field_admno" /> Admission Number
+        <input type="checkbox" name="field_address" class=""  value="field_address" /> Address
         <input type="checkbox" name="field_aadhar" class="" value="field_aadhar"  /> Aadhar Number
         <input type="checkbox" name="field_dob" class="" value="field_dob"  /> Date of Birth
         <input type="checkbox" name="field_qrcode" class="" value="field_qrcode"  /> Qr Code

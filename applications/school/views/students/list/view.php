@@ -103,6 +103,10 @@
                                           <?php if(isset($field_admno)) { ?>
                                             <th>Admission No.</th>
                                         <?php } ?>
+
+                                        <?php if(isset($field_address)) { ?>
+                                            <th>Address</th>
+                                        <?php } ?>
                                         
                                          
                                           <?php if(isset($field_dob)) { ?>
@@ -171,6 +175,10 @@
                                                    
                                                       <?php if(isset($field_admno)) { ?>
                                                         <td><?php echo $row->Admno; ?></td>
+                                                    <?php } ?>
+
+                                                    <?php if(isset($field_address)) { ?>
+                                                        <td><?php echo $row->Address; ?></td>
                                                     <?php } ?>
                                                     
                                                     
