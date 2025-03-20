@@ -10,6 +10,18 @@
 	</div>
 </a>
 
+<a href="<?php echo site_url('student/passedout'); ?>" style="color:black;">
+	<div class="col-md-5 cardview" style="background: #fff; padding: 0px; margin-right: 50px;">
+		<div class="col-md-4" style="background: #FFAE10; padding: 20px;" align="center">
+			<i class="las la-graduation-cap" style="font-size: 70px; color: white;"></i>
+		</div>
+		<div class="col-md-8" style="background: #fff;">
+			<p style="font-family: Nunito_regular; font-size: 18px; padding: 10px; margin: 0px;">PASSES OUT STUDENTS</p>
+			<p style="padding-left: 10px; font-size: 40px; font-family: Rubik-Medium; margin: 0px;"><?php echo $studentcount; ?></p>
+		</div>
+	</div>
+</a>
+
 <a href="<?php echo site_url('teacher/view'); ?>" style="color:black;">
 	<div class="col-md-5 cardview" style="background: #fff; padding: 0px;">
 		<div class="col-md-4" style="background: #2C56BB; padding: 20px;" align="center">

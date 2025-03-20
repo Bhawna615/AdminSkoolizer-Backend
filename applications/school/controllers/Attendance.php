@@ -47,6 +47,7 @@ class Attendance extends CI_Controller
 		$class = $_POST['class'];
 		$count = count($_POST['roll']);
 	    $date = date("Y-m-d", strtotime($this->input->post('date')));
+		
 		for ($i=0; $i <$count ; $i++) {
 			$data[$_POST['roll'][$i]] = $_POST['mark'][$i];
 		}

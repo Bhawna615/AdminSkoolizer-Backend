@@ -23,9 +23,13 @@
 			<td><?php echo $request->student_roll_no; ?></td>
 			<td><?php echo $request->date; ?></td>
 			<td><?php echo $request->reason; ?></td>
-			<td><?php if($request->status) {echo "Approved"; } else { echo "Unapproved";} ?></td>
+			<td><?php if ($request->status) {
+				echo "Approved";
+			} else {
+				echo "Unapproved";
+			} ?></td>
 			<td>
-			<?php if(!($request->status)) { ?>
+			<?php if (!($request->status)) { ?>
 				<button  onclick="myFunction(<?php echo $request->id ?>)" class="dt-action-btn" title="Approve">
 					<i class="las la-check btn-icon"></i>
 				</button>
@@ -60,7 +64,16 @@
 	}
 </script> -->
 
-
+<?php
+$unapproved_count = 0;
+if (isset($leaveRequests)) {
+	foreach ($leaveRequests as $request) {
+		if (!$request->status) { // Count unapproved requests
+			$unapproved_count++;
+		}
+	}
+}
+?>
 
 <style>
 	.student-cards-container {
@@ -87,12 +100,16 @@
 		transition: all 0.3s ease;
 		width: 100%;
 	}
+
 	.student-card.approved {
-        background: #BEE3F8 /* Light green for approved */
-    }
-    .student-card.unapproved {
-        background: #f8d7da; /* Light red for unapproved */
-    }
+		background: #BEE3F8
+			/* Light green for approved */
+	}
+
+	.student-card.unapproved {
+		background: #f8d7da;
+		/* Light red for unapproved */
+	}
 
 	.student-card:hover {
 		transform: translateY(-5px);
@@ -151,64 +168,95 @@
 
 
 <div class="col-md-12 innerview">
-<div class="animated-heading">
+
+	<!-- Show the count of unapproved requests at the top -->
+	<div class="unapproved-count">
+		<?php if ($unapproved_count > 0) { ?>
+			🚨 <span><?php echo $unapproved_count; ?></span> Unapproved Leave Requests 🚨
+		<?php } else { ?>
+			✅ All Leave Requests Approved ✅
+		<?php } ?>
+	</div>
+
+
+
+	<div class="animated-heading">
 		<i class="las la-check-circle"></i>Approve Request
 	</div>
-    <div class="message">
-        <?php if ($this->session->flashdata('error')) { ?>
-            <div class="col-md-12 error-bar">
-                <i class="las la-exclamation-triangle"></i>
-                <?php echo $this->session->flashdata('error') ?>
-                <?php $this->session->unset_userdata('error') ?>
-            </div>
-        <?php } ?>
-        <?php if ($this->session->flashdata('success')) { ?>
-            <div class="col-md-12 col-lg-12 success-bar">
-                <i class="las la-check-square"></i>
-                <?php echo $this->session->flashdata('success') ?>
-                <?php $this->session->unset_userdata('success') ?>
-            </div>
-        <?php } ?>
-    </div>
+	<div class="message">
+		<?php if ($this->session->flashdata('error')) { ?>
+			<div class="col-md-12 error-bar">
+				<i class="las la-exclamation-triangle"></i>
+				<?php echo $this->session->flashdata('error') ?>
+				<?php $this->session->unset_userdata('error') ?>
+			</div>
+		<?php } ?>
+		<?php if ($this->session->flashdata('success')) { ?>
+			<div class="col-md-12 col-lg-12 success-bar">
+				<i class="las la-check-square"></i>
+				<?php echo $this->session->flashdata('success') ?>
+				<?php $this->session->unset_userdata('success') ?>
+			</div>
+		<?php } ?>
+	</div>
 
-    <div class="student-cards-container">
-        <?php if (isset($leaveRequests)) { 
-			 usort($leaveRequests, function($a, $b) {
-                return $a->status - $b->status;
-            });
+	<div class="student-cards-container">
+		<?php if (isset($leaveRequests)) {
+			usort($leaveRequests, function ($a, $b) {
+				return $a->status - $b->status;
+			});
 			?>
-            <?php foreach ($leaveRequests as $request) { ?>
-                <div class="student-card <?php echo $request->status ? 'approved' : 'unapproved'; ?>">
-                    <h3 style="padding: 10px; font-weight:bold; font-size:1.5rem; color: #124E66; text-transform:capitalize; background-color: #fff"><?php echo $request->student_name; ?></h3>
-                    <table  class="student-table" border="1" cellspacing="0" cellpadding="10"
-					style="width: 100%; text-align: left; border-collapse: collapse;">
-                        <tr style="border:none;"><th style="padding: 10px; font-size:1.1rem;"><strong>Student ID:</strong></th><td style="padding: 10px; font-size:1.1rem;"><?php echo $request->student_id; ?></td></tr>
-                        <tr style="border:none;"><th style="padding: 10px; font-size:1.1rem;"><strong>Class:</strong></th><td style="padding: 10px; font-size:1.1rem;"><?php echo $request->student_class; ?></td></tr>
-                        <tr style="border:none;"><th style="padding: 10px; font-size:1.1rem;"><strong>Roll No:</strong></th><td style="padding: 10px; font-size:1.1rem;"><?php echo $request->student_roll_no; ?></td></tr>
-                        <tr style="border:none;"><th style="padding: 10px; font-size:1.1rem;"><strong>Date:</strong></th><td style="padding: 10px; font-size:1.1rem;"><?php echo $request->date; ?></td></tr>
-                        <tr style="border:none;"><th style="padding: 10px; font-size:1.1rem;"><strong>Reason:</strong></th><td style="padding: 10px; font-size:1.1rem;"><?php echo $request->reason; ?></td></tr>
-                        <tr style="border:none;"><th style="padding: 10px; font-size:1.1rem;"><strong>Status:</strong></th><td style="padding: 10px; font-size:1.5rem; font-weight:bold; color: #124E66;"><?php echo $request->status ? "Approved" : "Unapproved"; ?></td></tr>
-                    </table>
-                    <?php if(!$request->status) { ?>
-                        <button onclick="myFunction(<?php echo $request->id ?>)" class="view-btn" title="Approve">
-                            Approve
-                        </button>
-                    <?php } ?>
-                </div>
-            <?php } ?>
-        <?php } ?>
-    </div>
+			<?php foreach ($leaveRequests as $request) { ?>
+				<div class="student-card <?php echo $request->status ? 'approved' : 'unapproved'; ?>">
+					<h3
+						style="padding: 10px; font-weight:bold; font-size:1.5rem; color: #124E66; text-transform:capitalize; background-color: #fff">
+						<?php echo $request->student_name; ?></h3>
+					<table class="student-table" border="1" cellspacing="0" cellpadding="10"
+						style="width: 100%; text-align: left; border-collapse: collapse;">
+						<tr style="border:none;">
+							<th style="padding: 10px; font-size:1.1rem;"><strong>Student ID:</strong></th>
+							<td style="padding: 10px; font-size:1.1rem;"><?php echo $request->student_id; ?></td>
+						</tr>
+						<tr style="border:none;">
+							<th style="padding: 10px; font-size:1.1rem;"><strong>Class:</strong></th>
+							<td style="padding: 10px; font-size:1.1rem;"><?php echo $request->student_class; ?></td>
+						</tr>
+						<tr style="border:none;">
+							<th style="padding: 10px; font-size:1.1rem;"><strong>Roll No:</strong></th>
+							<td style="padding: 10px; font-size:1.1rem;"><?php echo $request->student_roll_no; ?></td>
+						</tr>
+						<tr style="border:none;">
+							<th style="padding: 10px; font-size:1.1rem;"><strong>Date:</strong></th>
+							<td style="padding: 10px; font-size:1.1rem;"><?php echo $request->date; ?></td>
+						</tr>
+						<tr style="border:none;">
+							<th style="padding: 10px; font-size:1.1rem;"><strong>Reason:</strong></th>
+							<td style="padding: 10px; font-size:1.1rem;"><?php echo $request->reason; ?></td>
+						</tr>
+						<tr style="border:none;">
+							<th style="padding: 10px; font-size:1.1rem;"><strong>Status:</strong></th>
+							<td style="padding: 10px; font-size:1.5rem; font-weight:bold; color: #124E66;">
+								<?php echo $request->status ? "Approved" : "Unapproved"; ?></td>
+						</tr>
+					</table>
+					<?php if (!$request->status) { ?>
+						<button onclick="myFunction(<?php echo $request->id ?>)" class="view-btn" title="Approve">
+							Approve
+						</button>
+					<?php } ?>
+				</div>
+			<?php } ?>
+		<?php } ?>
+	</div>
 </div>
 
 
 
 <script type="text/javascript">
-    function myFunction(id) {
-        var r = confirm("Are you sure you want to approve this request?");
-        if (r == true) {
-            location.href = '<?php echo site_url('student/approveLeaveRequest/') ?>' + id;
-        }
-    }
+	function myFunction(id) {
+		var r = confirm("Are you sure you want to approve this request?");
+		if (r == true) {
+			location.href = '<?php echo site_url('student/approveLeaveRequest/') ?>' + id;
+		}
+	}
 </script>
-
-

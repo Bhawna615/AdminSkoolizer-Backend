@@ -79,9 +79,9 @@ class AttendanceModel extends CI_Model
 		return $result;
 	}
 
-	public function verify($class)  //verify if attendance
+	public function verify($class, $date)  //verify if attendance
 	{
-		$date = date('Y-m-d');
+		$date = date('Y-m-d', strtotime($date));
 		$sql = 'SELECT * FROM attendence WHERE Date=? AND Class=?';
 		$query = $this->db->query($sql, array($date, $class));
 		$result = $query->num_rows();
@@ -91,6 +91,7 @@ class AttendanceModel extends CI_Model
 			return false;
 		}
 	}
+
 
 	public function loadAllAbsentsToday()
 	{

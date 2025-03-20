@@ -29,8 +29,9 @@ class Home extends CI_Controller
 		$data['examcount'] = $this->HomeModel->getExamCount();
 		$data['birthdaycount'] = $this->HomeModel->getBirthdayCount();
 		$data['feeCount'] = $this->HomeModel->getPendingFeeCount();
-		$data['leaveRequestCount'] = $this->HomeModel->getLeaveRequestCount();
-
+		// $data['leaveRequestCount'] = $this->HomeModel->getLeaveRequestCount();
+		$data['leaveRequestMessages'] = $this->HomeModel->leaveRequestMessages($teacherId);
+      
 		$data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
 		$this->load->view('home/home', $data);
 	}

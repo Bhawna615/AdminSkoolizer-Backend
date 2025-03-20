@@ -226,18 +226,18 @@
         </div>
 
         <div
-            class="sidebar-menu-item orange-background <?php echo ($recentMessages > 0) ? 'notification-pending' : ''; ?>">
+            class="sidebar-menu-item orange-background <?php echo ($leaveRequestMessages > 0) ? 'notification-pending' : ''; ?>">
             <a href="<?php echo site_url('student/viewLeaveRequests') ?>">
             <img src="<?php echo base_url('assets/icons/personal.png'); ?>" alt="Exams Icon">
                 <p>Leave Requests</p>
-                <?php if ($recentMessages > 0) {
-                    echo "<span class='notification-count'>{$recentMessages}</span>";
+                <?php if ($leaveRequestMessages > 0) {
+                    echo "<span class='notification-count'>{$leaveRequestMessages}</span>";
                 } ?>
             </a>
         </div>
 
         <div class="sidebar-menu-item <?php echo ($recentAssignments > 0) ? 'notification-pending' : ''; ?>">
-            <a href="<?php echo site_url('attendance/getRollCall') ?>">
+            <a href="<?php echo site_url('attendance/mark') ?>">
                 <img src="<?php echo base_url('assets/icons/mark.png'); ?>" alt="Assignment Icon">
                 <p>Mark Attendance</p>
                 <?php if ($recentAssignments > 0) {
@@ -386,9 +386,10 @@
 
 
 
-<script>
+<!-- <script>
     document.querySelectorAll('.sidebar-menu-item').forEach(item => {
         item.addEventListener('click', function () {
+            console.log("Clicked!"); // ✅ Debugging step: Check if event fires
             if (this.classList.contains('notification-pending')) {
                 this.classList.remove('notification-pending');
                 this.classList.add('seen'); // Add the seen class to revert the notification appearance
@@ -411,7 +412,7 @@
 
 
 
-</script>
+</script> -->
 
 
 

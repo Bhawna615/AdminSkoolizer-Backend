@@ -27,6 +27,12 @@ class StudentModel extends CI_Model
 		return $result;
 	}
 
+	public function getpassedoutInfoMany() //get students info
+	{
+		$query=$this->db->query("SELECT * FROM student  WHERE Class = 'passed_out'");
+		$result=$query->result();
+		return $result;
+	}
 	public function getInfo($id) //get student info
 	{
 		$sql='SELECT * FROM student WHERE id=?';

@@ -59,8 +59,10 @@
 
 
 <div class="attendance-container">
-    <p class="headings"><i class="las la-calendar"></i> <?php echo date('d F, Y'); ?></p>
+<p class="headings">Date: <?php if(isset($date)) { echo $date; } ?></p>
+<p class="headings">Class: <?php if(isset($class)) { echo $class; } ?></p>
     <form method="POST" action="<?php echo site_url('attendance/submit') ?>">
+    <input type="hidden" name="date" value="<?php echo $date ?>" />
         <table class="attendance-table">
             <thead>
 			<tr>

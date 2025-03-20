@@ -18,6 +18,7 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$data['studentcount'] = $this->HomeModel->getStudentCount();
+		$data['passedoutstudentcount'] = $this->HomeModel->getPassedOutStudentCount();
 		$data['teachercount'] = $this->HomeModel->getTeacherCount();
 		$data['classescount'] = $this->HomeModel->getClassesCount();
 		$data['employeecount'] = $this->HomeModel->geTemployeeCount();

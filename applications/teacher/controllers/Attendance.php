@@ -27,25 +27,31 @@ class Attendance extends CI_Controller
 
 	public function getRollCall()
 	{
-	    $class = $this->session->userdata('class');
-		$mark = $this->AttendanceModel->verify($class);
-		$data['movements'] = $this->MovementModel->filterTwo($class);
-		$data['leaveRequests'] = $this->StudentModel->getLeaveRequestsOfClass($class, date("d-m-Y"));
-		if ($mark == false) {
+		$class = $this->session->userdata('class');
+		$date = $this->input->post('date');
+		// $data['movements'] = $this->MovementModel->filterTwo($class);
+		// $data['leaveRequests'] = $this->StudentModel->getLeaveRequestsOfClass($class, date("d-m-Y"));
+		if($this->AttendanceModel->verify($class, $date)) {
+			$this->session->set_flashdata('error', "Attendance already marked");
+			redirect(site_url('attendance/mark'));
+		} else {
+			$data['date'] = $date;
+			$data['class'] = $class;
+			$class = $this->session->userdata('class');
 			$data['students'] = $this->StudentModel->getByClass($class);
 			$this->load->view('attendance/rollcall', $data);
 		}
-		else {
-			$this->load->view('alerts/attendancetaken');
-		}
 	}
+
+	
 
 	public function submit()
 	{
 		$data = array();
 		$class = $_POST['class'];
 		$count = count($_POST['roll']);
-		$date = date('Y-m-d');
+	    $date = date("Y-m-d", strtotime($this->input->post('date')));
+		
 		for ($i=0; $i <$count ; $i++) {
 			$data[$_POST['roll'][$i]] = $_POST['mark'][$i];
 		}

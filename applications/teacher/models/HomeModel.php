@@ -120,4 +120,29 @@ class HomeModel extends CI_Model
         $query = $this->db->get('teachers'); // Assuming you have a 'students' table
         return $query->row(); // Return a single row
 	}
+
+
+	// notification
+
+	public function leaveRequestMessages($teacherId)
+	{
+		    // Teacher ki details fetch karo
+		$teacher = $this->db->where('id', $teacherId)->get('teachers')->row();
+		$class = $this->session->userdata('class');
+        
+    
+        $this->db->where('created_at >', $teacher->notification_checked_at);
+        $this->db->where('student_class', $class);
+        
+        return $this->db->get('leave_requests')->num_rows();
+	}
+		
+	public function updateNotificationCheckTime($teacherId)
+    {
+        $this->db->set('notification_checked_at', date("Y-m-d H:i:s"));
+        $this->db->where('id', $teacherId);
+        $this->db->update('teachers');
+    }
+
+	// notification
 }

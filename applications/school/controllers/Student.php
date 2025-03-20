@@ -122,9 +122,20 @@ class Student extends CI_Controller
 		$this->load->view('students/viewstudents', $data);
 	}
 
+	public function passedout(){
+		// $data['students'] = $this->StudentModel->getPassedOutStudents();
+		$this->load->view('students/passedout');
+	}
+
 	public function display()
 	{
 		$data['students'] = $this->StudentModel->getInfoMany();
+		$this->load->view('students/table', $data);
+	}
+
+	public function passedout_display()
+	{
+		$data['students'] = $this->StudentModel->getpassedoutInfoMany();
 		$this->load->view('students/table', $data);
 	}
 

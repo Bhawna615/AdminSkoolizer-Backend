@@ -16,6 +16,14 @@ class HomeModel extends CI_Model
 		return $result;
 	}
 
+	public function getPassedOutStudentCount() //get students count
+	{
+		$query=$this->db->query("SELECT id FROM student  WHERE Class = 'passed_out'");
+		$result=$query->num_rows();
+		return $result;
+	}
+	
+
 	public function getTeacherCount() //get teacher count
 	{
 		$query=$this->db->query('SELECT id FROM teachers');
