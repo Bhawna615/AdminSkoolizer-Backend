@@ -8,7 +8,7 @@ class Home extends CI_Controller
 		$this->load->library('session');
         $this->load->helper('url');
         $this->load->model('HomeModel');
-        $this->load->library('session');
+        $this->load->config('settings');
 		date_default_timezone_set("Asia/Kolkata");
    		if (!(isset($_SESSION['loggedIn']))) {
 			session_destroy();

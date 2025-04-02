@@ -149,9 +149,9 @@
             <?php } ?>
         </div>
         
-        <form method="POST" action="<?php echo site_url('exam/view') ?>">
+        <form method="POST" action="<?php echo site_url('exam/views') ?>">
             <p class="headings">Exam Type</p>
-            <select name="exam" class="form-select">
+            <select name="type" class="form-select">
                 <?php if (isset($examTypes)) { ?>
                     <?php foreach ($examTypes as $examType) { ?>
                         <option value="<?php echo $examType->Examtype; ?>">

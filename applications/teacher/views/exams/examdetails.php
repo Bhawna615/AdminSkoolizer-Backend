@@ -214,6 +214,9 @@
 	</div> -->
 	<div class="exam-card">
 		<form id="loading" method="POST" action="<?php echo site_url('exam/submit'); ?>">
+			 <!-- Hidden Input for Class -->
+			 <input type="hidden" name="class" value="<?php echo isset($class) ? $class : ''; ?>" />
+			 
 			<p class="details">Subject</p>
 			<select name="subject" class="form-select">
 				<?php if (isset($subjects)) { ?>

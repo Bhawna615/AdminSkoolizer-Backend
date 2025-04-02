@@ -12,6 +12,7 @@ class Auth extends CI_Controller
 		$this->load->helper('url');
 		$this->load->model('AuthModel');
 		$this->load->library('session');
+		   $this->load->config('settings');
 		$this->load->library('form_validation');
 		$this->load->config('validation_rules');
 		date_default_timezone_set("Asia/Kolkata");

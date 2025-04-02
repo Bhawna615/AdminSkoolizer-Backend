@@ -47,6 +47,14 @@ class ExamModel extends CI_Model
 
 	}
 
+	public function getexamsdetail($examType)
+	{
+		$sql='SELECT * FROM conduct WHERE Examtype=? ORDER BY Date DESC';
+		$query=$this->db->query($sql,$examType);
+		$result=$query->result();
+		return $result;
+	}
+
 	public function marksForm($class)
 	{
 		$sql='SELECT * FROM student WHERE Class=? Order By Rollno ASC';

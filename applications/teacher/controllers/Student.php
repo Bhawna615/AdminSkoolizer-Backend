@@ -117,7 +117,9 @@ class Student extends CI_Controller
 	public function viewMany() //view students
 	{
 
-		$this->load->view('students/viewstudents');
+		$teacherId = $this->session->userdata('id');
+        $data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
+		$this->load->view('students/viewstudents', $data);
 	}
 
 	public function display()
@@ -135,6 +137,8 @@ class Student extends CI_Controller
 
 	public function view($id)  //view student
 	{
+		$teacherId = $this->session->userdata('id');
+        $data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
 		$data['student'] = $this->StudentModel->getInfo($id);
 		$this->load->view('students/studentprofile', $data);
 	}

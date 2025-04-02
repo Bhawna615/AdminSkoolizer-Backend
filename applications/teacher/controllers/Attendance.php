@@ -10,7 +10,9 @@ class Attendance extends CI_Controller
 		$this->load->model('ClassModel');
 		$this->load->model('StudentModel');
 		$this->load->model('MovementModel');
+		$this->load->model('HomeModel');
 		$this->load->helper('url');
+		$this->load->config('settings');
 		$this->load->library('session');
         date_default_timezone_set("Asia/Kolkata");
 			if (!(isset($_SESSION['loggedIn']))) {
@@ -21,12 +23,16 @@ class Attendance extends CI_Controller
 
 	public function mark()
 	{
+		$teacherId = $this->session->userdata('id');
+        $data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
 		$data['classes']=$this->ClassModel->getAllClassesDetails();
 		$this->load->view('attendance/markattendance',$data);
 	}
 
 	public function getRollCall()
 	{
+		$teacherId = $this->session->userdata('id');
+        $data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
 		$class = $this->session->userdata('class');
 		$date = $this->input->post('date');
 		// $data['movements'] = $this->MovementModel->filterTwo($class);
@@ -108,7 +114,9 @@ class Attendance extends CI_Controller
 
 	public function view()
 	{
-		$this->load->view('attendance/viewattendance');
+		$teacherId = $this->session->userdata('id');
+        $data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
+		$this->load->view('attendance/viewattendance', $data);
 	}
 
 	public function display()
@@ -132,6 +140,8 @@ class Attendance extends CI_Controller
 
 	public function details()
 	{
+		$teacherId = $this->session->userdata('id');
+        $data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
 		$class = $_POST['class'];
 		$date = $_POST['date'];
 		$data['students'] = $this->StudentModel->getByClass($class);
@@ -143,11 +153,15 @@ class Attendance extends CI_Controller
 
 	public function viewByMonth()
 	{
-		$this->load->view('attendance/bymonth');
+		$teacherId = $this->session->userdata('id');
+        $data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
+		$this->load->view('attendance/bymonth' , $data);
 	}
 
 	public function getByMonth()
 	{
+		$teacherId = $this->session->userdata('id');
+        $data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
 		$class = $this->session->userdata('class');
 		$month = $_POST['month'];
 		$currentYear = date("Y");

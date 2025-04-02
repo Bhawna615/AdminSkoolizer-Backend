@@ -9,8 +9,10 @@ class Timetable extends CI_Controller
 		$this->load->model('TimetableModel');
 		$this->load->model('ClassModel');
 		$this->load->model('TeacherModel');
+		$this->load->model('HomeModel');
 		$this->load->helper('url');
 		$this->load->library('session');
+		$this->load->config('settings');
 		$this->load->library('form_validation');
 		$this->load->config('validation_rules');
         date_default_timezone_set("Asia/Kolkata");
@@ -22,11 +24,15 @@ class Timetable extends CI_Controller
 
 	public function view()  //view timetable
 	{
-		$this->load->view('timetable/timetable');
+		$teacherId = $this->session->userdata('id');
+        $data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
+		$this->load->view('timetable/timetable' , $data);
 	}
 
 	public function get()  //get timetable
 	{
+		$teacherId = $this->session->userdata('id');
+        $data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
 		$class = $this->session->userdata('class');
 		$day=$_POST['day'];
 		$data['timetable']=$this->TimetableModel->get($class,$day);

@@ -8,9 +8,9 @@
         padding: 0;
     }
 
-    .innerview {
-        margin: 20px;
-        padding: 20px;
+    /* .innerview {
+        margin: 80px;
+        padding: 80px;
         background: #ffffff;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -20,7 +20,7 @@
         justify-content: center;
         align-items: center;
         height: max-content;
-    }
+    } */
 
     .table {
        height: max-content;
@@ -29,7 +29,7 @@
         border-collapse: collapse;
         background: white;
         border-radius: 10px;
-        overflow: hidden;
+        /* overflow: hidden; */
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 

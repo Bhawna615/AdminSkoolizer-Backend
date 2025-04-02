@@ -11,12 +11,14 @@ class Exam extends CI_Controller
 		$this->load->model('ClassModel');
 		$this->load->model('MessageModel');
 		$this->load->model('StudentModel');
+		$this->load->model('HomeModel');
 		$this->load->model('TimetableModel');
         $this->load->model('MetricsModel');
 		$this->load->helper('url');
 		$this->load->library('form_validation');
 		$this->load->config('validation_rules');
 		$this->load->library('session');
+		$this->load->config('settings');
         date_default_timezone_set("Asia/Kolkata");
 		if (!(isset($_SESSION['loggedIn']))) {
 			session_destroy();
@@ -27,6 +29,7 @@ class Exam extends CI_Controller
 	public function newExam()
 	{
 	    $teacherId = $this->session->userdata('id');
+		$data['teacherdetail'] = $this->HomeModel->getteacherdetail($teacherId);
 		$data['classes']=$this->ClassModel->getClasses($teacherId);
 		$this->load->view('exams/newexam', $data);
 	}
@@ -61,7 +64,8 @@ class Exam extends CI_Controller
 			if ($response) {
 				$this->createExamNotification($data);
 				$this->session->set_flashdata('success', "Successfully Submitted");
-				redirect(site_url('exam/view'));
+			 // Pass class and type as GET parameters
+			 redirect(site_url('exam/view?class=' . urlencode($_POST['class']) . '&type=' . urlencode($_POST['type'])));
 			} else {
 				$this->session->set_flashdata('error', "Failed to Submit");
 				redirect(site_url('exam/view'));
@@ -78,11 +82,26 @@ class Exam extends CI_Controller
 
 	public function view()
 	{
-	    $class = $this->session->userdata('class');
-	    $examType = $this->input->post('exam');
+	   // Get class and examType from URL
+	   $class = $this->input->get('class');
+	   $examType = $this->input->get('type');
+	   
 	    $data['class'] = $class;
 	    $data['examType'] = $examType;
 	    $data['exams'] = $this->ExamModel->getexams($class, $examType);
+		$this->load->view('exams/viewexams', $data);
+	}
+
+	public function views()
+	{
+		
+		 // Get class and examType from URL
+		
+		 $examType = $this->input->post('type');
+		
+	   
+	    $data['examType'] = $examType;
+	    $data['exams'] = $this->ExamModel->getexamsdetail( $examType);
 		$this->load->view('exams/viewexams', $data);
 	}
 
