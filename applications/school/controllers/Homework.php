@@ -65,6 +65,25 @@ class Homework extends CI_Controller
 			$data['subjects'] = $this->TimetableModel->getsubjects($this->input->post('class'));
 			$this->load->view('homework/details', $data);
 		} else {
+			$upload_path = './assets/homework/';
+			if (!is_dir($upload_path)) {
+				mkdir($upload_path, 0777, true);
+			}
+		
+			$config['upload_path']   = $upload_path;
+			$config['allowed_types'] = '*'; // or specify: 'jpg|png|pdf|doc|ppt|pptx'
+			$config['max_size']      = 10240; // 10MB
+			$config['encrypt_name']  = TRUE;
+		
+			$this->load->library('upload', $config);
+		
+			$file_url = null;
+			if ($this->upload->do_upload('file')) {
+				$file_data = $this->upload->data();
+				$file_url = base_url('assets/homework/' . $file_data['file_name']);
+			}
+
+			
 			$date = date('Y-m-d');
 
 			$homework = array(
@@ -72,8 +91,8 @@ class Homework extends CI_Controller
 				'Subjectname' => $this->input->post('subject'),
 				'Class' => $this->input->post('class'),
 				'Assignment' =>$this->input->post('assignment'),
-				'file' => $this->input->post('file'),
-				'file_url' => $this->input->post('url')
+				'file' => $file_data['file_name'],
+				'file_url' => $file_url
 			);
 
 			$response = $this->HomeworkModel->submit($homework);
