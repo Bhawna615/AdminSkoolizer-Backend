@@ -44,29 +44,56 @@ class Post extends CI_Controller
 	}
 
 	public function save()
-	{
-		$this->form_validation->set_rules($this->config->item('post'));
-		if ( $this->form_validation->run() === FALSE ) {
-			$this->load->view('posts/create');
-		} else {
-			$post = array(
-				'text' => $this->input->post('text'),
-				'recipient_group' => $this->session->userdata('class'),
-				'file' => $this->input->post('file'),
-				'url' => $this->input->post('url'),
-                'created_at' => date("Y-m-d H:i:s")
-			);
+{
+	$this->form_validation->set_rules($this->config->item('post'));
 
-			if ($this->PostModel->insert($post)) {
-				$this->createPostNotification($this->session->userdata('class'), $this->input->post('text'));
-				$this->session->set_flashdata('success', "Saved Successfully");
-				redirect('post/view');
-			} else {
-				$this->session->set_flashdata('error', "Failed to Save");
-				redirect('post/view');
-			}
+	if ($this->form_validation->run() === FALSE) {
+		$this->load->view('posts/create');
+	} else {
+		// File Upload Setup
+		$upload_path = './assets/posts/';
+		if (!is_dir($upload_path)) {
+			mkdir($upload_path, 0777, true);
+		}
+
+		$config['upload_path']   = $upload_path;
+		$config['allowed_types'] = '*'; // or specify: 'jpg|png|pdf|doc|ppt|pptx'
+		$config['max_size']      = 10240; // 10MB
+		$config['encrypt_name']  = TRUE;
+
+		$this->load->library('upload', $config);
+
+		$file_url = null;
+		if ($this->upload->do_upload('file')) {
+			$file_data = $this->upload->data();
+			$file_url = base_url('assets/posts/' . $file_data['file_name']);
+			
+		} else {
+			// File upload failed, show error if needed:
+			$error = $this->upload->display_errors();
+			echo "<pre>Upload Error: "; print_r($error); echo "</pre>";
+			// You can choose to return or continue without file
+		}
+
+		// Prepare Post Data
+		$post = array(
+			'text' => $this->input->post('text'),
+			'recipient_group' => $this->session->userdata('class'),
+			'file' => $file_data['file_name'],
+			'url' => $file_url,
+			'created_at' => date("Y-m-d H:i:s")
+		);
+
+		if ($this->PostModel->insert($post)) {
+			$this->createPostNotification($this->session->userdata('class'), $this->input->post('text'));
+			$this->session->set_flashdata('success', "Saved Successfully");
+			redirect('post/view');
+		} else {
+			$this->session->set_flashdata('error', "Failed to Save");
+			redirect('post/view');
 		}
 	}
+}
 
 	public function delete($id)
 	{

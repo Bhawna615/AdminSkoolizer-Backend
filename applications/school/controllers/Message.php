@@ -53,10 +53,29 @@ class Message extends CI_Controller
 			$data['recipients'] = $this->MessageModel->loadRecipients();
 			$this->load->view('messages/newmessage', $data);
 		} else {
+
+			$upload_path = './assets/messages/';
+			if (!is_dir($upload_path)) {
+				mkdir($upload_path, 0777, true);
+			}
+		
+			$config['upload_path']   = $upload_path;
+			$config['allowed_types'] = '*'; // or specify: 'jpg|png|pdf|doc|ppt|pptx'
+			$config['max_size']      = 10240; // 10MB
+			$config['encrypt_name']  = TRUE;
+		
+			$this->load->library('upload', $config);
+		
+			$file_url = null;
+			if ($this->upload->do_upload('file')) {
+				$file_data = $this->upload->data();
+				$file_url = base_url('assets/messages/' . $file_data['file_name']);
+			}
+			
 			$recipientIds = $this->input->post('id');
 			$message = $this->input->post('message');
-			$url = $this->input->post('url');
-			$file = $this->input->post('file');
+			$url = $file_url;
+			$file = $file_data['file_name'];
 
 
 			if ($this->MessageModel->insert($recipientIds, $message, $file, $url)) {
@@ -69,6 +88,7 @@ class Message extends CI_Controller
 			}
 		}
 	}
+
 
 	public function get($id)  //getmessages
 	{
