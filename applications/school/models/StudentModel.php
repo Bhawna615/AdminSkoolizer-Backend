@@ -22,7 +22,7 @@ class StudentModel extends CI_Model
 
 	public function getInfoMany() //get students info
 	{
-		$query=$this->db->query("SELECT * FROM student  WHERE Class != 'passed_out'");
+		$query=$this->db->query("SELECT * FROM student  WHERE Class != 'passed_out' Order By Rollno ASC");
 		$result=$query->result();
 		return $result;
 	}
@@ -151,10 +151,12 @@ class StudentModel extends CI_Model
 	}
 
 	public function getFilteredData($class)
-	{
-		$this->db->where('Class', $class);
-		return $this->db->get('student')->result();
-	}
+{
+    $this->db->where('Class', $class);
+    $this->db->order_by('Rollno', 'ASC'); // Ascending order
+    return $this->db->get('student')->result();
+}
+
 
 	public function getOne($id)
 	{

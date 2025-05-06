@@ -36,7 +36,7 @@
 	$(document).ready(function () {
 		$(function () {
 			$('#table').DataTable({
-				"order": [[0, "desc"]],
+				"ordering": false // Disable sorting on the table,
 				responsive: true,
 			});
 		});

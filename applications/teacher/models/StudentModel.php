@@ -22,9 +22,13 @@ class StudentModel extends CI_Model
 
 	public function getInfoMany($class) //get students info
 	{
-		return $this->db->where('Class', $class)->get('student')->result();
+		return $this->db
+					->where('Class', $class)
+					->order_by('Rollno', 'ASC') // Roll number chhote se bada
+					->get('student')
+					->result();
 	}
-
+	
 	public function getInfo($id) //get student info
 	{
 		$sql = 'SELECT * FROM student WHERE id=?';
@@ -143,6 +147,7 @@ class StudentModel extends CI_Model
 	public function getFilteredData($class)
 	{
 		$this->db->where('Class', $class);
+		$this->db->order_by('Rollno', 'ASC'); // Ascending order
 		return $this->db->get('student')->result();
 	}
 
