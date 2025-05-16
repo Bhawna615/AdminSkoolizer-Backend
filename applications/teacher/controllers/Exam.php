@@ -97,11 +97,11 @@ class Exam extends CI_Controller
 		
 		 // Get class and examType from URL
 		
-		 $examType = $this->input->post('type');
-		
+		//  $examType = $this->input->post('type');
+		 $teacherId = $this->session->userdata('id');
 	   
-	    $data['examType'] = $examType;
-	    $data['exams'] = $this->ExamModel->getexamsdetail( $examType);
+	    // $data['examType'] = $examType;
+	    $data['exams'] = $this->ExamModel->getexamsdetail( $teacherId);
 		$this->load->view('exams/viewexams', $data);
 	}
 

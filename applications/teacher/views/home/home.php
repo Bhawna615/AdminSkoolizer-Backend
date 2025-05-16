@@ -281,7 +281,7 @@
             </a>
         </div>
         <div class="sidebar-menu-item blue-background <?php echo ($recentEvents > 0) ? 'notification-pending' : ''; ?>">
-            <a href="<?php echo site_url('exam/selectClass') ?>">
+            <a href="<?php echo site_url('exam/views') ?>">
                 <img src="<?php echo base_url('assets/icons/all_exams.png'); ?>" alt="Exams Icon">
                 <p>All Exams</p>
                 <?php if ($recentEvents > 0) {
