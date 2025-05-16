@@ -134,7 +134,7 @@ td a:hover {
 		<th>Class</th>
 		<th>Exam Type</th>
 		<th>Subject</th>
-		<th>Syllabus</th>
+		<!-- <th>Syllabus</th> -->
 		<th>Max Marks</th>
 		<th>Date</th>
 		<th>Actions</th>
@@ -147,7 +147,7 @@ td a:hover {
 			<td><?php echo $row->Class; ?></td>
 			<td><?php echo $row->Examtype; ?></td>
 			<td><?php echo $row->Subject; ?></td>
-			<td><?php echo $row->Examname; ?></td>
+			<!-- <td><?php echo $row->Examname; ?></td> -->
 			<td><?php echo $row->Maxmarks; ?></td>
 			<td><?php echo date('d F,Y', strtotime($row->Date)); ?></td>
 			<td>
