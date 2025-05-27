@@ -125,4 +125,13 @@ class TeacherModel extends CI_Model
         return $this->db->where('id', $teacherId)->update('teachers', $credentials);
     }
 
+	public function getteachers($class) {
+    $sql = "SELECT t.Teachername, tt.Class 
+            FROM teachers t
+            JOIN timetable tt ON t.id = tt.TeacherId
+            WHERE tt.Class = ?
+            GROUP BY t.Teachername, tt.Class";
+    $query = $this->db->query($sql, array($class));
+    return $query->result();
+}
 }

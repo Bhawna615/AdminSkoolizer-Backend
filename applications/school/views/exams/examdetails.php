@@ -23,6 +23,15 @@
 					<?php } ?>
 				</select>
 
+				<p class="details">Teacher Name</p>
+				<select name="teacher" class="form-select">
+					<?php if (isset($teachers)) { ?>
+						<?php foreach ($teachers as $row) { ?>
+							<option value="<?php echo $row->id ?>"><?php echo $row->Teachername; ?></option>
+						<?php } ?>
+					<?php } ?>
+				</select>
+
 				<p class="details">Exam Type</p>
 				<select name="type" class="form-select">
 				    <option>Daily Revision Test</option>

@@ -36,6 +36,7 @@ class Exam extends CI_Controller
 		$class = $_POST['class'];
 		$data['class'] = $class;
 		$data['subjects'] = $this->TimetableModel->getsubjects($class);
+		$data['teachers'] = $this->TeacherModel->getteachers($class);
 		$this->load->view('exams/examdetails', $data);
 	}
 
@@ -53,6 +54,7 @@ class Exam extends CI_Controller
 				'Examname' => $_POST['topic'],
 				'Subject' => $subject->Subjectname,
 				'Examtype' => $_POST['type'],
+				'teacher_id'=> $_POST['teacher'],
 				'Class' => $_POST['class'],
 				'Maxmarks' => $_POST['marks'],
 				'Date' => $_POST['date'],
