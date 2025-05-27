@@ -27,7 +27,8 @@
 				<select name="type" class="form-select">
 				    <option>Daily Revision Test</option>
 				    <option>Monthly Examination</option>
-				    <option>Periodic Test 1</option>
+				    <option>Periodic Test-I</option>
+				    <option>Periodic Test-II</option>
 				    <option>NB-I</option>
 				    <option>SEA-I</option>
 				    <option>WSA-I</option>
