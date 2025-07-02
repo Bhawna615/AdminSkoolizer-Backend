@@ -461,16 +461,18 @@
 
         <?php
         // Sort payments array to show pending payments first
-        usort($payments, function ($a, $b) {
-            // If payment a is unpaid (status == 0) and b is paid (status == 1), a should come first
-            if ($a->status == 0 && $b->status == 1) {
-                return -1; // a comes before b
-            } elseif ($a->status == 1 && $b->status == 0) {
-                return 1; // b comes before a
-            } else {
-                return 0; // no change in order if both are unpaid or both are paid
-            }
-        });
+       usort($payments, function ($a, $b) {
+    // Step 1: Prioritize unpaid fees first
+    if (($a->status == 0 || $a->status == null) && $b->status == 1) {
+        return -1;
+    } elseif ($a->status == 1 && ($b->status == 0 || $b->status == null)) {
+        return 1;
+    } else {
+        // Step 2: If both are same status, sort by created date (latest first)
+        return strtotime($b->created_at) - strtotime($a->created_at);
+    }
+});
+
         ?>
 
         <div class="col-xs-12 message-list-container">
