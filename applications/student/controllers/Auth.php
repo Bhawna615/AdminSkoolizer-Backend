@@ -8,12 +8,26 @@
         $this->load->library('session');
         $this->load->config('settings');
         
+
+        // Auto logout if class is passed_out
+    if ($this->session->userdata('class')) {
+        $class = strtolower($this->session->userdata('class'));
+        if ($class == 'passed_out' || $class == 'passed out') {
+            session_destroy();
+            redirect(site_url('home'));
+            exit;
+        }
+    }
     }
 
     public function verify($qrCode)
     {
         $student = $this->AuthModel->getOne($qrCode);
         if (!empty($student)) {
+             // YAHAN CHECK LAGAYEIN
+        if (strtolower($student->Class) == 'passed_out' || strtolower($student->Class) == 'passed out') {
+            exit('You are passed out and cannot login.');
+        }
             $isLoggedIn = array(
                 'loggedIn' => true,
                 'id' => $student->id,
@@ -33,6 +47,10 @@
     {
         $student = $this->AuthModel->getOne($qrCode);
         if (!empty($student)) {
+             // YAHAN CHECK LAGAYEIN
+        if (strtolower($student->Class) == 'passed_out' || strtolower($student->Class) == 'passed out') {
+            exit('You are passed out and cannot login.');
+        }
             $isLoggedIn = array(
                 'loggedIn' => true,
                 'id' => $student->id,
@@ -60,6 +78,10 @@
         $password = $this->input->post('password');
         $student = $this->AuthModel->userLogin($admissionNo, $password);
         if($student) {
+            // YAHAN CHECK LAGAYEIN
+        if (strtolower($student->Class) == 'passed_out' || strtolower($student->Class) == 'passed out') {
+            exit('You are passed out and cannot login.');
+        }
               $isLoggedIn = array(
                 'loggedIn' => true,
                 'id' => $student->id,
