@@ -2,9 +2,8 @@
 
 
 <style>
-
-/* Centering the page content */
-.page-wrapper {
+    /* Centering the page content */
+    .page-wrapper {
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -39,7 +38,7 @@
         justify-content: center;
         font-family: Nunito-Semibold;
         text-transform: capitalize;
-        color:#6C63FF;
+        color: #6C63FF;
         font-size: 28px;
         margin-bottom: 25px;
         animation: slideDown 1s ease-in-out;
@@ -53,7 +52,7 @@
     }
 
 
-    .message-container{
+    .message-container {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -65,12 +64,12 @@
         transition: all 0.3s ease;
     }
 
-    .message-container:hover{
+    .message-container:hover {
         transform: translateY(-5px);
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .message-container p{
+    .message-container p {
         font-size: 1.4rem;
         font-family: Nunito-Semibold;
         color: #333;
@@ -121,7 +120,6 @@
             transform: translateY(-5px);
         }
     }
-
 </style>
 
 
@@ -150,10 +148,10 @@
     </div>
     <div class="col-xs-12 page-content">
 
-     <!-- Heading Section -->
+        <!-- Heading Section -->
 
-     <div class="animated-heading">
-     <i class="las la-clipboard"></i>leave Requests
+        <div class="animated-heading">
+            <i class="las la-clipboard"></i>leave Requests
 
         </div>
 
@@ -178,13 +176,19 @@
             <?php } ?>
         </div>
     </div>
-    <form method="POST" action="<?php echo site_url('LeaveRequest/add'); ?>">
-        <button title="Compose" class="float" style="border: none;">
-            <i class="material-icons" style="font-size: 30px; position: relative; top: 3px; color: #fff;">
-                create
-            </i>
-        </button>
-    </form>
+    <?php if (!isset($is_passed_out) || !$is_passed_out): ?>
+        <form method="POST" action="<?php echo site_url('LeaveRequest/add'); ?>">
+            <button title="Compose" class="float" style="border: none;">
+                <i class="material-icons" style="font-size: 30px; position: relative; top: 3px; color: #fff;">
+                    create
+                </i>
+            </button>
+        </form>
+    <?php else: ?>
+        <div style="margin: 20px; color: #ff0000; font-weight: bold;">
+            You are passed out, you cannot send leave request.
+        </div>
+    <?php endif; ?>
 
 </div>
 

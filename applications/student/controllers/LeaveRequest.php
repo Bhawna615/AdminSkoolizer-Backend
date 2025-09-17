@@ -25,7 +25,7 @@ class LeaveRequest extends CI_Controller
             'title' => 'Leave Request',
             'page' => 'Leave Request'
         );
-        
+
         $studentId = $this->session->userdata('id');
         $studentClass = $this->session->userdata('class');
         $data['recentAssignments'] = $this->StudentModel->loadRecentAssignments($studentId, $studentClass);
@@ -38,6 +38,8 @@ class LeaveRequest extends CI_Controller
 
         $data['info'] = $this->StudentModel->getInfoById($studentId);
         $data['leaveRequests'] = $this->LeaveRequestModel->get($this->session->userdata('id'));
+        // Pass a flag to view if student is passed out
+        $data['is_passed_out'] = (strtolower($studentClass) == 'passed_out' || strtolower($studentClass) == 'passed out');
         $this->load->view('student/leave_request/view', $data);
     }
 
