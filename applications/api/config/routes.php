@@ -52,3 +52,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'api';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['api.php'] = 'api/index';
+
+// ✅ Admin login route
+$route['Adminapi/AdminAuth/login'] = 'Adminapi/AdminAuth/login';
+
+
+// $route['Post/(:any)'] = 'api/Post/$1';
+// $route['Fee/(:any)'] = 'api/Fee/$1';
+
+
+
+
+
+

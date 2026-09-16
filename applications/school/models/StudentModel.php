@@ -33,13 +33,14 @@ class StudentModel extends CI_Model
 		$result=$query->result();
 		return $result;
 	}
-	public function getInfo($id) //get student info
-	{
-		$sql='SELECT * FROM student WHERE id=?';
-		$query=$this->db->query($sql,$id);
-		$result=$query->result();
-		return $result;
-	}
+	public function getInfo($id)
+{
+    $sql = "SELECT * FROM student WHERE id = ?";
+
+    $query = $this->db->query($sql, array($id));
+
+    return $query->result();
+}
 
 	public function getByClass($class) //get students from class
 	{
@@ -93,35 +94,40 @@ class StudentModel extends CI_Model
 		return $result;
 	}
 
-	public function getTransportDetails($id)  //get Transport Details
-	{
-		$sql='SELECT Passengerid from student WHERE id=?';
-		$query=$this->db->query($sql,$id);
-		$result=$query->result();
-		foreach($result as $row) {
-			$pid=$row->Passengerid;
-		}
+	public function getTransportDetails($id)
+{
+    $sql = "
+        SELECT
+            p.id AS passenger_id,
+            p.Name AS passenger_name,
+            p.Stationid,
+            p.student_id,
 
-		if ($pid!=NULL) {
-			$sqla='SELECT * FROM passengers WHERE id=?';
-			$querya=$this->db->query($sqla,$pid);
-			$resulta=$querya->result();
+            s.id AS station_id,
+            s.stationname,
+            s.type,
+            s.charges,
 
-			foreach($resulta as $row){
-				$routeid=$row->Routeid;
-				$stationid=$row->Stationid;
-			}
+            r.routename
 
-			$sqlb='SELECT * FROM routes,stations WHERE routes.id=stations.RouteId AND routes.id=? AND stations.id=?';
-			$queryb=$this->db->query($sqlb,array($routeid,$stationid));
-			$resultb=$queryb->result();
-			return $resultb;
-		}
-		else
-		{
-			return false;
-		}
-	}
+        FROM student st
+
+        LEFT JOIN passengers p
+            ON p.id = st.Passengerid
+
+        LEFT JOIN stations s
+            ON s.id = p.Stationid
+
+        LEFT JOIN routes r
+            ON r.id = 1
+
+        WHERE st.id = ?
+    ";
+
+    $query = $this->db->query($sql, array($id));
+
+    return $query->result();
+}
 
 	public function checkIfCodeUnique($content)
 	{

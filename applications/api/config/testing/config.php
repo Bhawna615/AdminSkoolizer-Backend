@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://skoolizer.in/kkblossom';
+$config['base_url'] = 'http://localhost/kkblossom';
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +36,13 @@ $config['base_url'] = 'https://skoolizer.in/kkblossom';
 |
 */
 $config['index_page'] = 'api.php';
+
+
+
+
+// ✅ Disable deprecated warnings for PHP 8+
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+ini_set('display_errors', 0);
 
 /*
 |--------------------------------------------------------------------------

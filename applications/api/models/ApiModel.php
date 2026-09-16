@@ -108,4 +108,83 @@ class ApiModel extends CI_Model
 		$query = $this->db->query($sql, $id);
 		return $query->row();
 	}
+
+	 public function get($id)
+    {
+        return $this->db
+            ->where('student_id', $id)
+            ->order_by('created_at', 'desc')
+            ->get('leave_requests')
+            ->result();
+    }
+
+    public function create($data)
+    {
+        return $this->db->insert('leave_requests', $data);
+    }
+
+
+
+	 public function getStudentAttendance($student_id)
+    {
+        // 🔹 Step 1: Fetch student info first
+        $studentQuery = $this->db->where('id', $student_id)->get('student');
+        $student = $studentQuery->row();
+
+        if (!$student) {
+            return [0, 0, [], []]; // student not found
+        }
+
+        $class = $student->Class;
+        $roll = $student->Rollno;
+
+        // 🔹 Step 2: Count total working days (for that class)
+        $attendanceQuery = $this->db->select('id, Date')
+            ->where('Class', $class)
+            ->get('attendence');
+        $totalDays = $attendanceQuery->num_rows();
+
+        // 🔹 Step 3: Fetch absent days (absentees)
+        $absentQuery = $this->db->select('Date')
+            ->where('Class', $class)
+            ->where('Rollno', $roll)
+            ->get('absentees');
+        $absentDays = $absentQuery->num_rows();
+        $absentDates = $absentQuery->result();
+
+        // 🔹 Step 4: Fetch all unique working days
+        $workingQuery = $this->db->distinct()
+            ->select('Date')
+            ->where('Class', $class)
+            ->get('attendence');
+        $workingDays = $workingQuery->result();
+
+        // 🔹 Step 5: Calculate present days
+        $presentDays = $totalDays - $absentDays;
+
+        // 🔹 Step 6: Return structured array
+        return [
+            $totalDays,   // 0: Total Days
+            $presentDays, // 1: Present Days
+            $absentDates, // 2: Absent Dates Array
+            $workingDays  // 3: Working Days Array
+        ];
+    }
+
+	// ✅ Get a student's full info
+    public function getStudent($id) {
+        $this->db->where('id', $id);
+        $query = $this->db->get('students');
+        return $query->row();
+    }
+
+	 // Fetch posts for a particular class
+    public function getClassPosts($class)
+    {
+        return $this->db
+            ->where('recipient_group', $class)
+            ->order_by('created_at', 'DESC')
+            ->get('posts')
+            ->result();
+    }
 }

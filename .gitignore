@@ -1,2 +1,18 @@
 applications/school/config/testing/config.php
 applications/school/config/database.php
+
+# Firebase secret
+applications/api/config/firebase-service-account.json
+
+# Local debug/log files
+debug_key.txt
+headers_log.txt
+applications/api/logs/
+
+# Firebase secret
+applications/api/config/firebase-service-account.json
+
+# Local debug/log files
+debug_key.txt
+headers_log.txt
+applications/api/logs/
