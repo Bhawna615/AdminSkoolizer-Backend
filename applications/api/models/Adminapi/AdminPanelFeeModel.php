@@ -112,10 +112,7 @@ class AdminPanelFeeModel extends CI_Model
         ->get('fee')
         ->result();
 }
- public function insertDiscount($data)
-    {
-        return $this->db->insert('discounts', $discount);
-    }
+
 public function getFilteredData($year, $month, $class, $session = null)
 {
     $this->db
