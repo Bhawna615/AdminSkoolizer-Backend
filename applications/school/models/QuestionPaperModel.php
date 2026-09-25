@@ -30,24 +30,41 @@ class QuestionPaperModel extends CI_Model
 	}
 
 	public function getQuestions($questionPaperId)
-	{
-		$questions = array();
+{
+    $questions = array();
 
-		$questionsString = $this->db->select('questions_id')
-			->where('id', $questionPaperId)
-			->get('question_papers')
-			->row();
+    $questionsString = $this->db
+        ->select('questions_id')
+        ->where('id', $questionPaperId)
+        ->get('question_papers')
+        ->row();
 
-		$questionsArray = explode(",", $questionsString->questions_id);
+    if (!$questionsString || empty($questionsString->questions_id)) {
+        return $questions;
+    }
 
-		foreach ($questionsArray as $key => $value) {
-			$questions[] = $this->db->where('id', $value)
-				->get('questions')
-				->row();
-		}
+    $questionsArray = explode(",", $questionsString->questions_id);
 
-		return $questions;
-	}
+    foreach ($questionsArray as $value) {
+
+        $value = trim($value);
+
+        if (empty($value)) {
+            continue;
+        }
+
+        $question = $this->db
+            ->where('id', $value)
+            ->get('questions')
+            ->row();
+
+        if ($question !== null) {
+            $questions[] = $question;
+        }
+    }
+
+    return $questions;
+}
 
 	public function getOne($id)
 	{

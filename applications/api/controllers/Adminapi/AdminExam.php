@@ -813,5 +813,31 @@ if (!$saveResult) {
         ]);
     }
 }
+public function generateQuestionPaper($id)
+{
+    if (empty($id)) {
+        echo json_encode([
+            "status" => false,
+            "message" => "Question Paper ID is required"
+        ]);
+        return;
+    }
 
+    $questionPaper = $this->AdminExamModel->getQuestionPaperById($id);
+    $questions = $this->AdminExamModel->getQuestionsByPaper($id);
+
+    if (!$questionPaper) {
+        echo json_encode([
+            "status" => false,
+            "message" => "Question Paper not found"
+        ]);
+        return;
+    }
+
+    echo json_encode([
+        "status" => true,
+        "questionPaper" => $questionPaper,
+        "questions" => $questions
+    ]);
+}
 }
