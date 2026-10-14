@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -9,18 +10,19 @@ class AdminStudentSports extends CI_Controller {
 
         header("Access-Control-Allow-Origin: http://localhost:3000");
         header("Access-Control-Allow-Credentials: true");
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
         header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
         if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
             exit(0);
         }
+
         $this->load->helper(['url', 'string']);
         $this->load->library('form_validation');
         $this->load->model('Adminapi/AdminStudentSportsModel');
     }
 
-    // 🔹 GET ALL EVENTS
+    // GET ALL EVENTS
     public function index()
     {
         echo json_encode(
@@ -28,13 +30,15 @@ class AdminStudentSports extends CI_Controller {
         );
     }
 
-    // 🔹 DELETE EVENT
+    // DELETE EVENT
     public function delete($id)
     {
         $this->AdminStudentSportsModel->delete($id);
+
         echo json_encode(['status' => true]);
     }
 
+    // INSERT EVENT
     public function insert()
     {
         $input = json_decode(file_get_contents("php://input"), true);
@@ -48,9 +52,9 @@ class AdminStudentSports extends CI_Controller {
         }
 
         $newEvent = [
-            'name'       => $input['name'],
-            'date'       => $input['date'],
-            'created_at'=> date('Y-m-d H:i:s')
+            'name'        => $input['name'],
+            'date'        => $input['date'],
+            'created_at'  => date('Y-m-d H:i:s')
         ];
 
         if ($this->AdminStudentSportsModel->insert($newEvent)) {
@@ -65,42 +69,45 @@ class AdminStudentSports extends CI_Controller {
             ]);
         }
     }
+
+    // GET SINGLE EVENT
     public function one($id)
-{
-    $this->db->where('id', $id);
-    $event = $this->db->get('sports')->row();
+    {
+        $this->db->where('id', $id);
+        $event = $this->db->get('sports')->row();
 
-    if($event) {
-        echo json_encode($event);
-    } else {
-        echo json_encode(null);
+        if ($event) {
+            echo json_encode($event);
+        } else {
+            echo json_encode(null);
+        }
     }
-}
-public function update()
-{
-    $input = json_decode(file_get_contents('php://input'), true);
-    $id = $input['id'];
-    $data = [
-        'name' => $input['name'],
-        'date' => $input['date']
-    ];
 
-    $this->db->where('id', $id);
-    $status = $this->db->update('sports', $data);
+    // UPDATE EVENT
+    public function update()
+    {
+        $input = json_decode(file_get_contents('php://input'), true);
 
-    if($status) {
-        echo json_encode([
-            'status' => true,
-            'message' => 'Event Updated Successfully'
-        ]);
-    } else {
-        echo json_encode([
-            'status' => false,
-            'message' => 'Failed to Update'
-        ]);
+        $id = $input['id'];
+
+        $data = [
+            'name' => $input['name'],
+            'date' => $input['date']
+        ];
+
+        $this->db->where('id', $id);
+        $status = $this->db->update('sports', $data);
+
+        if ($status) {
+            echo json_encode([
+                'status' => true,
+                'message' => 'Event Updated Successfully'
+            ]);
+        } else {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Failed to Update'
+            ]);
+        }
     }
-}
-
-
-
 }

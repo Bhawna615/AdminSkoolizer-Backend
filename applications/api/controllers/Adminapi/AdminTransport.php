@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AdminTransport extends CI_Controller {
 
+    
     public function __construct()
     {
         parent::__construct();
@@ -10,12 +11,26 @@ class AdminTransport extends CI_Controller {
         // Load Models
         $this->load->model('Adminapi/AdminTransportModel');
 
-        // 🔥 IMPORTANT: Allow React to access API
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-        header("Access-Control-Allow-Headers: Content-Type");
-        header("Content-Type: application/json");
+        // CORS settings for React
+        $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+
+        if ($origin === 'http://localhost:3000') {
+            header("Access-Control-Allow-Origin: $origin");
+        }
+
+        header("Vary: Origin");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+        header("Access-Control-Max-Age: 86400");
+        header("Content-Type: application/json; charset=UTF-8");
+
+        // Handle browser preflight request
+        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+            $this->output->set_status_header(204)->set_output('');
+            exit;
+        }
     }
+
 
     // ✅ GET ALL ACTIVE ROUTES
     public function activeRoutes()
@@ -245,31 +260,71 @@ public function buses()
     }
 
     // ✅ ADD STATION
-    public function addStation()
-    {
-        $input = json_decode(file_get_contents("php://input"), true);
+   
+    // ADD STATION
+    
+public function addStation()
+{
+    // Read JSON input sent from React
+    $rawInput = file_get_contents("php://input");
+    $input = json_decode($rawInput, true);
 
-        $data = [
-            "stationname" => $input['name'],
-            "type"        => $input['type'],
-            "charges"     => $input['charges'],
-            "RouteId"     => $input['routeid'] ?? null
-        ];
-
-        $insert = $this->AdminTransportModel->insert($data);
-
-        if ($insert) {
-            echo json_encode([
-                "status" => true,
-                "message" => "Station added successfully"
-            ]);
-        } else {
-            echo json_encode([
-                "status" => false,
-                "message" => "Failed to add station"
-            ]);
-        }
+    // Validate input
+    if (
+        !is_array($input) ||
+        !isset($input['name'], $input['type'], $input['charges']) ||
+        trim((string)$input['name']) === '' ||
+        trim((string)$input['type']) === '' ||
+        $input['charges'] === '' ||
+        !is_numeric($input['charges'])
+    ) {
+        return $this->output
+            ->set_status_header(400)
+            ->set_content_type('application/json')
+            ->set_output(json_encode([
+                'status' => false,
+                'message' => 'Valid station name, type and charges are required.'
+            ]));
     }
+
+    // Prepare data using the actual columns in the stations table
+    $data = [
+        'stationname' => trim((string)$input['name']),
+        'type'        => trim((string)$input['type']),
+        'charges'     => (float)$input['charges']
+    ];
+
+    // Insert station into database
+    $insert = $this->AdminTransportModel->insert($data);
+
+    if ($insert) {
+        return $this->output
+            ->set_status_header(200)
+            ->set_content_type('application/json')
+            ->set_output(json_encode([
+                'status' => true,
+                'message' => 'Station added successfully.'
+            ]));
+    }
+
+    // Log the actual database error for debugging
+    $dbError = $this->db->error();
+
+    log_message(
+        'error',
+        'AddStation database error: ' . print_r($dbError, true)
+    );
+
+    return $this->output
+        ->set_status_header(500)
+        ->set_content_type('application/json')
+        ->set_output(json_encode([
+            'status' => false,
+            'message' => 'Failed to add station. Please check the database configuration.'
+        ]));
+}
+
+
 public function getStudents()
 {
     // Make sure you have a function in a model (like StudentModel) to fetch students

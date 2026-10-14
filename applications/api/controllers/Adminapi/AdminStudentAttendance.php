@@ -73,7 +73,165 @@ class AdminStudentAttendance extends CI_Controller
             }
         }
     }
+    public function attendanceOverview()
+{
+    try {
 
+        $this->db->select("
+            COALESCE(SUM(Present), 0) AS totalPresent,
+            COALESCE(SUM(Absent), 0) AS totalAbsent,
+            COALESCE(SUM(onLeave), 0) AS totalLeave,
+            COALESCE(SUM(Strength), 0) AS totalStrength
+        ");
+
+        $result = $this->db
+            ->get('attendence')
+            ->row();
+
+        $totalPresent = (int) $result->totalPresent;
+        $totalAbsent = (int) $result->totalAbsent;
+        $totalLeave = (int) $result->totalLeave;
+        $totalStrength = (int) $result->totalStrength;
+
+        // Calculate percentages from actual attendance data
+        if ($totalStrength > 0) {
+
+            $presentPercentage = round(
+                ($totalPresent / $totalStrength) * 100
+            );
+
+            $absentPercentage = round(
+                ($totalAbsent / $totalStrength) * 100
+            );
+
+            $leavePercentage = round(
+                ($totalLeave / $totalStrength) * 100
+            );
+
+        } else {
+
+            $presentPercentage = 0;
+            $absentPercentage = 0;
+            $leavePercentage = 0;
+        }
+
+        echo json_encode([
+            "status" => "success",
+
+            "present" => $totalPresent,
+            "absent" => $totalAbsent,
+            "leave" => $totalLeave,
+            "strength" => $totalStrength,
+
+            "presentPercentage" => $presentPercentage,
+            "absentPercentage" => $absentPercentage,
+            "leavePercentage" => $leavePercentage
+        ]);
+
+    } catch (Exception $e) {
+
+        echo json_encode([
+            "status" => "error",
+            "message" => $e->getMessage()
+        ]);
+    }
+}
+// =========================================================
+// DASHBOARD ATTENDANCE OVERVIEW
+// =========================================================
+public function studentOverview()
+{
+    try {
+
+        // =====================================================
+        // GET STUDENT COUNT CLASS-WISE
+        // =====================================================
+
+        $this->db->select("
+            Class,
+            COUNT(*) AS totalStudents
+        ");
+
+        $this->db->from('student');
+
+        $this->db->where("Class IS NOT NULL", null, false);
+        $this->db->where("Class !=", "");
+
+        $this->db->group_by('Class');
+        $this->db->order_by('Class', 'ASC');
+
+        $query = $this->db->get();
+
+        $students = [];
+
+        foreach ($query->result() as $row) {
+
+            $students[] = [
+                "class" => $row->Class,
+                "students" => (int) $row->totalStudents
+            ];
+        }
+
+        // =====================================================
+        // RESPONSE
+        // =====================================================
+
+        echo json_encode([
+            "status" => "success",
+            "studentOverview" => $students
+        ]);
+
+    } catch (Exception $e) {
+
+        echo json_encode([
+            "status" => "error",
+            "message" => $e->getMessage()
+        ]);
+    }
+}
+public function Events()
+{
+    try {
+
+        // Get today's date
+        $today = date('Y-m-d');
+
+        // Fetch latest 3 upcoming events
+        $events = $this->db
+            ->where('date >=', $today)
+            ->order_by('date', 'ASC')
+            ->limit(3)
+            ->get('events')
+            ->result_array();
+
+        if (!empty($events)) {
+
+            return $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'status' => 'success',
+                    'events' => $events
+                ]));
+
+        }
+
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode([
+                'status' => 'success',
+                'events' => []
+            ]));
+
+    } catch (Exception $e) {
+
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]));
+    }
+}
     public function tcDetails($id)
     {
         $data['id'] = $id;

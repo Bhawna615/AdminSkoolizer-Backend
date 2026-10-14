@@ -400,27 +400,31 @@ public function getClasses()
             ->result_array();
     }
     public function getByClassWithAscendingRollNo($class)
-    {
-        $sql = 'SELECT * FROM student WHERE Class=? ORDER BY Rollno ASC';
-        $query = $this->db->query($sql, $class);
-        $result = $query->result();
-        return $result;
-    }
-    public function getFilteredExams($class, $exam)
-	{
-	    $sql = 'SELECT * FROM conduct WHERE Class = ? AND Examtype = ?';
-	    $query = $this->db->query($sql, array($class, $exam));
-	    $result = $query->result();
-	    return $result;
-	}
-	
-	public function getResults()
-	{
-	    $sql = "SELECT * FROM marks";
-	    $query = $this->db->query($sql);
-	    $result = $query->result();
-	    return $result;
-	}
+{
+    return $this->db
+        ->where('Class', trim($class))
+        ->order_by('Rollno', 'ASC')
+        ->get('student')
+        ->result();
+}
+
+
+public function getFilteredExams($class, $exam)
+{
+    return $this->db
+        ->where('Class', trim($class))
+        ->where('Examtype', trim($exam))
+        ->get('conduct')
+        ->result();
+}
+
+
+public function getResults()
+{
+    return $this->db
+        ->get('marks')
+        ->result();
+}
    
 	public function getByClass($class)
 	{

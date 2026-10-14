@@ -625,35 +625,75 @@ public function classes()
     }
 
     public function generateClassWiseReport()
-    {
-        $this->load->model('AdminExamModel');
+{
+    $input = json_decode(file_get_contents("php://input"), true);
 
-        $subjectsOrder = array(
-            'English','Hindi','Mathematics','Science','Social Science','Sanskrit',
-            'EVS','A.I','Physics','Chemistry','Biology','Accounts','Economics',
-            'Political Science','History','Geography','Legal Studies','Computer',
-            'G.K','Drawing','I.P','P.Ed','I.P/P.Ed'
-        );
+    $class = isset($input['class']) ? trim($input['class']) : '';
+    $exam  = isset($input['exam']) ? trim($input['exam']) : '';
 
-        $class = $this->input->post('class');
-        $exam = $this->input->post('exam');
+    log_message('error', 'REPORT INPUT: ' . print_r($input, true));
+    log_message('error', 'REPORT CLASS: ' . $class);
+    log_message('error', 'REPORT EXAM: ' . $exam);
 
-        $students = $this->AdminExamModel->getByClassWithAscendingRollNo($class);
-        $exams = $this->AdminExamModel->getFilteredExams($class, $exam);
-        $results = $this->AdminExamModel->getResults();
-
+    if (empty($class) || empty($exam)) {
         echo json_encode([
-            "status" => true,
-            "data" => [
-                "students" => $students,
-                "exams" => $exams,
-                "results" => $results,
-                "subjectsOrder" => $subjectsOrder,
+            "status" => false,
+            "message" => "Class or exam type is missing",
+            "received" => [
                 "class" => $class,
                 "exam" => $exam
             ]
         ]);
+        return;
     }
+
+    $subjectsOrder = array(
+        'English',
+        'Hindi',
+        'Mathematics',
+        'Science',
+        'Social Science',
+        'Sanskrit',
+        'EVS',
+        'A.I',
+        'Physics',
+        'Chemistry',
+        'Biology',
+        'Accounts',
+        'Economics',
+        'Political Science',
+        'History',
+        'Geography',
+        'Legal Studies',
+        'Computer',
+        'G.K',
+        'Drawing',
+        'I.P',
+        'P.Ed',
+        'I.P/P.Ed'
+    );
+
+    $students = $this->AdminExamModel
+        ->getByClassWithAscendingRollNo($class);
+
+    $exams = $this->AdminExamModel
+        ->getFilteredExams($class, $exam);
+
+    $results = $this->AdminExamModel
+        ->getResults();
+
+    echo json_encode([
+        "status" => true,
+        "data" => [
+            "students" => $students,
+            "exams" => $exams,
+            "results" => $results,
+            "subjectsOrder" => $subjectsOrder,
+            "class" => $class,
+            "exam" => $exam
+        ]
+    ]);
+}
  public function getClassWiseMetrics($class = null)
 {
     if (!$class) {
