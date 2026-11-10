@@ -20,6 +20,7 @@ class AdminStudent extends CI_Controller {
 
         $this->load->model('Adminapi/AdminStudentModel');
         $this->load->model('Adminapi/AdminClassModel');
+        $this->load->model('Adminapi/AdminExamModel');
         $this->load->helper(['url', 'string']);
         $this->load->library(['form_validation', 'upload']);
         $this->output->enable_profiler(FALSE);
@@ -54,6 +55,92 @@ public function viewMany()
             ]));
     }
 }
+
+public function getFees()
+{
+    header('Content-Type: application/json; charset=utf-8');
+
+    try {
+
+        // Fetch fee fields directly from the student table
+        $this->db->select('
+            id,
+            Name,
+            Class,
+            Admno,
+            tuition_fee,
+            annual_fee,
+            admission_fee,
+            transport_fee
+        ');
+
+        $this->db->from('student');
+
+        $query = $this->db->get();
+        $students = $query->result_array();
+
+        // Initialize totals
+        $totals = [
+            'tuition_fee'   => 0,
+            'annual_fee'    => 0,
+            'admission_fee' => 0,
+            'transport_fee' => 0,
+            'total_fees'    => 0
+        ];
+
+        // Calculate total assigned fees
+        foreach ($students as &$student) {
+
+            $student['tuition_fee'] =
+                (float) ($student['tuition_fee'] ?? 0);
+
+            $student['annual_fee'] =
+                (float) ($student['annual_fee'] ?? 0);
+
+            $student['admission_fee'] =
+                (float) ($student['admission_fee'] ?? 0);
+
+            $student['transport_fee'] =
+                (float) ($student['transport_fee'] ?? 0);
+
+            $student['total_fees'] =
+                $student['tuition_fee'] +
+                $student['annual_fee'] +
+                $student['admission_fee'] +
+                $student['transport_fee'];
+
+            $totals['tuition_fee'] += $student['tuition_fee'];
+            $totals['annual_fee'] += $student['annual_fee'];
+            $totals['admission_fee'] += $student['admission_fee'];
+            $totals['transport_fee'] += $student['transport_fee'];
+            $totals['total_fees'] += $student['total_fees'];
+        }
+
+        unset($student);
+
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode([
+                'status' => true,
+                'total_students' => count($students),
+                'totals' => $totals,
+                'data' => $students
+            ]));
+
+    } catch (Throwable $e) {
+
+        log_message('error', 'Student Fee API Error: ' . $e->getMessage());
+
+        return $this->output
+            ->set_status_header(500)
+            ->set_content_type('application/json')
+            ->set_output(json_encode([
+                'status' => false,
+                'message' => 'Unable to fetch fee information.'
+            ]));
+    }
+}
+
 public function display()
 {
     $students = $this->AdminStudentModel->getAllStudents();
@@ -993,6 +1080,294 @@ public function approveLeaveRequest($requestId)
         ]);
     }
 }
+// =====================================================
+// MONTHLY FEE COLLECTION OVERVIEW
+// Based on actual fee payment records
+// =====================================================
+
+public function monthlyFeeCollection()
+{
+    header('Content-Type: application/json; charset=utf-8');
+
+    try {
+
+        // =====================================================
+        // OPTIONAL FILTERS
+        // =====================================================
+
+        $year = $this->input->get('year');
+        $session = $this->input->get('session');
+
+        // =====================================================
+        // DATABASE TABLE
+        // Replace with your actual fee payment table name.
+        // =====================================================
+
+        $table = 'fee';
+
+        // =====================================================
+        // VALIDATE TABLE
+        // =====================================================
+
+        if (!$this->db->table_exists($table)) {
+            throw new Exception(
+                "Fee payment table does not exist: " . $table
+            );
+        }
+
+        // =====================================================
+        // MONTHLY FEE COLLECTION QUERY
+        // =====================================================
+
+        $this->db->select("
+            YEAR(paidondate) AS year,
+            MONTH(paidondate) AS month,
+            SUM(COALESCE(amount_paid, 0)) AS total_collection,
+            COUNT(*) AS payment_count
+        ", false);
+
+        $this->db->from($table);
+
+        // Successful payments only
+        $this->db->where('status', 1);
+
+        // Ignore missing payment dates
+        $this->db->where(
+            'paidondate IS NOT NULL',
+            null,
+            false
+        );
+
+        $this->db->where(
+            'paidondate !=',
+            '0000-00-00'
+        );
+
+        // =====================================================
+        // OPTIONAL YEAR FILTER
+        // =====================================================
+
+        if (
+            $year !== null &&
+            $year !== '' &&
+            is_numeric($year)
+        ) {
+            $this->db->where(
+                'YEAR(paidondate) = ' . (int) $year,
+                null,
+                false
+            );
+        }
+
+        // =====================================================
+        // OPTIONAL ACADEMIC SESSION FILTER
+        // =====================================================
+
+        if ($session !== null && $session !== '') {
+
+            // Apply only if the payment table has a session column.
+            if ($this->db->field_exists('session', $table)) {
+                $this->db->where('session', $session);
+            }
+        }
+
+        // =====================================================
+        // GROUP BY MONTH AND YEAR
+        // =====================================================
+
+        $this->db->group_by(
+            'YEAR(paidondate), MONTH(paidondate)',
+            false
+        );
+
+        $this->db->order_by(
+            'YEAR(paidondate)',
+            'ASC',
+            false
+        );
+
+        $this->db->order_by(
+            'MONTH(paidondate)',
+            'ASC',
+            false
+        );
+
+        // =====================================================
+        // EXECUTE QUERY
+        // =====================================================
+
+        $query = $this->db->get();
+
+        if ($query === false) {
+
+            $dbError = $this->db->error();
+
+            throw new Exception(
+                'Database query failed: ' .
+                ($dbError['message'] ?? 'Unknown database error')
+            );
+        }
+
+        $records = $query->result_array();
+
+        // =====================================================
+        // FORMAT RESULTS FOR REACT
+        // =====================================================
+
+        foreach ($records as &$record) {
+
+            $record['year'] = (int) $record['year'];
+
+            $record['month'] = (int) $record['month'];
+
+            $record['total_collection'] =
+                (float) $record['total_collection'];
+
+            $record['payment_count'] =
+                (int) $record['payment_count'];
+        }
+
+        unset($record);
+
+        // =====================================================
+        // SUCCESS RESPONSE
+        // =====================================================
+
+        return $this->output
+            ->set_status_header(200)
+            ->set_content_type('application/json')
+            ->set_output(json_encode([
+                'status' => 'success',
+                'monthlyFeeCollection' => $records
+            ]));
+
+    } catch (Throwable $e) {
+
+        // Log the detailed error in the server log.
+        log_message(
+            'error',
+            'Monthly Fee Collection API Error: ' .
+            $e->getMessage()
+        );
+
+        // Keep internal database details out of the public response.
+        return $this->output
+            ->set_status_header(500)
+            ->set_content_type('application/json')
+            ->set_output(json_encode([
+                'status' => 'error',
+                'message' => 'Unable to load monthly fee collection.'
+            ]));
+    }
+}
+
+// =====================================================
+// STUDENT EXAM DETAILS
+// Fetch Student Profile + Exam Results + Marks
+// Supports GET, POST FormData and POST JSON
+// =====================================================
+
+public function StudentExamDetails()
+{
+    header('Content-Type: application/json; charset=utf-8');
+
+    try {
+
+        // ==========================================
+        // 1. GET STUDENT ID FROM ALL REQUEST TYPES
+        // ==========================================
+
+        $jsonData = json_decode(file_get_contents("php://input"), true);
+
+        $id = $this->input->get('id');
+
+        if (empty($id)) {
+            $id = $this->input->post('id');
+        }
+
+        if (empty($id) && is_array($jsonData)) {
+            $id = $jsonData['id'] ?? $jsonData['student_id'] ?? null;
+        }
+
+        if (empty($id)) {
+            return $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'status' => false,
+                    'message' => 'Valid Student ID is required.'
+                ]));
+        }
+
+        if (!is_numeric($id) || (int)$id <= 0) {
+            return $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'status' => false,
+                    'message' => 'Invalid Student ID.'
+                ]));
+        }
+
+        $id = (int)$id;
+
+        // ==========================================
+        // 2. GET STUDENT INFORMATION
+        // ==========================================
+
+        $info = $this->AdminStudentModel->getInfo($id);
+
+        if (empty($info)) {
+            return $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'status' => false,
+                    'message' => 'Student not found.'
+                ]));
+        }
+
+        // ==========================================
+        // 3. LOAD EXAM MODEL
+        // ==========================================
+
+        $this->load->model('Adminapi/AdminExamModel');
+
+        // ==========================================
+        // 4. FETCH STUDENT EXAM RESULTS
+        // ==========================================
+
+        $exams = $this->AdminExamModel->getStudentExamResults($id);
+
+        // ==========================================
+        // 5. SUCCESS RESPONSE
+        // ==========================================
+
+        return $this->output
+            ->set_status_header(200)
+            ->set_content_type('application/json')
+            ->set_output(json_encode([
+                'status' => true,
+                'message' => 'Student examination details fetched successfully.',
+                'info' => $info,
+                'exams' => $exams ?: []
+            ]));
+
+    } catch (Throwable $e) {
+
+        log_message(
+            'error',
+            'StudentExamDetails API Error: ' . $e->getMessage()
+        );
+
+        return $this->output
+            ->set_status_header(500)
+            ->set_content_type('application/json')
+            ->set_output(json_encode([
+                'status' => false,
+                'message' => 'Unable to fetch student examination details.',
+                'error' => $e->getMessage()
+            ]));
+    }
+}
 
 
 }
+

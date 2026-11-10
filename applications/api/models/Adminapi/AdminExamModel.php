@@ -418,7 +418,45 @@ public function getFilteredExams($class, $exam)
         ->result();
 }
 
+public function getStudentExamResults($studentId)
+{
+    $sql = "
+        SELECT
+            c.id AS Examcode,
+            c.Examname AS Examname,
+            c.Subject AS Subject,
+            c.Examtype AS Examtype,
+            c.Class AS ExamClass,
+            c.Maxmarks AS Maxmarks,
+            c.Date AS Date,
+            m.Rollno AS Rollno,
+            m.Name AS StudentName,
+            m.student_id AS student_id,
+            m.Marksobtained AS Marksobtained,
+            m.uploaded_by AS uploaded_by,
+            m.uploaded_at AS uploaded_at
 
+        FROM conduct c
+
+        INNER JOIN marks m
+            ON m.Examcode = c.id
+
+        WHERE m.student_id = ?
+
+        ORDER BY
+            CASE
+                WHEN c.Date IS NULL
+                OR c.Date = '0000-00-00'
+                THEN m.uploaded_at
+                ELSE c.Date
+            END DESC,
+            m.id DESC
+    ";
+
+    $query = $this->db->query($sql, array($studentId));
+
+    return $query->result_array();
+}
 public function getResults()
 {
     return $this->db

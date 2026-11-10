@@ -34,70 +34,126 @@ class AdminMessage extends CI_Controller
         http_response_code(200);
         return;
     }
-    public function getMessages()
-    {
-        header('Content-Type: application/json');
+    
+public function getMessages()
+{
+    header('Content-Type: application/json');
 
-        $id = $this->input->post('id');
+    // Get Student ID
+    $id = $this->input->post('id');
 
-        // ✅ Validate Student ID
-        if (empty($id) || !is_numeric($id)) {
-            echo json_encode([
-                "status" => false,
-                "message" => "Student ID missing or invalid"
-            ]);
-            return;
+    // Support JSON request also
+    if (empty($id)) {
+        $input = json_decode(file_get_contents("php://input"), true);
+
+        if (is_array($input) && isset($input['id'])) {
+            $id = $input['id'];
         }
-
-        $this->load->model('Adminapi/AdminStudentModel');
-        $this->load->model('MessageModel');
-
-        $info = $this->AdminStudentModel->getInfo($id);
-        $messages = $this->AdminMessageModel->loadById($id);
-
-        // ✅ If student not found
-        if (empty($info)) {
-            echo json_encode([
-                "status" => false,
-                "message" => "No student found"
-            ]);
-            return;
-        }
-
-        // If info is array → take first row
-        $studentData = is_array($info) ? $info[0] : $info;
-
-        // ✅ Clean & Format Messages
-        $cleanMessages = [];
-
-        if (!empty($messages)) {
-            foreach ($messages as $msg) {
-                // Safe message
-                $messageText = !empty($msg->message) ? $msg->message : "N/A";
-
-                // Safe timestamp
-                $formattedTime = "N/A";
-                if (!empty($msg->sent_at) && $msg->sent_at != "0000-00-00 00:00:00") {
-                    $timestamp = strtotime($msg->sent_at);
-                    if ($timestamp) {
-                        $formattedTime = date("d F, Y H:i A", $timestamp);
-                    }
-                }
-
-                $cleanMessages[] = [
-                    "message" => $messageText,
-                    "sent_at" => $formattedTime
-                ];
-            }
-        }
-
-        // ✅ Final JSON Response
-        echo json_encode([
-            "status" => true,
-            "info" => $studentData,
-            "messages" => $cleanMessages
-        ]);
     }
+
+    // Validate Student ID
+    if (empty($id) || !is_numeric($id) || $id <= 0) {
+        echo json_encode([
+            "status" => false,
+            "message" => "Student ID missing or invalid"
+        ]);
+        return;
+    }
+
+    $this->load->model('Adminapi/AdminStudentModel');
+    $this->load->model('MessageModel');
+
+    // Fetch student information
+    $info = $this->AdminStudentModel->getInfo($id);
+
+    // Fetch messages
+    $messages = $this->AdminMessageModel->loadById($id);
+
+    // Student not found
+    if (empty($info)) {
+        echo json_encode([
+            "status" => false,
+            "message" => "No student found"
+        ]);
+        return;
+    }
+
+    // Handle student information
+    $studentData = is_array($info) ? $info[0] : $info;
+
+    // Clean messages
+    $cleanMessages = [];
+
+    if (!empty($messages)) {
+
+        foreach ($messages as $msg) {
+
+            // Convert object to array if necessary
+            $msgData = is_object($msg) ? (array) $msg : $msg;
+
+            // Message text
+            $messageText = !empty($msgData['message'])
+                ? $msgData['message']
+                : "N/A";
+
+            // Detect available date column
+            $dateValue = null;
+
+            $dateFields = [
+                'sent_at',
+                'created_at',
+                'message_date',
+                'date',
+                'Date',
+                'datetime',
+                'created_on',
+                'sent_date',
+                'added_on'
+            ];
+
+            foreach ($dateFields as $field) {
+                if (
+                    isset($msgData[$field]) &&
+                    !empty($msgData[$field]) &&
+                    $msgData[$field] != '0000-00-00' &&
+                    $msgData[$field] != '0000-00-00 00:00:00'
+                ) {
+                    $dateValue = $msgData[$field];
+                    break;
+                }
+            }
+
+            // Format date
+            $formattedTime = "N/A";
+
+            if ($dateValue !== null) {
+
+                $timestamp = strtotime($dateValue);
+
+                if ($timestamp !== false) {
+                    $formattedTime = date(
+                        "d F, Y h:i A",
+                        $timestamp
+                    );
+                }
+            }
+
+            $cleanMessages[] = [
+                "id" => $msgData['id'] ?? null,
+                "message" => $messageText,
+                "sent_at" => $formattedTime
+            ];
+        }
+    }
+
+    // Final response
+    echo json_encode([
+        "status" => true,
+        "info" => $studentData,
+        "messages" => $cleanMessages
+    ]);
+}
+
 
 
     // ✅ GET ALL MESSAGES
